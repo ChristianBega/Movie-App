@@ -12,3 +12,10 @@ export const InvertedButton = styled.button`
   padding: 0.7rem 1rem;
   ${DEFAULT_HOVER}
 `;
+
+export const FormButton = styled.button`
+  border: 1px solid green;
+  color: #000;
+  padding: 0.7rem 1rem;
+  ${DEFAULT_HOVER}
+`;

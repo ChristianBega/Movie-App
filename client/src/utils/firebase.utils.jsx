@@ -23,8 +23,6 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_APP_ID,
 };
 
-console.log(firebaseConfig);
-
 // Initializing firebase instance
 initializeApp(firebaseConfig);
 
@@ -62,13 +60,13 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
     // if a user doesn't exist then create it
     if (!userSnapshot.exists()) {
       const { username, email } = userAuth;
+      console.log(userAuth, "line 63 firebase");
       const createdAt = new Date();
 
       await setDoc(userDocRef, {
         username,
         email,
         createdAt,
-        ...additionalInformation,
       });
     }
   } catch (error) {
@@ -76,6 +74,17 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
   }
 
   return userDocRef;
+};
+
+// Creating async function to handle signing in user with email and password
+export const signInAuthWithEmailAndPassword = async (email, password) => {
+  if (!email || !password) return;
+  return await signInWithEmailAndPassword(auth, email, password);
+};
+
+// Creating async function using firebase signOut to log out user
+export const signOutUser = async () => {
+  auth.signOut();
 };
 
 // Creating function to listen for when auth changes and handles callback

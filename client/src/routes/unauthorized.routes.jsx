@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Page404 } from "../components/404/404.component";
 import { LandingPage } from "../pages/landing/landing-page.component";
 import { AuthenticationPage } from "../pages/authentication/authentication-page.component";
@@ -11,10 +11,9 @@ const UnauthorizedRoutes = () => {
     <>
       <Routes>
         <Route path="/" element={<LandingPage />}></Route>
-        <Route path="/sign-up" element={<AuthenticationPage />}></Route>
+        <Route path="/authenticate-user" element={<AuthenticationPage />}></Route>
+        {/* <Route path="/sign-in" element={<LoginPage />}></Route> */}
         {/* <Route path="/" element={<LandingPage />}></Route> */}
-        {/* <Route path="/signUp" element={<SignUpPage />}></Route>
-        <Route path="/login" element={<LoginPage />}></Route> */}
         <Route path="*" element={<Page404 to="/404" />} />
       </Routes>
     </>
