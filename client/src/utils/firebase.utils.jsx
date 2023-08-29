@@ -50,41 +50,16 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
 
 //* Creating async function to handle creating a user document for firebase
 export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
-  // console.log(userAuth);
-  // console.log(additionalInformation);
-
   // If no user then exit
   if (!userAuth) return;
 
   // userDocRef - an instance of user from googleAuth
   const userDocRef = doc(db, "users", userAuth.uid);
 
-  // snapshot - an specific instance of a user object with additional information
-  // const userSnapshot = await getDoc(userDocRef);
-  // console.log(userSnapshot);
-
-  // if (!userSnapshot.exists()) {
-  //   console.log(userAuth);
-  //   const { username, email } = userAuth;
-  //   const createdAt = new Date();
-  //   try {
-  //     await setDoc(userDocRef, {
-  //       username,
-  //       email,
-  //       createdAt,
-  //       ...additionalInformation,
-  //     });
-  //   } catch (error) {
-  //     console.log("error creating the user", error.message);
-  //   }
-  // }
-  // return userDocRef;
-
-  // if a user doesn't exist then create it
   try {
     // snapshot - an specific instance of a user object with additional information
     const userSnapshot = await getDoc(userDocRef);
-
+    // if a user doesn't exist then create it
     if (!userSnapshot.exists()) {
       const { username, email } = userAuth;
       const createdAt = new Date();
@@ -103,5 +78,5 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
   return userDocRef;
 };
 
-// // Creating function to listen for when auth changes and handles callback
+// Creating function to listen for when auth changes and handles callback
 export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback);
