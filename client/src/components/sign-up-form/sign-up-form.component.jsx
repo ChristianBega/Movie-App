@@ -13,11 +13,15 @@ const defaultFormFields = {
 export const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { username, email, password, confirmPassword, firstName, lastName } = formFields;
-
+  // Resetting formField
+  const resetFormFields = () => {
+    setFormFields(defaultFormFields);
+  };
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };
+
   // Handle Submit - listens for form submit then runs function
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,11 +29,12 @@ export const SignUpForm = () => {
       alert("Passwords don't match");
     }
     try {
+      console.log(formFields);
       // try creating a user with email and password
       const { user } = await createAuthUserWithEmailAndPassword(email, password);
       // using the new user create a userDocument in fireStore DB.
       await createUserDocumentFromAuth(user, { username });
-      resetFormFields();
+      // resetFormFields();
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
         alert("Cannot create user, email already in use");
@@ -38,10 +43,7 @@ export const SignUpForm = () => {
       }
     }
   };
-  // Resetting formField
-  const resetFormFields = () => {
-    setFormFields(defaultFormFields);
-  };
+
   return (
     <form onSubmit={handleSubmit}>
       <FormInput label="User Name" type="text" required onChange={handleChange} name="username" value={username} />

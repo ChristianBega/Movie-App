@@ -13,19 +13,20 @@ import {
 
 // Import firebase firestore
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
-
 // Web app's Firebase configuration
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
   authDomain: import.meta.env.VITE_AUTH_DOMAIN,
-  projectId: import.meta.env.FIREBASE_PROJECT_ID,
+  projectId: import.meta.env.VITE_PROJECT_ID,
   storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
   appId: import.meta.env.VITE_APP_ID,
 };
 
+console.log(firebaseConfig);
+
 // Initializing firebase instance
-const firebaseApp = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 // Creating google auth object
 export const auth = getAuth();
@@ -49,6 +50,9 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
 
 //* Creating async function to handle creating a user document for firebase
 export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
+  // console.log(userAuth);
+  // console.log(additionalInformation);
+
   // If no user then exit
   if (!userAuth) return;
 
@@ -56,22 +60,48 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
   const userDocRef = doc(db, "users", userAuth.uid);
 
   // snapshot - an specific instance of a user object with additional information
-  const userSnapshot = await getDoc(userDocRef);
+  // const userSnapshot = await getDoc(userDocRef);
+  // console.log(userSnapshot);
+
+  // if (!userSnapshot.exists()) {
+  //   console.log(userAuth);
+  //   const { username, email } = userAuth;
+  //   const createdAt = new Date();
+  //   try {
+  //     await setDoc(userDocRef, {
+  //       username,
+  //       email,
+  //       createdAt,
+  //       ...additionalInformation,
+  //     });
+  //   } catch (error) {
+  //     console.log("error creating the user", error.message);
+  //   }
+  // }
+  // return userDocRef;
 
   // if a user doesn't exist then create it
-  if (!userSnapshot.exists()) {
-    const { displayName, email } = userAuth;
-    const createdAt = new Date();
-    try {
+  try {
+    // snapshot - an specific instance of a user object with additional information
+    const userSnapshot = await getDoc(userDocRef);
+
+    if (!userSnapshot.exists()) {
+      const { username, email } = userAuth;
+      const createdAt = new Date();
+
       await setDoc(userDocRef, {
-        displayName,
+        username,
         email,
         createdAt,
         ...additionalInformation,
       });
-    } catch (error) {
-      console.log("error creating the user", error.message);
     }
+  } catch (error) {
+    console.error(error);
   }
+
   return userDocRef;
 };
+
+// // Creating function to listen for when auth changes and handles callback
+export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback);
