@@ -3,6 +3,8 @@ import { SignUpForm } from "./components/sign-up-form/sign-up-form.component";
 import { UserContext } from "./contexts/user.context";
 import { AuthContext } from "./contexts/authentication.context";
 import { Navigation } from "./components/navigation/navigation.component";
+import UnauthorizedRoutes from "./routes/unauthorized.routes";
+import AuthorizedRoutes from "./routes/authorized.routes";
 
 function App() {
   const { currentUser } = useContext(UserContext);
@@ -13,7 +15,8 @@ function App() {
     <>
       <Navigation />
       {/* <SignUpForm /> */}
-      <h1>{currentUser?.uid}</h1>
+      {/* <h1>Current user logged in :{currentUser?.uid}</h1> */}
+      {isAuthorized ? <AuthorizedRoutes /> : <UnauthorizedRoutes />}
     </>
   );
 }
