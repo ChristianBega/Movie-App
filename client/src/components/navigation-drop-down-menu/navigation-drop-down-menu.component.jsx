@@ -6,6 +6,7 @@ import { PiXBold } from "react-icons/pi";
 import { DropDownMenu } from "./navigation-drop-down-menu.styles";
 export const NavigationDropDownMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [currentMenuItem, setCurrentMenuItem] = useState("Home");
 
   const handleMenuClickEvent = () => {
     if (!isOpen) {
@@ -17,7 +18,7 @@ export const NavigationDropDownMenu = () => {
   return (
     <>
       <CustomButton buttonType={BUTTON_TYPES_CLASSES.dropdown} className="navigation-drop-down-button" onClick={handleMenuClickEvent}>
-        <span>Home</span>
+        <span>{currentMenuItem.toUpperCase()}</span>
         <FiChevronDown />
       </CustomButton>
       {isOpen && (
@@ -25,7 +26,7 @@ export const NavigationDropDownMenu = () => {
           <CustomButton buttonType={BUTTON_TYPES_CLASSES.close} onClick={handleMenuClickEvent}>
             <PiXBold style={{ color: "#fff", fontSize: "24px" }} />
           </CustomButton>
-          <NavigationList setIsOpen={setIsOpen} />
+          <NavigationList setIsOpen={setIsOpen} setCurrentMenuItem={setCurrentMenuItem} />
         </DropDownMenu>
       )}
     </>
