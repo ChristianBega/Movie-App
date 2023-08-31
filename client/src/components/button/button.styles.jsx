@@ -29,6 +29,7 @@ export const DropDownMenuButton = styled.button`
   /* border: 2px solid #007bff; */
   padding: 0.7rem 1rem;
   gap: 0.5rem;
+  margin-left: 2rem;
   ${FLEX_CENTERED}
   ${DEFAULT_BUTTON_COLORS}
   ${DEFAULT_HOVER};

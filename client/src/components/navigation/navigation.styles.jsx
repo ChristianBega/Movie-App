@@ -2,10 +2,16 @@ import styled, { css } from "styled-components";
 import { DEFAULT_HOVER, FLEX_CENTERED_BETWEEN, PADDING_SM } from "../../index.styles";
 
 const MenuItemStyling = css`
-  height: 40px;
-  width: 40px;
+  height: 48px;
+  width: 48px;
   border-radius: 50%;
-  border: 1px solid red;
+  display: grid;
+  place-items: center;
+  /* border: 1px solid red; */
+  background-color: #34343449;
+  &:hover {
+    background-color: #007bff51;
+  }
 `;
 
 export const StyleLogo = styled.div`
@@ -15,8 +21,6 @@ export const StyleLogo = styled.div`
 `;
 export const NavigationBar = styled.nav`
   min-height: 50px;
-
-  border: 1px solid red;
   ${FLEX_CENTERED_BETWEEN};
   ${PADDING_SM}
 `;
