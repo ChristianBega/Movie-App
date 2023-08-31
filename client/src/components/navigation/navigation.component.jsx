@@ -13,17 +13,7 @@ import { NavigationDropDownMenu } from "../navigation-drop-down-menu/navigation-
 
 export const Navigation = () => {
   const { isAuthorized } = useContext(AuthContext);
-  console.log(isAuthorized);
-
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleMenuClickEvent = () => {
-    if (!isOpen) {
-      setIsOpen(true);
-    } else {
-      setIsOpen(false);
-    }
-  };
+  // console.log(isAuthorized);
 
   const isLaptopOrLarger = useMediaQuery({
     query: device.desktop,
@@ -37,8 +27,11 @@ export const Navigation = () => {
       {isAuthorized ? (
         <NavigationItemContainer>
           {isLaptopOrLarger ? <NavigationList /> : <NavigationDropDownMenu />}
+
           <div className="navigation-menu-item">Search bar</div>
-          <div className="navigation-menu-item">Account</div>
+          <Link to="/profile" className="navigation-menu-item">
+            Profile
+          </Link>
         </NavigationItemContainer>
       ) : (
         <div style={{ display: "flex", gap: "1rem" }}>

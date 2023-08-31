@@ -5,19 +5,18 @@ import { HomePage } from "../pages/home/home-page.component";
 import { MoviesPage } from "../pages/movies/movies-page.component";
 import { TvShowsPage } from "../pages/tv-shows/tv-shows-page.component";
 import { MyStuffPage } from "../pages/my-stuff/my-stuff-page.component";
-import { AccountPage } from "../pages/account/account-page.component";
+import { ProfilePage } from "../pages/profile/profile-page.component";
 
 const AuthorizedRoutes = () => {
   return (
     <>
       <Routes>
+        <Route path="*" element={<Page404 />} />
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/movies" element={<MoviesPage />}></Route>
         <Route path="/tv-shows" element={<TvShowsPage />}></Route>
         <Route path="/my-stuff" element={<MyStuffPage />}></Route>
-        <Route path="/account" element={<AccountPage />}></Route>
-
-        <Route path="*" element={<Page404 to="/404" />} />
+        <Route path="/profile" element={<ProfilePage />}></Route>
       </Routes>
     </>
   );

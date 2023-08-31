@@ -20,7 +20,7 @@ export const NavigationList = ({ setIsOpen }) => {
     <NavigationListContainer>
       {navigationListItems.map(({ icon, name, urlPath }) => {
         return (
-          <li>
+          <li key={name}>
             <Link style={{ display: "flex", alignItems: " center" }} to={urlPath} onClick={handleListItemOnClick}>
               <span style={{ fontSize: "1.2rem" }}>{icon}</span>
               {name.toUpperCase()}

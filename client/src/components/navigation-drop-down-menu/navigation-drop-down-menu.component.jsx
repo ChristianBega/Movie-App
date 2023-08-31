@@ -16,11 +16,11 @@ export const NavigationDropDownMenu = () => {
   };
   return (
     <>
-      <CustomButton buttonType={BUTTON_TYPES_CLASSES.dropdown} className="navigation-drop-down-button" onClick={handleMenuClickEvent} isOpen={isOpen}>
+      <CustomButton buttonType={BUTTON_TYPES_CLASSES.dropdown} className="navigation-drop-down-button" onClick={handleMenuClickEvent}>
         <span>Home</span>
         <FiChevronDown />
       </CustomButton>
-      {!isOpen && (
+      {isOpen && (
         <DropDownMenu>
           <CustomButton buttonType={BUTTON_TYPES_CLASSES.close} onClick={handleMenuClickEvent}>
             <PiXBold style={{ fontSize: "1.2rem", color: "#fff" }} />

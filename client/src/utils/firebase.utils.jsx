@@ -48,7 +48,6 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
 
 //* Creating async function to handle creating a user document for firebase
 export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
-  console.log(userAuth);
   // If no user then exit
   if (!userAuth) return;
 

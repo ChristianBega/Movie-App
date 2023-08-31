@@ -10,11 +10,11 @@ const UnauthorizedRoutes = () => {
   return (
     <>
       <Routes>
+        <Route path="*" element={<Page404 to="/404" />} />
         <Route path="/" element={<LandingPage />}></Route>
         <Route path="/authenticate-user" element={<AuthenticationPage />}></Route>
         {/* <Route path="/sign-in" element={<LoginPage />}></Route> */}
         {/* <Route path="/" element={<LandingPage />}></Route> */}
-        <Route path="*" element={<Page404 to="/404" />} />
       </Routes>
     </>
   );
