@@ -13,7 +13,7 @@ import { NavigationDropDownMenu } from "../navigation-drop-down-menu/navigation-
 
 export const Navigation = () => {
   const { isAuthorized } = useContext(AuthContext);
-  // console.log(isAuthorized);
+  console.log(isAuthorized);
 
   const isLaptopOrLarger = useMediaQuery({
     query: device.desktop,

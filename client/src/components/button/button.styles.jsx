@@ -13,9 +13,13 @@ export const InvertedButton = styled.button`
 `;
 
 export const FormButton = styled.button`
-  border: 1px solid green;
-  color: #000;
-  padding: 0.7rem 1rem;
+  background-color: #fff;
+  color: #007bff;
+  border: 2px solid #007bff;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 16px;
   ${DEFAULT_HOVER}
 `;
 
