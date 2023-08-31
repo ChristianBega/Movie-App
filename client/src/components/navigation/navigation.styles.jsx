@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { DEFAULT_HOVER, FLEX_CENTERED, PADDING_SM } from "../../index.styles";
+import { DEFAULT_HOVER, FLEX_CENTERED_BETWEEN, PADDING_SM } from "../../index.styles";
 
 const MenuItemStyling = css`
   height: 40px;
@@ -15,13 +15,13 @@ export const StyleLogo = styled.div`
 `;
 export const NavigationBar = styled.nav`
   min-height: 50px;
-  /* width: 100%; */
+
   border: 1px solid red;
-  ${FLEX_CENTERED};
+  ${FLEX_CENTERED_BETWEEN};
   ${PADDING_SM}
 `;
 export const NavigationItemContainer = styled.div`
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -33,11 +33,3 @@ export const NavigationItemContainer = styled.div`
     ${MenuItemStyling};
   }
 `;
-
-// export const DropDownMenu = styled.div`
-//   position: absolute;
-//   inset: 0;
-//   height: 100vh;
-//   width: 100vw;
-//   background-color: red;
-// `;

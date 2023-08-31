@@ -23,7 +23,7 @@ export const NavigationDropDownMenu = () => {
       {isOpen && (
         <DropDownMenu>
           <CustomButton buttonType={BUTTON_TYPES_CLASSES.close} onClick={handleMenuClickEvent}>
-            <PiXBold style={{ fontSize: "1.2rem", color: "#fff" }} />
+            <PiXBold style={{ color: "#fff", fontSize: "24px" }} />
           </CustomButton>
           <NavigationList setIsOpen={setIsOpen} />
         </DropDownMenu>

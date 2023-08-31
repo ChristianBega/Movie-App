@@ -1,9 +1,18 @@
-import { styled } from "styled-components";
-import { DEFAULT_HOVER } from "../../index.styles";
-export const BaseButton = styled.button`
-  background-color: lightblue;
-  padding: 0.7rem 1rem;
+import { css, styled } from "styled-components";
+import { DEFAULT_HOVER, FLEX_CENTERED } from "../../index.styles";
+const DEFAULT_BUTTON_COLORS = css`
+  background-color: #141414;
+  border: 2px solid #007bff;
+`;
+const DEFAULT_BUTTON_STYLES = css`
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 16px;
   ${DEFAULT_HOVER}
+  ${DEFAULT_BUTTON_COLORS}
+`;
+export const BaseButton = styled.button`
+  ${DEFAULT_BUTTON_STYLES}
 `;
 export const InvertedButton = styled.button`
   border: 2px solid red;
@@ -13,32 +22,22 @@ export const InvertedButton = styled.button`
 `;
 
 export const FormButton = styled.button`
-  background-color: #fff;
-  color: #007bff;
-  border: 2px solid #007bff;
-  padding: 10px 20px;
-  border-radius: 50px;
-  cursor: pointer;
-  font-size: 16px;
-  ${DEFAULT_HOVER}
+  ${DEFAULT_BUTTON_STYLES}
 `;
 
 export const DropDownMenuButton = styled.button`
-  border: 1px solid green;
-  color: #000;
+  /* border: 2px solid #007bff; */
   padding: 0.7rem 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 0.5rem;
+  ${FLEX_CENTERED}
+  ${DEFAULT_BUTTON_COLORS}
   ${DEFAULT_HOVER};
 `;
-
 export const CloseButton = styled.button`
-  border: 1px solid #fff;
-  color: #000;
-  padding: 0.7rem 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  ${DEFAULT_BUTTON_COLORS}
+  ${FLEX_CENTERED}
   ${DEFAULT_HOVER};
 `;

@@ -10,9 +10,9 @@ export const StyledFormInputContainer = styled.div`
     ${BOX_SHADOW_INPUT}
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #504f4f;
     border-radius: 20px;
     font-size: 16px;
-    color: #575757;
+    color: #afafaf;
   }
 `;

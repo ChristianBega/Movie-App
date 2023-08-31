@@ -5,7 +5,5 @@ export const DropDownMenu = styled.div`
   inset: 0;
   height: 100vh;
   width: 100vw;
-  background-color: red;
+  background-color: #222020;
 `;
-
-

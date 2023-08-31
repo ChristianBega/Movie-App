@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { NavigationItemContainer, NavigationBar, StyleLogo } from "./navigation.styles";
 import CustomButton, { BUTTON_TYPES_CLASSES } from "../button/button.component";
 import { Link } from "react-router-dom";

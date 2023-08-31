@@ -11,13 +11,16 @@ import styled, { css } from "styled-components";
 export const DEFAULT_HOVER = css`
   cursor: pointer;
 `;
-
-export const FLEX_CENTERED = css`
+export const FLEX_CENTERED_BETWEEN = css`
   display: flex;
   align-items: center;
   justify-content: space-between;
 `;
-
+export const FLEX_CENTERED = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 export const PADDING_SM = css`
   padding: 1rem;
 `;
