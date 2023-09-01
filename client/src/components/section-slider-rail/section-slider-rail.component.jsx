@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { SectionSliderRailCard } from "../section-slider-rail-card/section-slider-rail-card.component";
-import { StyledSliderRailContainer } from "./section-slider-rail.styles";
+import { StyledSliderRailContainer, StyledSliderRailHeader } from "./section-slider-rail.styles";
 import { useHorizontalScroll } from "./useSideScroll";
 
 export const SectionSliderRail = ({ sectionData }) => {
@@ -32,9 +32,9 @@ export const SectionSliderRail = ({ sectionData }) => {
 
   return (
     <>
-      <h2>{sectionName}</h2>
+      <StyledSliderRailHeader>{sectionName}</StyledSliderRailHeader>
       <StyledSliderRailContainer ref={ref}>
-        {fetchedData?.res?.slice(0, 12).map((movie, index) => {
+        {fetchedData?.res?.map((movie, index) => {
           return <SectionSliderRailCard movie={movie} key={index} />;
         })}
       </StyledSliderRailContainer>
