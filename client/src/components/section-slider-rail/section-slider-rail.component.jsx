@@ -5,6 +5,8 @@ import { StyledSliderRailContainer } from "./section-slider-rail.styles";
 import { useHorizontalScroll } from "./useSideScroll";
 
 export const SectionSliderRail = ({ sectionData }) => {
+  const { sectionName, fetchUrl } = sectionData;
+
   const [fetchedData, setFetchedData] = useState();
   const ref = useHorizontalScroll();
   useEffect(() => {
@@ -16,7 +18,7 @@ export const SectionSliderRail = ({ sectionData }) => {
     };
     const getUser = async () => {
       try {
-        const response = await axios.get("https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1", options);
+        const response = await axios.get(fetchUrl, options);
         const res = response.data.results;
         setFetchedData({ ...fetchedData, res });
       } catch (error) {
@@ -26,19 +28,16 @@ export const SectionSliderRail = ({ sectionData }) => {
     getUser();
   }, [setFetchedData]);
 
-  const { sectionName } = sectionData;
+  console.log(fetchedData?.res?.slice(0, 8));
+
   return (
     <>
       <h2>{sectionName}</h2>
       <StyledSliderRailContainer ref={ref}>
-        {fetchedData?.res?.map((movie, index) => {
+        {fetchedData?.res?.slice(0, 12).map((movie, index) => {
           return <SectionSliderRailCard movie={movie} key={index} />;
         })}
       </StyledSliderRailContainer>
     </>
   );
 };
-
-// TV show - image, title, genre, seasons
-
-// Movie - title, rating, genre, year

@@ -1,61 +1,74 @@
 import React from "react";
 import { HeroImageSlider } from "../../components/hero-image-slider/hero-image-slider.component";
 import { SectionSliderRail } from "../../components/section-slider-rail/section-slider-rail.component";
+import { SliderRailsSection } from "./home-page.styles";
 
 export const HomePage = () => {
+  const genreFetchUrl =
+    "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=3&sort_by=popularity.desc&with_genres=";
   const mockData_REPLACE_LATER = [
     {
       sectionName: "My favorites",
-      // preview - array of first 8 objects - slice the 0-8
+      fetchUrl: "",
     },
     {
       sectionName: "For you",
-      // preview - array of first 8 objects - slice the 0-8
+      fetchUrl: "",
     },
     {
       sectionName: "Just Added",
-      // preview - array of first 8 objects - slice the 0-8
+      fetchUrl: "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
     },
     // TOP 10 MOVIE GENRES
     {
       sectionName: "Horror",
-      // preview - array of first 8 objects - slice the 0-8
+      id: 27,
+      fetchUrl: `${genreFetchUrl}27`,
     },
     {
       sectionName: "Action",
-      // preview - array of first 8 objects - slice the 0-8
+      fetchUrl: `${genreFetchUrl}28`,
+      id: 28,
     },
     {
       sectionName: "Comedy",
-      // preview - array of first 8 objects - slice the 0-8
+      fetchUrl: `${genreFetchUrl}35`,
+      id: 35,
     },
     {
       sectionName: "Drama",
-      // preview - array of first 8 objects - slice the 0-8
+      fetchUrl: `${genreFetchUrl}18`,
+      id: 18,
     },
     {
       sectionName: "Fantasy",
-      // preview - array of first 8 objects - slice the 0-8
+      fetchUrl: `${genreFetchUrl}14`,
+      id: 14,
     },
     {
       sectionName: "Mystery",
-      // preview - array of first 8 objects - slice the 0-8
+      fetchUrl: `${genreFetchUrl}9648`,
+      id: 9648,
     },
     {
       sectionName: "Thriller",
-      // preview - array of first 8 objects - slice the 0-8
+      fetchUrl: `${genreFetchUrl}53`,
+      id: 53,
     },
     {
-      sectionName: "Anime",
-      // preview - array of first 8 objects - slice the 0-8
+      sectionName: "Animation",
+      fetchUrl: `${genreFetchUrl}16`,
+      id: 16,
     },
     {
       sectionName: "SciFi",
-      // preview - array of first 8 objects - slice the 0-8
+      fetchUrl: `${genreFetchUrl}878`,
+      id: 878,
     },
     {
       sectionName: "Romance",
-      // preview - array of first 8 objects - slice the 0-8
+      fetchUrl: `${genreFetchUrl}10749`,
+      id: 10749,
     },
   ];
   return (
@@ -63,11 +76,11 @@ export const HomePage = () => {
       <section id="hero-image-slider-section">
         <HeroImageSlider />
       </section>
-      <section id="section-slider-rails">
+      <SliderRailsSection id="slider-rails-section">
         {mockData_REPLACE_LATER.map((sectionData) => {
           return <SectionSliderRail sectionData={sectionData} />;
         })}
-      </section>
+      </SliderRailsSection>
     </>
   );
 };
