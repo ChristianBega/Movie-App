@@ -1,10 +1,11 @@
 import React from "react";
+import { StyledFormInputContainer } from "./form-input.styles";
 
 export const FormInput = ({ label, ...otherProps }) => {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: ".5rem", marginBottom: "1.5rem" }}>
+    <StyledFormInputContainer>
       {label && <label>{label}</label>}
       <input className="form-input" {...otherProps} />
-    </div>
+    </StyledFormInputContainer>
   );
 };

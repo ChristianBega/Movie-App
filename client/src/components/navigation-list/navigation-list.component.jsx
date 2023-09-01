@@ -12,17 +12,18 @@ const navigationListItems = [
   { icon: <PiPlus />, name: "my stuff", urlPath: "/my-stuff" },
 ];
 
-export const NavigationList = ({ setIsOpen }) => {
-  const handleListItemOnClick = () => {
+export const NavigationList = ({ setIsOpen, setCurrentMenuItem }) => {
+  const handleListItemOnClick = (event) => {
     setIsOpen(false);
+    setCurrentMenuItem(event.currentTarget.id);
   };
   return (
     <NavigationListContainer>
       {navigationListItems.map(({ icon, name, urlPath }) => {
         return (
-          <li>
-            <Link style={{ display: "flex", alignItems: " center" }} to={urlPath} onClick={handleListItemOnClick}>
-              <span style={{ fontSize: "1.2rem" }}>{icon}</span>
+          <li key={name}>
+            <Link id={name} style={{ display: "flex", alignItems: " center" }} to={urlPath} onClick={handleListItemOnClick}>
+              <span style={{ fontSize: "1.2rem", marginRight: ".5rem" }}>{icon}</span>
               {name.toUpperCase()}
             </Link>
           </li>

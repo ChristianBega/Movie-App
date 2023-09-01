@@ -3,6 +3,7 @@ import { FormInput } from "../form-input/form-input.component";
 import { signInAuthWithEmailAndPassword } from "../../utils/firebase.utils";
 import { useNavigate } from "react-router-dom";
 import CustomButton from "../button/button.component";
+import { StyledForm, StyledLink } from "./sign-in-form.styles";
 const defaultFormFields = {
   email: "",
   password: "",
@@ -42,12 +43,19 @@ export const SignInForm = () => {
   };
 
   return (
-    <form style={{ border: "1px solid red", maxWidth: "650px", margin: "1rem auto" }} onSubmit={handleFormSubmit}>
+    <StyledForm onSubmit={handleFormSubmit}>
+      <div className="form-header-container">
+        <h1>Welcome back</h1>
+        <p>Sign into your account below</p>
+      </div>
       <FormInput label="Email" type="email" required onChange={handleChange} name="email" value={email} />
       <FormInput label="Password" type="password" required onChange={handleChange} name="password" value={password} />
+      <StyledLink style={{ display: "block", marginBottom: "1rem" }} to="/authenticate-user" state={{ linkType: "sign-up" }}>
+        Don't have an account? Sign up here
+      </StyledLink>
       <CustomButton buttonType="form" type="submit">
         Sign In
       </CustomButton>
-    </form>
+    </StyledForm>
   );
 };
