@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
-import TomatoImage from "../../../src/assets/tomato.png";
 
 const CardPositionStyles = css`
   position: absolute;
@@ -53,18 +52,3 @@ export const StyledCardOverLay = styled(motion.div)`
     }
   }
 `;
-//  &:hover::before {
-//     content: ${({ title, rating }) => `"${title}\\00000a${rating * 10}%"`};
-//     white-space: pre; /* or pre-wrap */
-//     background: linear-gradient(0deg, rgba(14, 15, 15, 0.900078781512605) 5%, rgba(157, 157, 157, 0.2) 100%);
-//     position: absolute;
-//     border-radius: 18px;
-//     inset: 0;
-//     z-index: 1000;
-//     display: flex;
-//     align-items: end;
-//     justify-content: flex-start;
-//     padding: 1rem;
-//     transition: all 0.2s ease-in-out;
-//     transition-duration: 0.3s;
-//   }

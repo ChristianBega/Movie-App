@@ -3,10 +3,11 @@ import { StyledCardOverLay, StyledSliderRailCard } from "./section-slider-rail-c
 import { useAnimation, useInView } from "framer-motion";
 import { cardVariants } from "../../animations/framer-motion-variants";
 import TomatoImage from "../../../src/assets/tomato.png";
-
+import { Link } from "react-router-dom";
 export const SectionSliderRailCard = ({ movie }) => {
+  // console.log("line 8 card : ", movie);
   const Card = () => {
-    const { vote_average, release_date, title, poster_path } = movie;
+    const { vote_average, title, poster_path } = movie;
     const ref = useRef();
     const controls = useAnimation();
     const inView = useInView(ref);
@@ -29,13 +30,15 @@ export const SectionSliderRailCard = ({ movie }) => {
         rating={vote_average}
       >
         <StyledCardOverLay>
-          <div className="text-container">
-            <h3>{title}</h3>
-            <span>
-              <img src={TomatoImage} width="25px" height="25px"></img>
-              <small>{vote_average * 10}%</small>
-            </span>
-          </div>
+          <Link to="/preview" state={{ movie: movie }}>
+            <div className="text-container">
+              <h3>{title}</h3>
+              <span>
+                <img src={TomatoImage} width="25px" height="25px"></img>
+                <small>{vote_average * 10}%</small>
+              </span>
+            </div>
+          </Link>
         </StyledCardOverLay>
       </StyledSliderRailCard>
     );

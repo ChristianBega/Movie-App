@@ -2,6 +2,7 @@
 // Mixins
 
 import styled, { css } from "styled-components";
+import { device } from "./device-breakpoints.styles";
 
 // color palette
 // text colors
@@ -31,4 +32,26 @@ export const BOX_SHADOW_BASE = css`
 
 export const BOX_SHADOW_INPUT = css`
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+`;
+
+export const HEADER_2 = css`
+  font-size: 18px;
+  font-weight: bold;
+  @media ${device.laptop} {
+    font-size: 20px;
+  }
+  @media ${device.desktop} {
+    font-size: 24px;
+  }
+`;
+
+export const PREVIEW_HEADER_2 = css`
+  font-size: 36px;
+  font-weight: bold;
+  @media ${device.laptop} {
+    font-size: 46px;
+  }
+  @media ${device.desktop} {
+    font-size: 56px;
+  }
 `;

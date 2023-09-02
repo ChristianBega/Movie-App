@@ -1,15 +1,9 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { device } from "../../device-breakpoints.styles";
+import { HEADER_2 } from "../../index.styles";
 export const StyledSliderRailHeader = styled(motion.h2)`
-  font-size: 18px;
-  font-weight: bold;
-  @media ${device.laptop} {
-    font-size: 20px;
-  }
-  @media ${device.desktop} {
-    font-size: 24px;
-  }
+  ${HEADER_2}
 `;
 
 export const StyledSliderRailContainer = styled(motion.div)`

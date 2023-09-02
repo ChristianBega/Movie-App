@@ -6,6 +6,7 @@ import { MoviesPage } from "../pages/movies/movies-page.component";
 import { TvShowsPage } from "../pages/tv-shows/tv-shows-page.component";
 import { MyStuffPage } from "../pages/my-stuff/my-stuff-page.component";
 import { ProfilePage } from "../pages/profile/profile-page.component";
+import { PreviewPage } from "../pages/preview/preview-page.component";
 
 const AuthorizedRoutes = () => {
   return (
@@ -17,6 +18,7 @@ const AuthorizedRoutes = () => {
         <Route path="/tv-shows" element={<TvShowsPage />}></Route>
         <Route path="/my-stuff" element={<MyStuffPage />}></Route>
         <Route path="/profile" element={<ProfilePage />}></Route>
+        <Route path="/preview" element={<PreviewPage />}></Route>
       </Routes>
     </>
   );

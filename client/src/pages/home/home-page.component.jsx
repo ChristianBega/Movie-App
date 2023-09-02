@@ -5,7 +5,7 @@ import { SliderRailsSection } from "./home-page.styles";
 
 export const HomePage = () => {
   const genreFetchUrl =
-    "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=3&sort_by=popularity.desc&with_genres=";
+    "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=";
   const mockData_REPLACE_LATER = [
     {
       sectionName: "My favorites",
@@ -17,7 +17,7 @@ export const HomePage = () => {
     },
     {
       sectionName: "Just Added",
-      fetchUrl: "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
+      fetchUrl: "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=2",
     },
     // TOP 10 MOVIE GENRES
     {
