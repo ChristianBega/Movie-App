@@ -1,7 +1,8 @@
 import React from "react";
 import TomatoImage from "../../../src/assets/tomato.png";
 import { PreviewContentContainer } from "./preview-content.styles";
-
+import { AiOutlinePlus } from "react-icons/ai";
+import CustomButton, { BUTTON_TYPES_CLASSES } from "../button/button.component";
 export const PreviewContent = ({ movie }) => {
   const { original_title, overview, vote_average, title, poster_path, release_date, genre_ids, backdrop_path } = movie;
 
@@ -56,7 +57,6 @@ export const PreviewContent = ({ movie }) => {
         return "Unknown";
     }
   };
-
   return (
     <PreviewContentContainer>
       <h2 className="movie-title">{title}</h2>
@@ -71,6 +71,10 @@ export const PreviewContent = ({ movie }) => {
         })}
       </span>
       <p className="movie-overview">{overview}</p>
+      <CustomButton buttonType={BUTTON_TYPES_CLASSES.favorites}>
+        <AiOutlinePlus />
+        Add to favorites
+      </CustomButton>
     </PreviewContentContainer>
   );
 };

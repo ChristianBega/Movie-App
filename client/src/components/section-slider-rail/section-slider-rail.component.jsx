@@ -6,6 +6,7 @@ import { useHorizontalScroll } from "./useSideScroll";
 
 export const SectionSliderRail = ({ sectionData }) => {
   const { sectionName, fetchUrl } = sectionData;
+  console.log(fetchUrl);
 
   const [fetchedData, setFetchedData] = useState();
   const ref = useHorizontalScroll();

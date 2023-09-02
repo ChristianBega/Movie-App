@@ -32,5 +32,6 @@ export const PreviewContentContainer = styled.div`
   }
   & .movie-overview {
     line-height: 22px;
+    margin-bottom: 1rem;
   }
 `;
