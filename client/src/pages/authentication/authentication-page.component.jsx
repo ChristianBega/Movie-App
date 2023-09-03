@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 
 export const AuthenticationPage = () => {
   const location = useLocation();
+  
   return (
     <div>
       {location.state.linkType === "sign-in" && <SignInForm />}

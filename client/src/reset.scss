@@ -7,9 +7,7 @@
 ***/
 
 /* Removing webkit scroll bar */
-*::-webkit-scrollbar {
-  display: none;
-}
+
 /* Adding scroll behavior */
 html {
   scroll-behavior: smooth;
@@ -30,6 +28,8 @@ html {
 *::before,
 *::after {
   box-sizing: border-box;
+  //! FONT FAMILY FOR ALL ELEMENTS
+  font-family: "Noto Sans Mahajani", sans-serif;
 }
 
 /* Reapply the pointer cursor for anchor tags */

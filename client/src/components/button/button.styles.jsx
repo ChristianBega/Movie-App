@@ -42,3 +42,10 @@ export const CloseButton = styled.button`
   ${FLEX_CENTERED}
   ${DEFAULT_HOVER};
 `;
+export const FavoritesButton = styled.button`
+  gap: 1rem;
+  background-color: #141414;
+  border: 2px solid #b79722 !important;
+  ${DEFAULT_BUTTON_STYLES}
+  ${FLEX_CENTERED}
+`;

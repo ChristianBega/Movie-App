@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { SectionSliderRailCard } from "../section-slider-rail-card/section-slider-rail-card.component";
-import { StyledSliderRailContainer } from "./section-slider-rail.styles";
+import { StyledSliderRailContainer, StyledSliderRailHeader } from "./section-slider-rail.styles";
 import { useHorizontalScroll } from "./useSideScroll";
 
 export const SectionSliderRail = ({ sectionData }) => {
+  // console.log(sectionData);
+
   const [fetchedData, setFetchedData] = useState();
   const ref = useHorizontalScroll();
+
   useEffect(() => {
     const options = {
       headers: {
@@ -14,22 +17,21 @@ export const SectionSliderRail = ({ sectionData }) => {
         Authorization: import.meta.env.VITE_AUTHORIZATION,
       },
     };
-    const getUser = async () => {
+    const fetchCategoryData = async () => {
       try {
-        const response = await axios.get("https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1", options);
+        const response = await axios.get(sectionData?.fetchUrl, options);
         const res = response.data.results;
         setFetchedData({ ...fetchedData, res });
       } catch (error) {
         console.error(error);
       }
     };
-    getUser();
-  }, [setFetchedData]);
+    fetchCategoryData();
+  }, [setFetchedData, sectionData]);
 
-  const { sectionName } = sectionData;
   return (
     <>
-      <h2>{sectionName}</h2>
+      <StyledSliderRailHeader>{sectionData?.sectionName}</StyledSliderRailHeader>
       <StyledSliderRailContainer ref={ref}>
         {fetchedData?.res?.map((movie, index) => {
           return <SectionSliderRailCard movie={movie} key={index} />;
@@ -38,7 +40,3 @@ export const SectionSliderRail = ({ sectionData }) => {
     </>
   );
 };
-
-// TV show - image, title, genre, seasons
-
-// Movie - title, rating, genre, year
