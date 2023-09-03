@@ -13,7 +13,7 @@ export const RecommendationProvider = ({ children }) => {
   const [currentGenres, setCurrentGenres] = useState();
 
   useEffect(() => {
-    setCurrentGenres(location.state?.movie.genre_ids || []);
+    setCurrentGenres(location.state?.movie?.genre_ids || []);
   }, [location]);
 
   useEffect(() => {
@@ -23,8 +23,6 @@ export const RecommendationProvider = ({ children }) => {
       fetchUrl: newFetchUrl,
     });
   }, [currentGenres]);
-
-  console.log(currentSectionData?.fetchUrl);
 
   const value = { currentSectionData, setCurrentGenres, setCurrentSectionData };
   // UseEffect is called on mount

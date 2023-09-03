@@ -11,7 +11,8 @@ export const PreviewPage = () => {
 
   useEffect(() => {
     setCurrentGenres([]);
-  }, []);
+    window.scrollTo(0, 0);
+  }, [location]);
 
   return (
     <>

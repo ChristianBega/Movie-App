@@ -74,7 +74,7 @@ export const PreviewContent = ({ movie }) => {
   return (
     <PreviewContentContainer>
       <h2 className="movie-title">{title}</h2>
-      <p className="movie-release-date">({release_date.slice(0, 4)})</p>
+      <p className="movie-release-date">({release_date?.slice(0, 4)})</p>
       <span className="movie-details">
         <div>
           <img src={TomatoImage} />

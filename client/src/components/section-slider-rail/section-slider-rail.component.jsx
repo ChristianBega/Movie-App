@@ -9,6 +9,7 @@ export const SectionSliderRail = ({ sectionData }) => {
 
   const [fetchedData, setFetchedData] = useState();
   const ref = useHorizontalScroll();
+
   useEffect(() => {
     const options = {
       headers: {

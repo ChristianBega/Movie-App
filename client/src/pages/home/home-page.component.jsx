@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { HeroImageSlider } from "../../components/hero-image-slider/hero-image-slider.component";
 import { SectionSliderRail } from "../../components/section-slider-rail/section-slider-rail.component";
 import { SliderRailsSection } from "./home-page.styles";
@@ -97,6 +97,10 @@ export const HomePage = () => {
       fetchUrl: `${genreFetchUrl}10402`,
     },
   ];
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <section id="hero-image-slider-section">
