@@ -81,12 +81,7 @@ export const PreviewContent = ({ movie }) => {
         </div>
         <small>{vote_average * 10}%</small>
         {genre_ids.slice(0, 3).map((id) => {
-          return (
-            <>
-              <p key={id}>&nbsp; &#183; &nbsp;{generateGenre(id)}&nbsp;</p>
-              <small>{id}</small>
-            </>
-          );
+          return <p key={id}>&nbsp; &#183; &nbsp;{generateGenre(id)}&nbsp;</p>;
         })}
       </span>
       <p className="movie-overview">{overview}</p>

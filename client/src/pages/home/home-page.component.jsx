@@ -22,53 +22,79 @@ export const HomePage = () => {
     // TOP 10 MOVIE GENRES
     {
       sectionName: "Horror",
-      id: 27,
       fetchUrl: `${genreFetchUrl}27`,
     },
     {
       sectionName: "Action",
       fetchUrl: `${genreFetchUrl}28`,
-      id: 28,
     },
     {
       sectionName: "Comedy",
       fetchUrl: `${genreFetchUrl}35`,
-      id: 35,
     },
     {
       sectionName: "Drama",
       fetchUrl: `${genreFetchUrl}18`,
-      id: 18,
     },
     {
       sectionName: "Fantasy",
       fetchUrl: `${genreFetchUrl}14`,
-      id: 14,
     },
     {
       sectionName: "Mystery",
       fetchUrl: `${genreFetchUrl}9648`,
-      id: 9648,
     },
     {
       sectionName: "Thriller",
       fetchUrl: `${genreFetchUrl}53`,
-      id: 53,
     },
     {
       sectionName: "Animation",
       fetchUrl: `${genreFetchUrl}16`,
-      id: 16,
     },
     {
       sectionName: "SciFi",
       fetchUrl: `${genreFetchUrl}878`,
-      id: 878,
     },
     {
       sectionName: "Romance",
       fetchUrl: `${genreFetchUrl}10749`,
-      id: 10749,
+    },
+    {
+      sectionName: "Western",
+      fetchUrl: `${genreFetchUrl}37`,
+    },
+    {
+      sectionName: "War",
+      fetchUrl: `${genreFetchUrl}10749`,
+    },
+    {
+      sectionName: "TV Movie",
+      fetchUrl: `${genreFetchUrl}10770`,
+    },
+    {
+      sectionName: "History",
+      fetchUrl: `${genreFetchUrl}36`,
+    },
+    {
+      sectionName: "Family",
+      fetchUrl: `${genreFetchUrl}10751`,
+    },
+    {
+      sectionName: "Documentary",
+      fetchUrl: `${genreFetchUrl}99`,
+    },
+    {
+      sectionName: "Crime",
+      fetchUrl: `${genreFetchUrl}80`,
+    },
+    {
+      sectionName: "Adventure",
+      fetchUrl: `${genreFetchUrl}12`,
+    },
+    {
+      sectionName: "Music",
+      fetchUrl: `${genreFetchUrl}10402`,
     },
   ];
   return (
