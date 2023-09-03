@@ -77,8 +77,8 @@ export const HomePage = () => {
         <HeroImageSlider />
       </section>
       <SliderRailsSection id="slider-rails-section">
-        {mockData_REPLACE_LATER.map((sectionData) => {
-          return <SectionSliderRail sectionData={sectionData} />;
+        {mockData_REPLACE_LATER.map((sectionData, index) => {
+          return <SectionSliderRail key={index} sectionData={sectionData} />;
         })}
       </SliderRailsSection>
     </>

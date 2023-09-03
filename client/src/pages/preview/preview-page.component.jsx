@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { PreviewHero } from "../../components/preview-hero/preview-hero.component";
 import { PreviewContent } from "../../components/preview-content/preview-content.component";
-import { PreviewRelatedSuggestions } from "../../components/preview-related-suggestions/preview-related-suggestions.component";
-import { BsChevronLeft } from "react-icons/bs";
+import { SectionSliderRail } from "../../components/section-slider-rail/section-slider-rail.component";
+import { RecommendationContext } from "../../contexts/recommendations.context";
+
 export const PreviewPage = () => {
   const location = useLocation();
+  const { currentSectionData, setCurrentGenres } = useContext(RecommendationContext);
+
+  useEffect(() => {
+    setCurrentGenres([]);
+  }, []);
 
   return (
     <>
@@ -19,7 +25,7 @@ export const PreviewPage = () => {
         <PreviewContent movie={location.state.movie} />
       </section>
       <section id="related-suggestions" style={{ marginTop: "2rem", padding: "1rem" }}>
-        <PreviewRelatedSuggestions movieGenres={location.state.movie.genre_ids} />
+        <SectionSliderRail sectionData={currentSectionData} />
       </section>
     </>
   );

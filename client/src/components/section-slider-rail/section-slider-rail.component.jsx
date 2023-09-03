@@ -5,8 +5,7 @@ import { StyledSliderRailContainer, StyledSliderRailHeader } from "./section-sli
 import { useHorizontalScroll } from "./useSideScroll";
 
 export const SectionSliderRail = ({ sectionData }) => {
-  const { sectionName, fetchUrl } = sectionData;
-  console.log(fetchUrl);
+  // console.log(sectionData);
 
   const [fetchedData, setFetchedData] = useState();
   const ref = useHorizontalScroll();
@@ -17,23 +16,21 @@ export const SectionSliderRail = ({ sectionData }) => {
         Authorization: import.meta.env.VITE_AUTHORIZATION,
       },
     };
-    const getUser = async () => {
+    const fetchCategoryData = async () => {
       try {
-        const response = await axios.get(fetchUrl, options);
+        const response = await axios.get(sectionData?.fetchUrl, options);
         const res = response.data.results;
         setFetchedData({ ...fetchedData, res });
       } catch (error) {
         console.error(error);
       }
     };
-    getUser();
-  }, [setFetchedData]);
-
-  console.log(fetchedData?.res?.slice(0, 8));
+    fetchCategoryData();
+  }, [setFetchedData, sectionData]);
 
   return (
     <>
-      <StyledSliderRailHeader>{sectionName}</StyledSliderRailHeader>
+      <StyledSliderRailHeader>{sectionData?.sectionName}</StyledSliderRailHeader>
       <StyledSliderRailContainer ref={ref}>
         {fetchedData?.res?.map((movie, index) => {
           return <SectionSliderRailCard movie={movie} key={index} />;

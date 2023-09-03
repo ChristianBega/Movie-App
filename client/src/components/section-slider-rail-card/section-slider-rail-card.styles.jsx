@@ -17,7 +17,7 @@ export const StyledSliderRailCard = styled(motion.div)`
   position: relative;
 
   &:hover {
-    transform: scale(1.02);
+    transform: scale(1.1) !important;
     cursor: pointer;
   }
 `;

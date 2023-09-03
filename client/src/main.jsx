@@ -5,16 +5,17 @@ import "./reset.scss";
 import { UserProvider } from "./contexts/user.context.jsx";
 import { AuthProvider } from "./contexts/authentication.context.jsx";
 import { BrowserRouter as Router } from "react-router-dom";
+import { RecommendationProvider } from "./contexts/recommendations.context.jsx";
 // import { AuthProvider } from "./contexts/authentication.context.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <Router>
-      <AuthProvider>
-        <UserProvider>
+  <Router>
+    <AuthProvider>
+      <UserProvider>
+        <RecommendationProvider>
           <App />
-        </UserProvider>
-      </AuthProvider>
-    </Router>
-  </React.StrictMode>
+        </RecommendationProvider>
+      </UserProvider>
+    </AuthProvider>
+  </Router>
 );
