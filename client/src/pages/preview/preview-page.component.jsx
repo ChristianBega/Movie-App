@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { PreviewHero } from "../../components/preview-hero/preview-hero.component";
 import { PreviewContent } from "../../components/preview-content/preview-content.component";
@@ -12,7 +12,7 @@ export const PreviewPage = () => {
   useEffect(() => {
     setCurrentGenres([]);
     window.scrollTo(0, 0);
-  }, [location]);
+  }, []);
 
   return (
     <>

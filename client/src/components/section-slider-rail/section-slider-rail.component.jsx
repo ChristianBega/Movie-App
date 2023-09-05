@@ -3,10 +3,10 @@ import axios from "axios";
 import { SectionSliderRailCard } from "../section-slider-rail-card/section-slider-rail-card.component";
 import { StyledSliderRailContainer, StyledSliderRailHeader } from "./section-slider-rail.styles";
 import { useHorizontalScroll } from "./useSideScroll";
+import { useLocation } from "react-router-dom";
 
-export const SectionSliderRail = ({ sectionData }) => {
-  // console.log(sectionData);
-
+export const SectionSliderRail = ({ sectionData, urlPath }) => {
+  const location = useLocation();
   const [fetchedData, setFetchedData] = useState();
   const ref = useHorizontalScroll();
 
@@ -19,7 +19,7 @@ export const SectionSliderRail = ({ sectionData }) => {
     };
     const fetchCategoryData = async () => {
       try {
-        const response = await axios.get(sectionData?.fetchUrl, options);
+        const response = await axios.get(urlPath ? urlPath + sectionData.id : sectionData.fetchUrl, options);
         const res = response.data.results;
         setFetchedData({ ...fetchedData, res });
       } catch (error) {
@@ -27,15 +27,21 @@ export const SectionSliderRail = ({ sectionData }) => {
       }
     };
     fetchCategoryData();
-  }, [setFetchedData, sectionData]);
+  }, [urlPath, sectionData]);
 
   return (
     <>
-      <StyledSliderRailHeader>{sectionData?.sectionName}</StyledSliderRailHeader>
+      <StyledSliderRailHeader>{sectionData?.sectionName || sectionData?.name}</StyledSliderRailHeader>
       <StyledSliderRailContainer ref={ref}>
-        {fetchedData?.res?.map((movie, index) => {
-          return <SectionSliderRailCard movie={movie} key={index} />;
-        })}
+        {fetchedData ? (
+          <>
+            {fetchedData.res.map((movie, index) => {
+              return <SectionSliderRailCard movie={movie} key={index} />;
+            })}
+          </>
+        ) : (
+          "Loading"
+        )}
       </StyledSliderRailContainer>
     </>
   );

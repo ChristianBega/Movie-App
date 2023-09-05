@@ -55,3 +55,13 @@ export const PREVIEW_HEADER_2 = css`
     font-size: 56px;
   }
 `;
+
+
+export const SLIDER_SECTION = css`
+  margin: auto;
+  max-width: 1600px;
+  padding: 2rem;
+  @media ${device.desktop} {
+    padding: 3rem;
+  }
+`;
