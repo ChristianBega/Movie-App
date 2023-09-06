@@ -13,7 +13,7 @@ const staticMovieAndShowsSectionData = [
 
 export const PreviewPage = () => {
   const location = useLocation();
-  const [rerenderKey, setRerenderKey] = useState(0);
+  // const [rerenderKey, setRerenderKey] = useState(0);
   const [currentSectionData, setCurrentSectionData] = useState();
   const [currentGenres, setCurrentGenres] = useState(location?.state?.movie.genre_ids || []);
 
@@ -25,12 +25,12 @@ export const PreviewPage = () => {
     const newMovieFetchUrl = `${staticMovieAndShowsSectionData[0].fetchUrl}${currentGenres?.join("%2C")}`;
     setCurrentSectionData([{ ...staticMovieAndShowsSectionData, fetchUrl: newMovieFetchUrl }]);
     // Force a re-render by updating the key
-    setRerenderKey((prevKey) => prevKey + 1);
+    // setRerenderKey((prevKey) => prevKey + 1);
   }, [currentGenres]);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
   return (
     <>
       <div>
@@ -46,7 +46,7 @@ export const PreviewPage = () => {
       </section>
       <section id="related-suggestions" style={{ marginTop: "2rem", padding: "1rem" }}>
         {currentSectionData?.map((section, index) => {
-          return <SectionSliderRail key={`${index}-${rerenderKey}`} sectionData={section} />;
+          return <SectionSliderRail key={`${index}`} sectionData={section} />;
         })}
       </section>
     </>

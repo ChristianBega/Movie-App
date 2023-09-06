@@ -14,79 +14,78 @@ import { SliderRailsSection } from "./home-page.styles";
 //     fetchUrl: `${genreFetchUrl}18`,
 //   },
 // ];
+const genreFetchUrl =
+  "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=";
+
+const staticMovieAndShowsSectionData = [
+  // {
+  //   sectionName: "My favorites",
+  //   fetchUrl: "",
+  // },
+  // {
+  //   sectionName: "For you",
+  //   fetchUrl: "",
+  // },
+  {
+    sectionName: "Just Added",
+    fetchUrl: "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
+  },
+  // movie genres 13
+  {
+    sectionName: "Action",
+    fetchUrl: `${genreFetchUrl}28`,
+  },
+  {
+    sectionName: "Adventure",
+    fetchUrl: `${genreFetchUrl}12`,
+  },
+  {
+    sectionName: "Animation",
+    fetchUrl: `${genreFetchUrl}16`,
+  },
+  {
+    sectionName: "Comedy",
+    fetchUrl: `${genreFetchUrl}35`,
+  },
+  {
+    sectionName: "Crime",
+    fetchUrl: `${genreFetchUrl}80`,
+  },
+  {
+    sectionName: "Drama",
+    fetchUrl: `${genreFetchUrl}18`,
+  },
+  {
+    sectionName: "Family",
+    fetchUrl: `${genreFetchUrl}10751`,
+  },
+  {
+    sectionName: "Fantasy",
+    fetchUrl: `${genreFetchUrl}14`,
+  },
+  {
+    sectionName: "Horror",
+    fetchUrl: `${genreFetchUrl}27`,
+  },
+  {
+    sectionName: "Mystery",
+    fetchUrl: `${genreFetchUrl}9648`,
+  },
+  {
+    sectionName: "Romance",
+    fetchUrl: `${genreFetchUrl}10749`,
+  },
+  {
+    sectionName: "SciFi",
+    fetchUrl: `${genreFetchUrl}878`,
+  },
+  {
+    sectionName: "Thriller",
+    fetchUrl: `${genreFetchUrl}53`,
+  },
+  // tv genres 13
+];
 export const HomePage = () => {
-  const genreFetchUrl =
-    "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=";
-
-  const staticMovieAndShowsSectionData = [
-    // {
-    //   sectionName: "My favorites",
-    //   fetchUrl: "",
-    // },
-    // {
-    //   sectionName: "For you",
-    //   fetchUrl: "",
-    // },
-    {
-      sectionName: "Just Added",
-      fetchUrl: "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
-    },
-    // movie genres 13
-    {
-      sectionName: "Action",
-      fetchUrl: `${genreFetchUrl}28`,
-    },
-    {
-      sectionName: "Adventure",
-      fetchUrl: `${genreFetchUrl}12`,
-    },
-    {
-      sectionName: "Animation",
-      fetchUrl: `${genreFetchUrl}16`,
-    },
-    {
-      sectionName: "Comedy",
-      fetchUrl: `${genreFetchUrl}35`,
-    },
-    {
-      sectionName: "Crime",
-      fetchUrl: `${genreFetchUrl}80`,
-    },
-    {
-      sectionName: "Drama",
-      fetchUrl: `${genreFetchUrl}18`,
-    },
-    {
-      sectionName: "Family",
-      fetchUrl: `${genreFetchUrl}10751`,
-    },
-    {
-      sectionName: "Fantasy",
-      fetchUrl: `${genreFetchUrl}14`,
-    },
-    {
-      sectionName: "Horror",
-      fetchUrl: `${genreFetchUrl}27`,
-    },
-    {
-      sectionName: "Mystery",
-      fetchUrl: `${genreFetchUrl}9648`,
-    },
-    {
-      sectionName: "Romance",
-      fetchUrl: `${genreFetchUrl}10749`,
-    },
-    {
-      sectionName: "SciFi",
-      fetchUrl: `${genreFetchUrl}878`,
-    },
-    {
-      sectionName: "Thriller",
-      fetchUrl: `${genreFetchUrl}53`,
-    },
-    // tv genres 13
-  ];
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

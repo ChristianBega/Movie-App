@@ -16,7 +16,8 @@ export const StyledSliderRailContainer = styled(motion.div)`
   border-radius: 16px;
   margin: 1rem auto 3rem auto;
   padding: 1rem;
-  overflow-x: scroll;
+  overflow-x: auto;
+  white-space: nowrap;
   scrollbar-width: none;
   -ms-overflow-style: none;
   &::-webkit-scrollbar-track {
