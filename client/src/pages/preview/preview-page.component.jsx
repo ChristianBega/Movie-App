@@ -4,6 +4,7 @@ import { PreviewHero } from "../../components/preview-hero/preview-hero.componen
 import { PreviewContent } from "../../components/preview-content/preview-content.component";
 import { SectionSliderRail } from "../../components/section-slider-rail/section-slider-rail.component";
 import { BiChevronLeft } from "react-icons/bi";
+import CustomButton, { BUTTON_TYPES_CLASSES } from "../../components/button/button.component";
 const staticMovieAndShowsSectionData = [
   {
     sectionName: "Movies you may also like",
@@ -33,11 +34,6 @@ export const PreviewPage = () => {
   // }, []);
   return (
     <>
-      <div>
-        <Link to="/">
-          <BiChevronLeft />
-        </Link>
-      </div>
       <section id="preview-hero-section">
         <PreviewHero movieBackDrop={location.state.movie.backdrop_path} />
       </section>

@@ -4,6 +4,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { generateGenre } from "../../utils/generateGenre";
 import TomatoImage from "../../../src/assets/tomato.png";
 import CustomButton, { BUTTON_TYPES_CLASSES } from "../../components/button/button.component";
+import { Link } from "react-router-dom";
 
 export const HeroImageSlider = ({ topRated }) => {
   console.log(topRated);
@@ -47,7 +48,11 @@ export const HeroImageSlider = ({ topRated }) => {
               <CustomButton buttonType={BUTTON_TYPES_CLASSES.favoritesSm}>
                 <AiOutlinePlus />
               </CustomButton>
-              <CustomButton buttonType={BUTTON_TYPES_CLASSES.favoritesSm}>See more</CustomButton>
+              <CustomButton buttonType={BUTTON_TYPES_CLASSES.favoritesSm}>
+                <Link to="/preview" state={{ movie: topRated[currentIndex] }}>
+                  See more
+                </Link>
+              </CustomButton>
             </div>
           </div>
           <SliderBarsContainer>

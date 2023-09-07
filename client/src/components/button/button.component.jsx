@@ -1,5 +1,14 @@
 import React from "react";
-import { BaseButton, CloseButton, DropDownMenuButton, FavoritesButton, FavoritesButtonSm, FormButton, InvertedButton } from "./button.styles";
+import {
+  BackButton,
+  BaseButton,
+  CloseButton,
+  DropDownMenuButton,
+  FavoritesButton,
+  FavoritesButtonSm,
+  FormButton,
+  InvertedButton,
+} from "./button.styles";
 
 export const BUTTON_TYPES_CLASSES = {
   base: "base",
@@ -9,6 +18,7 @@ export const BUTTON_TYPES_CLASSES = {
   close: "close",
   favorites: "favorites",
   favoritesSm: "favoritesSm",
+  back: "back",
 };
 
 const getButton = (buttonType = BUTTON_TYPES_CLASSES.base) =>
@@ -20,6 +30,7 @@ const getButton = (buttonType = BUTTON_TYPES_CLASSES.base) =>
     [BUTTON_TYPES_CLASSES.close]: CloseButton,
     [BUTTON_TYPES_CLASSES.favorites]: FavoritesButton,
     [BUTTON_TYPES_CLASSES.favoritesSm]: FavoritesButtonSm,
+    [BUTTON_TYPES_CLASSES.back]: BackButton,
   }[buttonType]);
 
 const CustomButton = ({ children, buttonType, ...otherProps }) => {

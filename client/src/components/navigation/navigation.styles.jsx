@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { DEFAULT_HOVER, FLEX_CENTERED_BETWEEN, PADDING_SM } from "../../index.styles";
-
+/* Import the custom font, or provide a suitable Netflix-like font */
+// @import url("https://fonts.googleapis.com/css?family=Netflix Sans&display=swap");
 const MenuItemStyling = css`
   height: 48px;
   width: 48px;
@@ -15,9 +16,22 @@ const MenuItemStyling = css`
 `;
 
 export const StyleLogo = styled.div`
-  background-color: lightblue;
   padding: 0.7rem 1rem;
   ${DEFAULT_HOVER}
+
+  /* Style for the h1 element */
+.logo {
+    /* font-family: "Netflix Sans", Arial, sans-serif; Use Netflix-like font */
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: -2px; /* Adjust letter spacing */
+    color: #e50914; /* Netflix red color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a shadow */
+    margin: 0; /* Remove default margins */
+    letter-spacing: 0.1rem;
+    font-size: 18px;
+  }
 `;
 export const NavigationBar = styled.nav`
   min-height: 50px;

@@ -15,6 +15,7 @@ export const HeroImageSliderContainer = styled.div`
   z-index: 800;
   display: flex;
   align-items: flex-end;
+  ${PADDING_SM}
   &:before {
     content: "";
     z-index: 0;

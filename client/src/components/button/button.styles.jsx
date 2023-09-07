@@ -56,3 +56,17 @@ export const FavoritesButtonSm = styled.button`
   ${DEFAULT_BUTTON_STYLES}
   ${FLEX_CENTERED}
 `;
+
+export const BackButton = styled.button`
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: grid;
+  place-items: center;
+  z-index: 100;
+  ${DEFAULT_HOVER};
+  ${DEFAULT_BUTTON_COLORS}
+`;
