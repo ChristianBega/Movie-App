@@ -7,7 +7,6 @@ import CustomButton, { BUTTON_TYPES_CLASSES } from "../../components/button/butt
 import { Link } from "react-router-dom";
 
 export const HeroImageSlider = ({ topRated }) => {
-  console.log(topRated);
   // Tracking current index, starts at 0, used to determine which slide we are on.
   const [currentIndex, setCurrentIndex] = useState(0);
 

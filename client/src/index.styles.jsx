@@ -10,7 +10,11 @@ import { device } from "./device-breakpoints.styles";
 // padding
 
 export const DEFAULT_HOVER = css`
-  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 12px 4px #caa72a8d;
+    transform: scale(1.01);
+  }
 `;
 export const FLEX_CENTERED_BETWEEN = css`
   display: flex;
