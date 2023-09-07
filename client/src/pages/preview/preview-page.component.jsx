@@ -5,6 +5,7 @@ import { PreviewContent } from "../../components/preview-content/preview-content
 import { SectionSliderRail } from "../../components/section-slider-rail/section-slider-rail.component";
 import { BiChevronLeft } from "react-icons/bi";
 import CustomButton, { BUTTON_TYPES_CLASSES } from "../../components/button/button.component";
+import { PreviewContentSection } from "./preview-page.styles";
 const staticMovieAndShowsSectionData = [
   {
     sectionName: "Movies you may also like",
@@ -33,18 +34,18 @@ export const PreviewPage = () => {
   //   window.scrollTo(0, 0);
   // }, []);
   return (
-    <>
+    <div style={{ position: "relative" }}>
       <section id="preview-hero-section">
         <PreviewHero movieBackDrop={location.state.movie.backdrop_path} />
       </section>
-      <section id="preview-content-section">
+      <PreviewContentSection id="preview-content-section">
         <PreviewContent movie={location.state.movie} />
-      </section>
+      </PreviewContentSection>
       <section id="related-suggestions" style={{ marginTop: "2rem", padding: "1rem" }}>
         {currentSectionData?.map((section, index) => {
           return <SectionSliderRail key={`${index}-${rerenderKey}`} sectionData={section} />;
         })}
       </section>
-    </>
+    </div>
   );
 };

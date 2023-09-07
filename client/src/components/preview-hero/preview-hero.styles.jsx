@@ -10,7 +10,6 @@ export const HeroContainer = styled.div`
   background-position: center;
   background-size: cover;
   position: relative;
-  padding: 2rem;
   &:before {
     content: "";
     background-image: linear-gradient(to top, #12151e, transparent);

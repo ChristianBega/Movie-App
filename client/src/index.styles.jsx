@@ -51,6 +51,7 @@ export const HEADER_2 = css`
 
 export const PREVIEW_HEADER_2 = css`
   font-weight: bold;
+  font-size: 32px;
   @media ${device.laptop} {
     font-size: 55px;
   }

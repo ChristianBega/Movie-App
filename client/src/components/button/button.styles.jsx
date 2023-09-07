@@ -1,5 +1,6 @@
 import { css, styled } from "styled-components";
 import { DEFAULT_HOVER, FLEX_CENTERED } from "../../index.styles";
+import { device } from "../../device-breakpoints.styles";
 const DEFAULT_BUTTON_COLORS = css`
   background-color: #141414;
   border: 2px solid #b79722 !important;
@@ -68,4 +69,11 @@ export const BackButton = styled.button`
   z-index: 100;
   ${DEFAULT_HOVER}
   ${DEFAULT_BUTTON_COLORS}
+  @media ${device.laptop} {
+    top: 2rem;
+    left: 2rem;
+  }
+  @media ${device.desktop} {
+    left: 4rem;
+  }
 `;

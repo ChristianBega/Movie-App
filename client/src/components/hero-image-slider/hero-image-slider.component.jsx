@@ -49,7 +49,7 @@ export const HeroImageSlider = ({ topRated }) => {
               </CustomButton>
               <CustomButton buttonType={BUTTON_TYPES_CLASSES.favoritesSm}>
                 <Link to="/preview" state={{ movie: topRated[currentIndex] }}>
-                  See more
+                  More info
                 </Link>
               </CustomButton>
             </div>
