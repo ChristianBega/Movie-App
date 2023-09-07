@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { HeroImageSlider } from "../../components/hero-image-slider/hero-image-slider.component";
 import { SectionSliderRail } from "../../components/section-slider-rail/section-slider-rail.component";
 import { SliderRailsSection } from "./home-page.styles";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 // Make two fetch calls - one for movies one for tv show per genre
 // take the response and
 // const TEST_DATA = [
@@ -16,6 +18,8 @@ import { SliderRailsSection } from "./home-page.styles";
 // ];
 const genreFetchUrl =
   "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=";
+
+const topRatedFetchUrl = "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1";
 
 const staticMovieAndShowsSectionData = [
   // {
@@ -86,14 +90,31 @@ const staticMovieAndShowsSectionData = [
   // tv genres 13
 ];
 export const HomePage = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const generateUrl = () => {
+    const options = {
+      headers: {
+        accept: "application/json",
+        Authorization: import.meta.env.VITE_AUTHORIZATION,
+      },
+    };
+    return axios.get(topRatedFetchUrl, options);
+  };
+  const { isLoading, data, isError, error, isFetched } = useQuery(["top-rated"], generateUrl);
+
+  if (isLoading) {
+    return <h1>Loading in data...</h1>;
+  }
+
+  if (isError) {
+    return <h1>{error.message}</h1>;
+  }
+
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
   return (
     <>
-      <section id="hero-image-slider-section">
-        <HeroImageSlider />
-      </section>
+      <section id="hero-image-slider-section">{isFetched && <HeroImageSlider topRated={data.data.results.slice(0, 6)} />}</section>
       <SliderRailsSection id="slider-rails-section">
         {staticMovieAndShowsSectionData.map((sectionData, index) => {
           return <SectionSliderRail key={index} sectionData={sectionData} />;

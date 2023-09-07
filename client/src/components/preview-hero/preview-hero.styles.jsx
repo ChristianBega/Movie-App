@@ -4,7 +4,7 @@ import { device } from "../../device-breakpoints.styles";
 // export const
 
 export const HeroContainer = styled.div`
-  background-image: ${({ movieBackDrop }) => `url(${movieBackDrop})`};
+  background-image: ${({ moviebackdrop }) => `url(${moviebackdrop})`};
   height: 40vh;
   width: 100%;
   background-position: center;

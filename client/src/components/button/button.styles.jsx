@@ -49,3 +49,10 @@ export const FavoritesButton = styled.button`
   ${DEFAULT_BUTTON_STYLES}
   ${FLEX_CENTERED}
 `;
+export const FavoritesButtonSm = styled.button`
+  gap: 1rem;
+  background-color: #141414;
+  border: 2px solid #b79722 !important;
+  ${DEFAULT_BUTTON_STYLES}
+  ${FLEX_CENTERED}
+`;

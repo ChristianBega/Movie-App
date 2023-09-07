@@ -1,10 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { SectionSliderRailCard } from "../section-slider-rail-card/section-slider-rail-card.component";
 import { StyledSliderRailContainer, StyledSliderRailHeader } from "./section-slider-rail.styles";
 import { useHorizontalScroll } from "./useSideScroll";
-import { useScroll } from "framer-motion";
 
 export const SectionSliderRail = ({ sectionData, urlPath }) => {
   const sliderRef = useHorizontalScroll();
