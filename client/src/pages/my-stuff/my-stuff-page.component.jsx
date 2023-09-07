@@ -1,7 +1,5 @@
-import React from 'react'
+import React, { useState } from "react";
 
 export const MyStuffPage = () => {
-  return (
-    <div>MyStuffPage</div>
-  )
-}
+  return <>My stuff</>;
+};

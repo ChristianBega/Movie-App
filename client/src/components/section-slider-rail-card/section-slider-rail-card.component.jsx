@@ -1,16 +1,10 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { StyledCardOverLay, StyledSliderRailCard } from "./section-slider-rail-card.styles";
 import { useAnimation, useInView } from "framer-motion";
 import { cardVariants } from "../../animations/framer-motion-variants";
 import TomatoImage from "../../../src/assets/tomato.png";
 import { Link } from "react-router-dom";
-import { RecommendationContext } from "../../contexts/recommendations.context";
 export const SectionSliderRailCard = ({ movie }) => {
-  const { setCurrentGenres, setCurrentSectionData } = useContext(RecommendationContext);
-  const handleClick = () => {
-    setCurrentGenres([]);
-    setCurrentSectionData({});
-  };
   // console.log(movie);
   const Card = () => {
     const { vote_average, title, poster_path } = movie;
@@ -36,7 +30,7 @@ export const SectionSliderRailCard = ({ movie }) => {
         rating={vote_average}
       >
         <StyledCardOverLay>
-          <Link onClick={handleClick} to="/preview" state={{ movie: movie }}>
+          <Link to="/preview" state={{ movie: movie }}>
             <div className="text-container">
               <h3>{title}</h3>
               <span>

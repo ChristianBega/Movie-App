@@ -46,12 +46,20 @@ export const HEADER_2 = css`
 `;
 
 export const PREVIEW_HEADER_2 = css`
-  font-size: 36px;
   font-weight: bold;
   @media ${device.laptop} {
-    font-size: 46px;
+    font-size: 55px;
   }
   @media ${device.desktop} {
-    font-size: 56px;
+    font-size: 65px;
+  }
+`;
+
+export const SLIDER_SECTION = css`
+  margin: auto;
+  max-width: 1600px;
+  padding: 2rem;
+  @media ${device.desktop} {
+    padding: 3rem;
   }
 `;

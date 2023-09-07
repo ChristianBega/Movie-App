@@ -23,7 +23,7 @@ export const NavigationList = ({ setIsOpen, setCurrentMenuItem }) => {
         return (
           <li key={name}>
             <Link id={name} style={{ display: "flex", alignItems: " center" }} to={urlPath} onClick={handleListItemOnClick}>
-              <span style={{ fontSize: "1.2rem", marginRight: ".5rem" }}>{icon}</span>
+              <span style={{ fontSize: "1rem", marginRight: ".5rem" }}>{icon}</span>
               {name.toUpperCase()}
             </Link>
           </li>

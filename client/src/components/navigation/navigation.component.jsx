@@ -13,7 +13,7 @@ import { NavigationDropDownMenu } from "../navigation-drop-down-menu/navigation-
 // import { VscAccount } from "react-icons/";
 import { VscAccount } from "react-icons/vsc";
 // import { DropDownMenu } from "../button/button.styles";
-
+import "../../app.scss";
 export const Navigation = () => {
   const { isAuthorized } = useContext(AuthContext);
   console.log(isAuthorized);
@@ -28,7 +28,9 @@ export const Navigation = () => {
   return (
     <NavigationBar>
       <StyleLogo>
-        <Link to="/">Logo</Link>
+        <Link to="/" className="logo">
+          NextFlix
+        </Link>
       </StyleLogo>
       {isAuthorized ? (
         <NavigationItemContainer>

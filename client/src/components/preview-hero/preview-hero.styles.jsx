@@ -4,12 +4,13 @@ import { device } from "../../device-breakpoints.styles";
 // export const
 
 export const HeroContainer = styled.div`
-  background-image: ${({ movieBackDrop }) => `url(${movieBackDrop})`};
+  background-image: ${({ moviebackdrop }) => `url(${moviebackdrop})`};
   height: 40vh;
   width: 100%;
   background-position: center;
   background-size: cover;
   position: relative;
+  padding: 2rem;
   &:before {
     content: "";
     background-image: linear-gradient(to top, #12151e, transparent);
