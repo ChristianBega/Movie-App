@@ -38,6 +38,17 @@ export const BOX_SHADOW_INPUT = css`
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
+export const LOGO = css`
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  color: #e50914;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin: 0;
+  letter-spacing: 0.1rem;
+`;
+
 export const HEADER_2 = css`
   font-size: 18px;
   font-weight: bold;
@@ -49,14 +60,35 @@ export const HEADER_2 = css`
   }
 `;
 
-export const PREVIEW_HEADER_2 = css`
-  font-weight: bold;
-  font-size: 32px;
+export const LANDING_HEADER_1 = css`
+  font-size: 28px;
   @media ${device.laptop} {
-    font-size: 55px;
+    font-size: 38px;
   }
   @media ${device.desktop} {
-    font-size: 65px;
+    font-size: 48px;
+  }
+`;
+
+export const LANDING_HEADER_2 = css`
+  font-weight: bold;
+  font-size: 20px !important;
+  @media ${device.laptop} {
+    font-size: 24px !important;
+  }
+  @media ${device.desktop} {
+    font-size: 28px !important;
+  }
+`;
+
+export const PREVIEW_HEADER_2 = css`
+  font-weight: bold;
+  font-size: 32px !important;
+  @media ${device.laptop} {
+    font-size: 55px !important;
+  }
+  @media ${device.desktop} {
+    font-size: 65px !important;
   }
 `;
 

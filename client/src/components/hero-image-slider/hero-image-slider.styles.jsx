@@ -23,6 +23,8 @@ export const HeroImageSliderContainer = styled.div`
     position: absolute;
     inset: 0;
   }
+
+  
   & .hero-section-container {
     z-index: 800;
     display: flex;
