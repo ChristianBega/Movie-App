@@ -27,10 +27,9 @@ export const SectionSliderRail = ({ sectionData, urlPath }) => {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
-
   return (
     <>
-      <StyledSliderRailHeader>{sectionData?.sectionName || sectionData?.name}</StyledSliderRailHeader>
+      <StyledSliderRailHeader>{sectionData?.sectionName || sectionData?.name || sectionData[0]?.sectionName}</StyledSliderRailHeader>
       {isFetched && (
         <StyledSliderRailContainer ref={sliderRef}>
           {data.data.results.map((movie, index) => {

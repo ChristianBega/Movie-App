@@ -1,13 +1,21 @@
 import { styled } from "styled-components";
 import { HEADER_2, PADDING_SM, PREVIEW_HEADER_2 } from "../../index.styles";
+import { device } from "../../device-breakpoints.styles";
 
 // export const
 
 export const PreviewContentContainer = styled.div`
-  max-width: 600px;
   ${PADDING_SM}
+  width: 90vw;
   margin-top: 1rem;
 
+  @media ${device.laptop} {
+    padding: 2rem;
+  }
+
+  @media ${device.desktop} {
+    padding: 4rem;
+  }
   & .movie-title {
     ${PREVIEW_HEADER_2}
     display: inline;
@@ -33,5 +41,7 @@ export const PreviewContentContainer = styled.div`
   & .movie-overview {
     line-height: 22px;
     margin-bottom: 1rem;
+    display: block;
+    max-width: 650px;
   }
 `;

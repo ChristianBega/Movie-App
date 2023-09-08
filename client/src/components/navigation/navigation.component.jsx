@@ -35,7 +35,6 @@ export const Navigation = () => {
       {isAuthorized ? (
         <NavigationItemContainer>
           {isLaptopOrLarger ? <NavigationList /> : <NavigationDropDownMenu />}
-
           {/* <div className="navigation-menu-item">Search bar</div> */}
           <Link to="/profile" className="navigation-menu-item">
             {isAuthorized ? <VscAccount style={{ fontSize: "2.2rem" }} /> : <></>}

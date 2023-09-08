@@ -28,6 +28,10 @@ export const HeroImageSliderContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     gap: 8rem;
+
+    & .text-container {
+      ${PADDING_SM}
+    }
     & .hero-title {
       ${PREVIEW_HEADER_2}
       min-width : 50%;
@@ -35,7 +39,6 @@ export const HeroImageSliderContainer = styled.div`
       font-family: "Limelight", cursive;
       font-size: 32px;
     }
-
     & .movie-details {
       display: flex;
       align-items: center;
@@ -50,11 +53,7 @@ export const HeroImageSliderContainer = styled.div`
         display: inline;
       }
     }
-    & .movie-overview {
-      margin-top: 1rem;
-      line-height: 22px;
-      max-width: 600px;
-    }
+
     & .movie-cast {
       margin-top: 1rem;
     }

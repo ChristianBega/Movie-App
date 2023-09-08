@@ -10,17 +10,15 @@ const MenuItemStyling = css`
   place-items: center;
   /* border: 1px solid red; */
   background-color: #34343449;
-  &:hover {
-    background-color: #007bff51;
-  }
+  ${DEFAULT_HOVER}
 `;
 
 export const StyleLogo = styled.div`
   padding: 0.7rem 1rem;
-  ${DEFAULT_HOVER}
-
-  /* Style for the h1 element */
-.logo {
+  &:hover {
+    transform: scale(1.05);
+  }
+  .logo {
     /* font-family: "Netflix Sans", Arial, sans-serif; Use Netflix-like font */
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
