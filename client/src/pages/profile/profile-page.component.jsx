@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CustomButton from "../../components/button/button.component";
 import { signOutUser } from "../../utils/firebase.utils";
 import { useNavigate } from "react-router-dom";
-import { ProfileBackgroundBlur, ProfileOrb, StyledProfileContainer, StyledProfilePageHeader, StyledProfileSection } from "./profile-page.styles";
+import { ProfileBackgroundBlur, StyledProfileContainer, StyledProfilePageHeader, StyledProfileSection } from "./profile-page.styles";
 
 const profileDATA = [
   {
@@ -34,6 +34,10 @@ export const ProfilePage = () => {
     navigate("/");
   };
 
+  const handleHoverEvent = (index) => {
+    setHoveredIndex(index);
+  };
+
   return (
     <>
       <StyledProfilePageHeader>Who's Watching?</StyledProfilePageHeader>
@@ -41,15 +45,19 @@ export const ProfilePage = () => {
         {profileDATA.map(({ profileImg, profileName, colorOne, colorTwo }, index) => {
           return (
             <StyledProfileContainer
+              onMouseEnter={() => handleHoverEvent(index)}
+              onMouseLeave={() => handleHoverEvent(1)}
+              isActive={hoveredIndex === index ? true : false}
+              colorOne={colorOne}
+              colorTwo={colorTwo}
               key={index}
               id={index}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(1)}
               className="profile-container"
             >
-              <ProfileOrb isActive={hoveredIndex === index && true} colorOne={colorOne} colorTwo={colorTwo} />
-              <img src={profileImg} alt="profile-img" />
-              <p>{profileName}</p>
+              <span className="profile-text-wrapper">
+                <img src={profileImg} alt="profile-img" />
+                <p>{profileName}</p>
+              </span>
             </StyledProfileContainer>
           );
         })}
