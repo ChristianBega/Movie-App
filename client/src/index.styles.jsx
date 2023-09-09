@@ -30,10 +30,6 @@ export const PADDING_SM = css`
   padding: 1rem;
 `;
 
-export const BOX_SHADOW_BASE = css`
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-`;
-
 export const BOX_SHADOW_INPUT = css`
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 `;
@@ -47,6 +43,17 @@ export const LOGO = css`
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   margin: 0;
   letter-spacing: 0.1rem;
+`;
+
+export const FORM_HEADER_1 = css`
+  font-size: 24px;
+  font-weight: bold;
+  @media ${device.laptop} {
+    font-size: 28px;
+  }
+  @media ${device.desktop} {
+    font-size: 32px;
+  }
 `;
 
 export const HEADER_2 = css`

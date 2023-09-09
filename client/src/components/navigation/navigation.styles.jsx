@@ -8,7 +8,6 @@ const MenuItemStyling = css`
   border-radius: 50%;
   display: grid;
   place-items: center;
-  /* border: 1px solid red; */
   background-color: #34343449;
   ${DEFAULT_HOVER}
 `;
@@ -29,8 +28,8 @@ export const NavigationBar = styled.nav`
   ${PADDING_SM}
 `;
 export const NavigationItemContainer = styled.div`
-  /* border: 1px solid red; */
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 1rem;
   width: 100%;

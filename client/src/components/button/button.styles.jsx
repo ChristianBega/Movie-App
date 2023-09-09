@@ -25,6 +25,7 @@ export const InvertedButton = styled.button`
 `;
 
 export const FormButton = styled.button`
+  max-width: 103px;
   ${DEFAULT_BUTTON_STYLES}
 `;
 

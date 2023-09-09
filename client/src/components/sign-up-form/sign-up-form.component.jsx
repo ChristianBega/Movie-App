@@ -50,7 +50,9 @@ export const SignUpForm = () => {
   return (
     <StyledForm onSubmit={handleFormSubmit}>
       <div className="form-header-container">
-        <h1>Welcome to [app name]</h1>
+        <h1>
+          Welcome to <span>NextFlix</span>
+        </h1>
         <p>Sign up for an account below</p>
       </div>
       <FormInput label="User Name" type="text" required onChange={handleChange} name="username" value={username} />

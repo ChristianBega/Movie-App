@@ -7,7 +7,9 @@ export const LandingHero = () => {
   return (
     <LandingHeroContainer>
       <div className="hero-text-container">
-        <h1>NextFlix: Your Ultimate Movie Hub</h1>
+        <h1>
+          <span>NextFlix:</span> Your Ultimate Movie Hub
+        </h1>
         <p>
           Tired of endless scrolling on streaming platforms? Say goodbye to the hunt for the perfect movie or TV show. NextFlix brings your next
           cinematic adventure to your fingertips.

@@ -22,8 +22,14 @@ export const NavigationList = ({ setIsOpen, setCurrentMenuItem }) => {
       {navigationListItems.map(({ icon, name, urlPath }) => {
         return (
           <li key={name}>
-            <Link id={name} style={{ display: "flex", alignItems: " center" }} to={urlPath} onClick={handleListItemOnClick}>
-              <span style={{ fontSize: "1rem", marginRight: ".5rem" }}>{icon}</span>
+            <Link
+              className="link-list-item"
+              id={name}
+              style={{ display: "flex", alignItems: " center" }}
+              to={urlPath}
+              onClick={handleListItemOnClick}
+            >
+              <span className="nav-list-icon">{icon}</span>
               {name.toUpperCase()}
             </Link>
           </li>

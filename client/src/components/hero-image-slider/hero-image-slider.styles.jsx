@@ -24,7 +24,6 @@ export const HeroImageSliderContainer = styled.div`
     inset: 0;
   }
 
-  
   & .hero-section-container {
     z-index: 800;
     display: flex;
@@ -81,6 +80,19 @@ export const SliderBarsContainer = styled.div`
   display: flex;
   width: 100%;
   height: 50px;
+
+  @media ${device.mobile} {
+    width: 80%;
+    margin: auto;
+    gap: 0.6rem;
+  }
+  @media ${device.laptop} {
+    width: 100%;
+    gap: 1.5rem;
+  }
+  @media ${device.laptop} {
+    gap: 2rem;
+  }
 `;
 export const SliderBarPagination = styled.div`
   margin: 0 3px;
@@ -88,8 +100,9 @@ export const SliderBarPagination = styled.div`
   font-size: 20px;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
-  padding-inline: 1rem;
+  /* padding-inline: 1rem; */
   span {
     height: 3px;
     width: 40px;
