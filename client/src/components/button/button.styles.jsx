@@ -3,7 +3,7 @@ import { DEFAULT_HOVER, FLEX_CENTERED } from "../../index.styles";
 import { device } from "../../device-breakpoints.styles";
 const DEFAULT_BUTTON_COLORS = css`
   background-color: #141414;
-  border: 2px solid #b79722 !important;
+  border: 2px solid #0f4392 !important;
 `;
 const DEFAULT_BUTTON_STYLES = css`
   padding: 10px 20px;
@@ -33,8 +33,8 @@ export const DropDownMenuButton = styled.button`
   padding: 0.7rem 1rem;
   gap: 0.5rem;
   margin-left: 2rem;
-  ${DEFAULT_HOVER};
 
+  ${DEFAULT_HOVER};
   ${FLEX_CENTERED}
   ${DEFAULT_BUTTON_COLORS}
 `;

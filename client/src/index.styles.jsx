@@ -12,7 +12,7 @@ import { device } from "./device-breakpoints.styles";
 export const DEFAULT_HOVER = css`
   &:hover {
     cursor: pointer;
-    box-shadow: 0px 0px 12px 4px #caa72a8d;
+    box-shadow: 0px 0px 12px 4px #0f439293;
     transform: scale(1.01);
   }
 `;
