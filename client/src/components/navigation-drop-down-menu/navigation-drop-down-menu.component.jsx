@@ -16,7 +16,7 @@ export const NavigationDropDownMenu = () => {
     }
   };
   return (
-    <>
+    <div style={{ overflow: "hidden" }}>
       <CustomButton buttonType={BUTTON_TYPES_CLASSES.dropdown} className="navigation-drop-down-button" onClick={handleMenuClickEvent}>
         <span>{currentMenuItem.toUpperCase()}</span>
         <FiChevronDown />
@@ -29,6 +29,6 @@ export const NavigationDropDownMenu = () => {
           <NavigationList setIsOpen={setIsOpen} setCurrentMenuItem={setCurrentMenuItem} />
         </DropDownMenu>
       )}
-    </>
+    </div>
   );
 };
