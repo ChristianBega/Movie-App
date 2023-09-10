@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export const MyStuffPage = () => {
+const MyStuffPage = () => {
   // Query firebase for currentUsers movies & tv show favorite lists
   return (
     <>
@@ -10,3 +10,4 @@ export const MyStuffPage = () => {
     </>
   );
 };
+export default MyStuffPage;

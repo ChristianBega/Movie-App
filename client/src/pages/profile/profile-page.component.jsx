@@ -25,7 +25,7 @@ const profileDATA = [
     colorTwo: "rgba(71, 40, 2, 0.7)",
   },
 ];
-export const ProfilePage = () => {
+const ProfilePage = () => {
   const navigate = useNavigate();
   const [hoveredIndex, setHoveredIndex] = useState(1);
 
@@ -69,3 +69,4 @@ export const ProfilePage = () => {
     </>
   );
 };
+export default ProfilePage;

@@ -89,7 +89,8 @@ const staticMovieAndShowsSectionData = [
   },
   // tv genres 13
 ];
-export const HomePage = () => {
+
+const HomePage = () => {
   const generateUrl = () => {
     const options = {
       headers: {
@@ -123,3 +124,5 @@ export const HomePage = () => {
     </>
   );
 };
+
+export default HomePage;
