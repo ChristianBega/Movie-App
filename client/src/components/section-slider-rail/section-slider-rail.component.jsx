@@ -4,7 +4,7 @@ import axios from "axios";
 import { SectionSliderRailCard } from "../section-slider-rail-card/section-slider-rail-card.component";
 import { StyledSliderRailContainer, StyledSliderRailHeader } from "./section-slider-rail.styles";
 import { useHorizontalScroll } from "./useSideScroll";
-
+import { sliderVariants } from "../../animations/framer-motion-variants";
 export const SectionSliderRail = ({ sectionData, urlPath }) => {
   const sliderRef = useHorizontalScroll();
 
@@ -31,7 +31,7 @@ export const SectionSliderRail = ({ sectionData, urlPath }) => {
     <>
       <StyledSliderRailHeader>{sectionData?.sectionName || sectionData?.name || sectionData[0]?.sectionName}</StyledSliderRailHeader>
       {isFetched && (
-        <StyledSliderRailContainer ref={sliderRef}>
+        <StyledSliderRailContainer initial={sliderVariants.hidden} variants={sliderVariants} whileInView={sliderVariants.visible} ref={sliderRef}>
           {data.data.results.map((movie, index) => {
             return <SectionSliderRailCard movie={movie} key={index} />;
           })}
