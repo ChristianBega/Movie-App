@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { SliderRailsSection } from "./tv-shows-page.styles";
 import axios from "axios";
-import { SectionSliderRail } from "../../components/section-slider-rail/section-slider-rail.component";
+import SectionSliderRail from "../../components/section-slider-rail/section-slider-rail.component";
 
 const queryForTvShowsWithGenresURL =
   "https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=";

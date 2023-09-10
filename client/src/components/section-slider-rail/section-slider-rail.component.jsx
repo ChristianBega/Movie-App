@@ -1,11 +1,11 @@
 import React from "react";
-import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 import { SectionSliderRailCard } from "../section-slider-rail-card/section-slider-rail-card.component";
 import { StyledSliderRailContainer, StyledSliderRailHeader } from "./section-slider-rail.styles";
 import { useHorizontalScroll } from "./useSideScroll";
 import { sliderVariants } from "../../animations/framer-motion-variants";
-export const SectionSliderRail = ({ sectionData, urlPath }) => {
+const SectionSliderRail = ({ sectionData, urlPath }) => {
   const sliderRef = useHorizontalScroll();
 
   const generateUrl = () => {
@@ -40,3 +40,5 @@ export const SectionSliderRail = ({ sectionData, urlPath }) => {
     </>
   );
 };
+
+export default SectionSliderRail;

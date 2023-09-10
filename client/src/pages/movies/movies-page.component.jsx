@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { SectionSliderRail } from "../../components/section-slider-rail/section-slider-rail.component";
+import SectionSliderRail from "../../components/section-slider-rail/section-slider-rail.component";
 import { SliderRailsSection } from "../movies/movies-page.styles";
 import axios from "axios";
 
