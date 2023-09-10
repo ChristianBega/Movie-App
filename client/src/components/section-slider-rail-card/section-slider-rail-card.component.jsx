@@ -4,7 +4,7 @@ import { useAnimation, useInView } from "framer-motion";
 import { cardVariants } from "../../animations/framer-motion-variants";
 import TomatoImage from "../../../src/assets/tomato.png";
 import { Link } from "react-router-dom";
-export const SectionSliderRailCard = ({ movie }) => {
+const SectionSliderRailCard = ({ movie }) => {
   // console.log(movie);
   const Card = () => {
     const { vote_average, title, poster_path } = movie;
@@ -18,6 +18,7 @@ export const SectionSliderRailCard = ({ movie }) => {
         controls.start("hidden");
       }
     }, [controls, inView]);
+
     return (
       <StyledSliderRailCard
         ref={ref}
@@ -46,7 +47,7 @@ export const SectionSliderRailCard = ({ movie }) => {
 
   return <Card />;
 };
-
+export default SectionSliderRailCard;
 // TV show - image, title, genre, seasons
 
 // Movie - title, rating, genre, year
