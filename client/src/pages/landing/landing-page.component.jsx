@@ -21,7 +21,7 @@ const MOCK_DATA = [
     imageUrl: "1",
   },
 ];
-export const LandingPage = () => {
+const LandingPage = () => {
   return (
     <>
       <section id="landing-hero-section">
@@ -35,3 +35,5 @@ export const LandingPage = () => {
     </>
   );
 };
+
+export default LandingPage;

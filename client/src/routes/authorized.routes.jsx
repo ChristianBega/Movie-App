@@ -1,16 +1,17 @@
+import React, { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import { Page404 } from "../components/404/404.component";
 
-import { HomePage } from "../pages/home/home-page.component";
-import { MoviesPage } from "../pages/movies/movies-page.component";
-import { TvShowsPage } from "../pages/tv-shows/tv-shows-page.component";
-import { MyStuffPage } from "../pages/my-stuff/my-stuff-page.component";
-import { ProfilePage } from "../pages/profile/profile-page.component";
-import { PreviewPage } from "../pages/preview/preview-page.component";
+const Page404 = lazy(() => import("../pages/404/404-page.component"));
+const HomePage = lazy(() => import("../pages/home/home-page.component"));
+const MoviesPage = lazy(() => import("../pages/movies/movies-page.component"));
+const TvShowsPage = lazy(() => import("../pages/tv-shows/tv-shows-page.component"));
+const MyStuffPage = lazy(() => import("../pages/my-stuff/my-stuff-page.component"));
+const ProfilePage = lazy(() => import("../pages/profile/profile-page.component"));
+const PreviewPage = lazy(() => import("../pages/preview/preview-page.component"));
 
 const AuthorizedRoutes = () => {
   return (
-    <>
+    <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route path="*" element={<Page404 />} />
         <Route path="/" element={<HomePage />}></Route>
@@ -20,7 +21,7 @@ const AuthorizedRoutes = () => {
         <Route path="/profile" element={<ProfilePage />}></Route>
         <Route path="/preview" element={<PreviewPage />}></Route>
       </Routes>
-    </>
+    </Suspense>
   );
 };
 

@@ -13,7 +13,7 @@ const staticMovieAndShowsSectionData = [
   },
 ];
 
-export const PreviewPage = () => {
+const PreviewPage = () => {
   const location = useLocation();
   const [rerenderKey, setRerenderKey] = useState(0);
   const [currentSectionData, setCurrentSectionData] = useState();
@@ -49,3 +49,4 @@ export const PreviewPage = () => {
     </div>
   );
 };
+export default PreviewPage;

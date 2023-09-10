@@ -5,7 +5,6 @@ import { HEADER_2 } from "../../index.styles";
 export const StyledSliderRailHeader = styled(motion.h2)`
   ${HEADER_2}
 `;
-
 export const StyledSliderRailContainer = styled(motion.div)`
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.45) inset;
   min-height: 155px;

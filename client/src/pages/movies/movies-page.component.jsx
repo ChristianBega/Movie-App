@@ -8,7 +8,7 @@ const queryForMovieWithGenresURL =
   "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=";
 const queryMovieGenresURL = "https://api.themoviedb.org/3/genre/movie/list?language=en";
 
-export const MoviesPage = () => {
+const MoviesPage = () => {
   const [fetchedData, setFetchedData] = useState();
 
   useEffect(() => {
@@ -43,3 +43,5 @@ export const MoviesPage = () => {
     </SliderRailsSection>
   );
 };
+
+export default MoviesPage;

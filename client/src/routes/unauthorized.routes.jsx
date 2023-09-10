@@ -1,22 +1,20 @@
+import React, { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import { Page404 } from "../components/404/404.component";
-import { LandingPage } from "../pages/landing/landing-page.component";
-import { AuthenticationPage } from "../pages/authentication/authentication-page.component";
-// import SignUpPage from "../pages/signUp.page";
-// import LoginPage from "../pages/login.page";
-// import LandingPage from "../pages/landing.page";
+// import { Page404 } from "../components/404/404.component";
+
+const LandingPage = lazy(() => import("../pages/landing/landing-page.component"));
+const AuthenticationPage = lazy(() => import("../pages/authentication/authentication-page.component"));
+const Page404 = lazy(() => import("../pages/404/404-page.component"));
 
 const UnauthorizedRoutes = () => {
   return (
-    <>
+    <Suspense fallback={<div>Loading</div>}>
       <Routes>
         <Route path="*" element={<Page404 to="/404" />} />
         <Route path="/" element={<LandingPage />}></Route>
         <Route path="/authenticate-user" element={<AuthenticationPage />}></Route>
-        {/* <Route path="/sign-in" element={<LoginPage />}></Route> */}
-        {/* <Route path="/" element={<LandingPage />}></Route> */}
       </Routes>
-    </>
+    </Suspense>
   );
 };
 export default UnauthorizedRoutes;
