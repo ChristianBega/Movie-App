@@ -1,21 +1,12 @@
-import React, { useEffect } from "react";
-import { HeroImageSlider } from "../../components/hero-image-slider/hero-image-slider.component";
-import { SectionSliderRail } from "../../components/section-slider-rail/section-slider-rail.component";
+import React, { Suspense, lazy } from "react";
+
 import { SliderRailsSection } from "./home-page.styles";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-// Make two fetch calls - one for movies one for tv show per genre
-// take the response and
-// const TEST_DATA = [
-//   {
-//     sectionName: "My favorites",
-//     fetchUrl: "",
-//   },
-//   {
-//     sectionName: "Drama",
-//     fetchUrl: `${genreFetchUrl}18`,
-//   },
-// ];
+
+const SectionSliderRail = lazy(() => import("../../components/section-slider-rail/section-slider-rail.component"));
+const HeroImageSlider = lazy(() => import("../../components/hero-image-slider/hero-image-slider.component"));
+
 const genreFetchUrl =
   "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=";
 
@@ -100,6 +91,7 @@ const HomePage = () => {
     };
     return axios.get(topRatedFetchUrl, options);
   };
+
   const { isLoading, data, isError, error, isFetched } = useQuery(["top-rated"], generateUrl);
 
   if (isLoading) {
@@ -110,15 +102,22 @@ const HomePage = () => {
     return <h1>{error.message}</h1>;
   }
 
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
   return (
     <>
-      <section id="hero-image-slider-section">{isFetched && <HeroImageSlider topRated={data.data.results.slice(0, 6)} />}</section>
+      <section id="hero-image-slider-section">
+        {isFetched && (
+          <Suspense fallback={<div>Loading...</div>}>
+            <HeroImageSlider topRated={data.data.results.slice(0, 6)} />
+          </Suspense>
+        )}
+      </section>
       <SliderRailsSection id="slider-rails-section">
         {staticMovieAndShowsSectionData.map((sectionData, index) => {
-          return <SectionSliderRail key={index} sectionData={sectionData} />;
+          return (
+            <Suspense key={index} fallback={<div>Loading...</div>}>
+              <SectionSliderRail sectionData={sectionData} />
+            </Suspense>
+          );
         })}
       </SliderRailsSection>
     </>
