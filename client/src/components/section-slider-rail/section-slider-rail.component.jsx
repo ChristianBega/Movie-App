@@ -1,13 +1,13 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
-import { SectionSliderRailCard } from "../section-slider-rail-card/section-slider-rail-card.component";
+// import { SectionSliderRailCard } from "../section-slider-rail-card/section-slider-rail-card.component";
+const SectionSliderRailCard = lazy(() => import("../section-slider-rail-card/section-slider-rail-card.component"));
 import { StyledSliderRailContainer, StyledSliderRailHeader } from "./section-slider-rail.styles";
 import { useHorizontalScroll } from "./useSideScroll";
 import { sliderVariants } from "../../animations/framer-motion-variants";
 const SectionSliderRail = ({ sectionData, urlPath }) => {
   const sliderRef = useHorizontalScroll();
-
   const generateUrl = () => {
     const options = {
       headers: {
@@ -33,7 +33,11 @@ const SectionSliderRail = ({ sectionData, urlPath }) => {
       {isFetched && (
         <StyledSliderRailContainer initial={sliderVariants.hidden} variants={sliderVariants} whileInView={sliderVariants.visible} ref={sliderRef}>
           {data.data.results.map((movie, index) => {
-            return <SectionSliderRailCard movie={movie} key={index} />;
+            return (
+              <Suspense key={index} fallback={<div>Loading...</div>}>
+                <SectionSliderRailCard movie={movie} key={index} />
+              </Suspense>
+            );
           })}
         </StyledSliderRailContainer>
       )}

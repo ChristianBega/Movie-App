@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { PreviewHero } from "../../components/preview-hero/preview-hero.component";
 import { PreviewContent } from "../../components/preview-content/preview-content.component";
 import SectionSliderRail from "../../components/section-slider-rail/section-slider-rail.component";
-import { BiChevronLeft } from "react-icons/bi";
-import CustomButton, { BUTTON_TYPES_CLASSES } from "../../components/button/button.component";
 import { PreviewContentSection } from "./preview-page.styles";
 const staticMovieAndShowsSectionData = [
   {
