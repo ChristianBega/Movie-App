@@ -48,6 +48,3 @@ const SectionSliderRailCard = ({ movie }) => {
   return <Card />;
 };
 export default SectionSliderRailCard;
-// TV show - image, title, genre, seasons
-
-// Movie - title, rating, genre, year

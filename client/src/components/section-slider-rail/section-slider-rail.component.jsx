@@ -7,7 +7,9 @@ import { StyledSliderRailContainer, StyledSliderRailHeader } from "./section-sli
 import { useHorizontalScroll } from "./useSideScroll";
 import { sliderVariants } from "../../animations/framer-motion-variants";
 const SectionSliderRail = ({ sectionData, urlPath }) => {
+  console.log(sectionData.fetchUrl);
   const sliderRef = useHorizontalScroll();
+
   const generateUrl = () => {
     const options = {
       headers: {
@@ -27,9 +29,10 @@ const SectionSliderRail = ({ sectionData, urlPath }) => {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
+  // console.log(data);
   return (
     <>
-      <StyledSliderRailHeader>{sectionData?.sectionName || sectionData?.name || sectionData[0]?.sectionName}</StyledSliderRailHeader>
+      <StyledSliderRailHeader>{sectionData?.sectionName || sectionData?.name || sectionData?.sectionName}</StyledSliderRailHeader>
       {isFetched && (
         <StyledSliderRailContainer initial={sliderVariants.hidden} variants={sliderVariants} whileInView={sliderVariants.visible} ref={sliderRef}>
           {data.data.results.map((movie, index) => {
