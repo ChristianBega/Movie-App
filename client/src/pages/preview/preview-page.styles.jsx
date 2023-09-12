@@ -12,6 +12,6 @@ import { device } from "../../device-breakpoints.styles";
 export const PreviewContentSection = styled.section`
   @media ${device.laptop} {
     position: absolute;
-    bottom: 500px;
+    bottom: 800px;
   }
 `;

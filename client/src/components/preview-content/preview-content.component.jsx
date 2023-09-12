@@ -5,6 +5,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import CustomButton, { BUTTON_TYPES_CLASSES } from "../button/button.component";
 import { generateGenre } from "../../utils/generateGenre";
 export const PreviewContent = ({ movie }) => {
+  console.log(movie);
   const { overview, vote_average, title, release_date, genre_ids, name, first_air_date } = movie;
 
   return (
