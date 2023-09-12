@@ -5,7 +5,6 @@ import { AiOutlinePlus } from "react-icons/ai";
 import CustomButton, { BUTTON_TYPES_CLASSES } from "../button/button.component";
 import { generateGenre } from "../../utils/generateGenre";
 export const PreviewContent = ({ movie }) => {
-  console.log(movie);
   const { overview, vote_average, title, release_date, genre_ids, name, first_air_date } = movie;
 
   return (
@@ -18,7 +17,12 @@ export const PreviewContent = ({ movie }) => {
         </div>
         <small>{vote_average * 10}%</small>
         {genre_ids?.slice(0, 4).map((id) => {
-          return <p key={id}>&nbsp; &#183; &nbsp;{generateGenre(id)}&nbsp;</p>;
+          return (
+            <>
+              <p key={id}>&nbsp; &#183; &nbsp;{generateGenre(id)}&nbsp;</p>
+              <p>{id}</p>
+            </>
+          );
         })}
       </span>
       <p className="movie-overview">{overview}</p>

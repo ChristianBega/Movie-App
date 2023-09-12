@@ -34,6 +34,8 @@ export const generateGenre = (id) => {
       return "Kids";
     case 10765:
       return "Sci-Fi & Fantasy";
+    case 10766:
+      return "Soap";
     case 36:
       return "History";
     case 10751:
@@ -46,6 +48,8 @@ export const generateGenre = (id) => {
       return "Adventure";
     case 10402:
       return "Music";
+    case 10768:
+      return "War & Politics";
     default:
       return "Unknown";
   }

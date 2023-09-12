@@ -4,7 +4,7 @@ import { PreviewHero } from "../../components/preview-hero/preview-hero.componen
 import { PreviewContent } from "../../components/preview-content/preview-content.component";
 import SectionSliderRail from "../../components/section-slider-rail/section-slider-rail.component";
 import { PreviewContentSection } from "./preview-page.styles";
-import { convertGenreId } from "../../utils/convertGenreId";
+import { convertMovieGenreId, convertTvGenreId } from "../../utils/convertGenreId";
 
 const staticMovieAndShowsSectionData = [
   {
@@ -22,8 +22,8 @@ const staticMovieAndShowsSectionData = [
 const PreviewPage = () => {
   const location = useLocation();
   const [currentSectionData, setCurrentSectionData] = useState([]);
-  const [currentGenres, setCurrentGenres] = useState(location?.state.movie.genre_ids || []);
-  const [currentTvGenres, _] = useState(convertGenreId(location?.state.movie.genre_ids) || []);
+  const [currentGenres, setCurrentGenres] = useState(convertMovieGenreId(location?.state.movie.genre_ids) || []);
+  const [currentTvGenres, setCurrentTvGenres] = useState(convertTvGenreId(location?.state.movie.genre_ids) || []);
 
   useEffect(() => {
     setCurrentGenres(location?.state.movie.genre_ids || []);
