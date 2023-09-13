@@ -33,10 +33,9 @@ export const DropDownMenuButton = styled.button`
   padding: 0.7rem 1rem;
   gap: 0.5rem;
   margin-left: 2rem;
-
-  ${DEFAULT_HOVER};
+  border: 2px solid #4b4b4b;
+  cursor: pointer;
   ${FLEX_CENTERED}
-  ${DEFAULT_BUTTON_COLORS}
 `;
 export const CloseButton = styled.button`
   height: 35px;
