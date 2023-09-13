@@ -16,14 +16,15 @@ export const PreviewContent = ({ movie }) => {
           <img src={TomatoImage} />
         </div>
         <small>{vote_average * 10}%</small>
-        {genre_ids?.slice(0, 4).map((id) => {
-          return (
-            <>
-              <p key={id}>&nbsp; &#183; &nbsp;{generateGenre(id)}&nbsp;</p>
-              <p>{id}</p>
-            </>
-          );
-        })}
+        <div className="genres-container">
+          {genre_ids?.slice(0, 4).map((id) => {
+            return (
+              <p key={id} className="genre">
+                &#183; &nbsp;{generateGenre(id)}&nbsp;
+              </p>
+            );
+          })}
+        </div>
       </span>
       <p className="movie-overview">{overview}</p>
       <CustomButton buttonType={BUTTON_TYPES_CLASSES.favorites}>

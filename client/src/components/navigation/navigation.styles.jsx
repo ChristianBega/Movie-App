@@ -36,7 +36,4 @@ export const NavigationItemContainer = styled.div`
   & .navigation-drop-down-button {
     margin-right: auto;
   }
-  & .navigation-menu-item {
-    ${MenuItemStyling};
-  }
 `;

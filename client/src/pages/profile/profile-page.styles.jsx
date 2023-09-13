@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { HEADER_2 } from "../../index.styles";
+import { device } from "../../device-breakpoints.styles";
 
 export const StyledProfilePageHeader = styled.h1`
   ${HEADER_2}
@@ -12,13 +13,17 @@ export const StyledProfileSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 50vh;
+  min-height: 80vh;
   overflow: hidden;
+  @media ${device.desktop} {
+    min-height: 50vh;
+  }
 `;
 
 export const StyledProfileContainer = styled.div`
   width: 200px;
   position: relative;
+
   &:before {
     content: "";
     height: 50px;
@@ -27,7 +32,7 @@ export const StyledProfileContainer = styled.div`
     display: ${({ isActive }) => `${isActive ? "block" : "none"}`};
     height: 600px;
     width: 600px;
-    aspect-ratio: 1;
+    /* aspect-ratio: 1; */
     position: absolute;
     left: 50%;
     top: 50%;

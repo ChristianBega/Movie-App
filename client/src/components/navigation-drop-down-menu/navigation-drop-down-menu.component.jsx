@@ -3,7 +3,7 @@ import CustomButton, { BUTTON_TYPES_CLASSES } from "../button/button.component";
 import { FiChevronDown } from "react-icons/fi";
 import { NavigationList } from "../navigation-list/navigation-list.component";
 import { PiXBold } from "react-icons/pi";
-import { DropDownMenu } from "./navigation-drop-down-menu.styles";
+import { DropDownMenu, GlobalStyle } from "./navigation-drop-down-menu.styles";
 export const NavigationDropDownMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentMenuItem, setCurrentMenuItem] = useState("Home");
@@ -17,6 +17,7 @@ export const NavigationDropDownMenu = () => {
   };
   return (
     <div style={{ overflow: "hidden" }}>
+      {isOpen && <GlobalStyle />}
       <CustomButton buttonType={BUTTON_TYPES_CLASSES.dropdown} className="navigation-drop-down-button" onClick={handleMenuClickEvent}>
         <span>{currentMenuItem.toUpperCase()}</span>
         <FiChevronDown />

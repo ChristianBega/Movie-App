@@ -1,5 +1,9 @@
-import { styled } from "styled-components";
-
+import { createGlobalStyle, styled } from "styled-components";
+export const GlobalStyle = createGlobalStyle`
+  body, html {
+    overflow: hidden;
+  }
+`;
 export const DropDownMenu = styled.div`
   position: fixed;
   overflow: hidden;

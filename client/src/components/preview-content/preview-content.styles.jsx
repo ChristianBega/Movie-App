@@ -37,6 +37,24 @@ export const PreviewContentContainer = styled.div`
       line-height: 24px;
       display: inline;
     }
+    .genres-container {
+      max-width: 90%;
+      margin-left: 1rem;
+      gap: 1rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      display: flex;
+      @media ${device.desktop} {
+        margin-left: 2rem;
+      }
+      .genre {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        min-width: 75px;
+      }
+    }
   }
   & .movie-overview {
     line-height: 22px;
