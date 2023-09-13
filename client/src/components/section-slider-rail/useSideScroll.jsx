@@ -9,13 +9,13 @@ export function useHorizontalScroll() {
         if (e.deltaY > 0) {
           e.preventDefault();
           el.scrollTo({
-            left: el.scrollLeft + e.deltaY + 1000,
+            left: el.scrollLeft + e.deltaY + 600,
             behavior: "smooth",
           });
         } else {
           e.preventDefault();
           el.scrollTo({
-            left: el.scrollLeft + e.deltaY - 1000,
+            left: el.scrollLeft + e.deltaY - 600,
             behavior: "smooth",
           });
         }

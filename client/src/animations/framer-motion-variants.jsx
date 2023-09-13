@@ -8,7 +8,7 @@ export const cardVariants = {
     },
   },
   hidden: {
-    opacity: 0.2,
+    opacity: 0.5,
     transition: {
       type: "spring",
       stiffness: 120,
