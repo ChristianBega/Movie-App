@@ -13,7 +13,7 @@ export const StyledProfileSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80vh;
+  min-height: 60vh;
   overflow: hidden;
   @media ${device.desktop} {
     min-height: 50vh;
@@ -30,9 +30,8 @@ export const StyledProfileContainer = styled.div`
     width: 50px;
     z-index: -1000;
     display: ${({ isActive }) => `${isActive ? "block" : "none"}`};
-    height: 600px;
-    width: 600px;
-    /* aspect-ratio: 1; */
+    height: 400px;
+    width: 400px;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -40,6 +39,14 @@ export const StyledProfileContainer = styled.div`
     border-radius: 50%;
     background-image: ${({ colorOne, colorTwo }) => `linear-gradient(160deg, ${colorOne} 50%, ${colorTwo} 90%)`};
     animation: rotate 20s infinite;
+    @media ${device.laptop} {
+      height: 400px;
+      width: 400px;
+    }
+    @media ${device.desktop} {
+      height: 600px;
+      width: 600px;
+    }
   }
   .profile-text-wrapper {
     display: flex;
@@ -55,7 +62,9 @@ export const StyledProfileContainer = styled.div`
       min-height: 150px;
       min-width: 150px;
       border-radius: 50%;
-      background-color: red;
+      border: 1px solid red;
+      display: flex;
+      align-items: center;
       z-index: 200;
     }
     p {
@@ -65,26 +74,12 @@ export const StyledProfileContainer = styled.div`
   }
 `;
 
-export const ProfileOrb = styled.span`
-  z-index: -1000;
-  display: ${({ isActive }) => `${isActive ? "block" : "none"}`};
-  background-color: #fff;
-  height: 600px;
-  width: 600px;
-  aspect-ratio: 1;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: ${({ colorOne, colorTwo }) => `linear-gradient(160deg, ${colorOne} 50%, ${colorTwo} 90%)`};
-  animation: rotate 20s infinite;
-`;
 export const ProfileBackgroundBlur = styled.span`
   height: 100%;
   width: 100%;
   position: absolute;
   inset: 0;
   backdrop-filter: blur(150px);
+  -webkit-backdrop-filter: blur(150px); /* Add this line */
   z-index: -1;
 `;
