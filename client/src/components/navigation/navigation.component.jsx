@@ -37,11 +37,7 @@ export const Navigation = () => {
           {isLaptopOrLarger ? <NavigationList /> : <NavigationDropDownMenu />}
           {/* <div className="navigation-menu-item">Search bar</div> */}
           <Link to="/profile" className="navigation-menu-item">
-            {isAuthorized && location.pathname !== "/profile" ? (
-              <VscAccount style={{ fontSize: "2.2rem" }} />
-            ) : (
-              <CustomButton onClick={handleSignOut}>Sign Out</CustomButton>
-            )}
+            {isAuthorized && location.pathname !== "/profile" && <VscAccount style={{ fontSize: "2.2rem" }} />}
           </Link>
         </NavigationItemContainer>
       ) : (

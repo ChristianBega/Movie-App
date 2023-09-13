@@ -32,7 +32,10 @@ export const FormButton = styled.button`
 export const DropDownMenuButton = styled.button`
   padding: 0.7rem 1rem;
   gap: 0.5rem;
-  margin-left: 2rem;
+  margin-left: 0.5rem;
+  @media ${device.laptop} {
+    margin-left: 2rem;
+  }
   border: 2px solid #4b4b4b;
   cursor: pointer;
   ${FLEX_CENTERED}
