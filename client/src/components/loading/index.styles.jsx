@@ -10,6 +10,7 @@ export const DefaultSkeltonStyling = css`
   position: relative;
   overflow: hidden;
   background-color: #c2c2c2;
+
   &::after {
     content: "";
     position: absolute;

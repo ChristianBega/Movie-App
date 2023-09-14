@@ -12,7 +12,7 @@ const PreviewPage = lazy(() => import("../pages/preview/preview-page.component")
 
 const AuthorizedRoutes = () => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>Loading Spinner</div>}>
       <ScrollToTop />
       <Routes>
         <Route path="*" element={<Page404 />} />

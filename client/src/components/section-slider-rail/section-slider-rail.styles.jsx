@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
 import { device } from "../../device-breakpoints.styles";
-import { HEADER_2 } from "../../index.styles";
+import { HEADER_2, PADDING_SM } from "../../index.styles";
 
 export const StyledSliderWrapper = styled.div`
   display: flex;
@@ -37,6 +37,7 @@ export const StyledSliderRailHeader = styled(motion.h2)`
   ${HEADER_2}
 `;
 export const StyledSliderRailContainer = styled(motion.div)`
+  ${PADDING_SM}
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.45) inset;
   min-height: 155px;
   display: flex;
@@ -48,7 +49,6 @@ export const StyledSliderRailContainer = styled(motion.div)`
   align-items: center;
   border-radius: 16px;
   margin: 1rem auto 3rem auto;
-  padding: 1rem;
   white-space: nowrap;
   scrollbar-width: none;
   &::-webkit-scrollbar {

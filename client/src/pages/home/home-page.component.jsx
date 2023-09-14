@@ -5,7 +5,6 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { LoadingRail } from "../../components/loading/loading-rail/loading-rail.component";
 import { LoadingHero } from "../../components/loading/loading-hero/loading-hero.component";
-import { SkeletonHero } from "../../components/loading/loading-hero/loading-hero.styles";
 const SectionSliderRail = lazy(() => import("../../components/section-slider-rail/section-slider-rail.component"));
 const HeroImageSlider = lazy(() => import("../../components/hero-image-slider/hero-image-slider.component"));
 const genreFetchUrl =
@@ -93,10 +92,10 @@ const HomePage = () => {
     return axios.get(topRatedFetchUrl, options);
   };
 
-  const { isLoading, data, isError, error, isFetched } = useQuery(["top-rated"], generateUrl);
+  const { isLoading, data, isError, error } = useQuery(["top-rated"], generateUrl);
 
   if (isLoading) {
-    return <h1>Loading in data...</h1>;
+    return <h1>Loading spinner waiting....</h1>;
   }
 
   if (isError) {
@@ -113,7 +112,7 @@ const HomePage = () => {
       <SliderRailsSection id="slider-rails-section">
         {staticMovieAndShowsSectionData.map((sectionData, index) => {
           return (
-            <Suspense key={index} fallback={<p>Loading movie data...</p>}>
+            <Suspense key={index} fallback={<LoadingRail />}>
               <SectionSliderRail sectionData={sectionData} />
             </Suspense>
           );

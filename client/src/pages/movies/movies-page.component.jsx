@@ -31,14 +31,12 @@ const MoviesPage = () => {
   }, []);
   return (
     <SliderRailsSection>
-      {fetchedData ? (
+      {fetchedData && (
         <>
           {fetchedData.map((item, index) => {
             return <SectionSliderRail key={index} urlPath={queryForMovieWithGenresURL} sectionData={item} />;
           })}
         </>
-      ) : (
-        "Loading"
       )}
     </SliderRailsSection>
   );
