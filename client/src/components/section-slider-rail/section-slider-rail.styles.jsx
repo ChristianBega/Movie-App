@@ -40,12 +40,12 @@ export const StyledSliderRailContainer = styled(motion.div)`
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.45) inset;
   min-height: 155px;
   display: flex;
+  width: 100%;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   gap: 1rem;
   align-items: center;
-  width: 100%;
   border-radius: 16px;
   margin: 1rem auto 3rem auto;
   padding: 1rem;

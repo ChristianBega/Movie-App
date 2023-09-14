@@ -3,10 +3,11 @@ import React, { Suspense, lazy } from "react";
 import { SliderRailsSection } from "./home-page.styles";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-
+import { LoadingRail } from "../../components/loading/loading-rail/loading-rail.component";
+import { LoadingHero } from "../../components/loading/loading-hero/loading-hero.component";
+import { SkeletonHero } from "../../components/loading/loading-hero/loading-hero.styles";
 const SectionSliderRail = lazy(() => import("../../components/section-slider-rail/section-slider-rail.component"));
 const HeroImageSlider = lazy(() => import("../../components/hero-image-slider/hero-image-slider.component"));
-
 const genreFetchUrl =
   "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=";
 
@@ -105,16 +106,14 @@ const HomePage = () => {
   return (
     <>
       <section id="hero-image-slider-section">
-        {isFetched && (
-          <Suspense fallback={<div>Loading...</div>}>
-            <HeroImageSlider topRated={data.data.results.slice(0, 6)} />
-          </Suspense>
-        )}
+        <Suspense fallback={<LoadingHero />}>
+          <HeroImageSlider topRated={data.data.results.slice(0, 6)} />
+        </Suspense>
       </section>
       <SliderRailsSection id="slider-rails-section">
         {staticMovieAndShowsSectionData.map((sectionData, index) => {
           return (
-            <Suspense key={index} fallback={<div>Loading...</div>}>
+            <Suspense key={index} fallback={<p>Loading movie data...</p>}>
               <SectionSliderRail sectionData={sectionData} />
             </Suspense>
           );

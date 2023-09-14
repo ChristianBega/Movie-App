@@ -15,6 +15,7 @@ import {
 import { useHorizontalScroll } from "./useSideScroll";
 import { sliderVariants } from "../../animations/framer-motion-variants";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
+import { LoadingCard } from "../loading/loading-card/loading-card.component";
 
 const SectionSliderRail = ({ sectionData, urlPath }) => {
   const sliderRef = useHorizontalScroll();
@@ -37,7 +38,7 @@ const SectionSliderRail = ({ sectionData, urlPath }) => {
 
   const { isLoading, data, isError, error, isFetched } = useQuery([`${sectionData?.sectionName || sectionData?.name}`], generateUrl);
 
-  const calculateScrollAmount = () => (isMobile ? 400 : isTablet ? 550 : isDesktop ? 850 : 2000);
+  const calculateScrollAmount = () => (isMobile ? 400 : isTablet ? 550 : isDesktop ? 800 : 2000);
 
   const handleScroll = (direction) => {
     const container = sliderRef.current;
@@ -71,7 +72,7 @@ const SectionSliderRail = ({ sectionData, urlPath }) => {
           <StyledSliderRailContainer initial={sliderVariants.hidden} variants={sliderVariants} whileInView={sliderVariants.visible} ref={sliderRef}>
             {data.data.results.map((movie, index) => {
               return (
-                <Suspense key={index} fallback={<div>Loading...</div>}>
+                <Suspense key={index} fallback={<LoadingCard />}>
                   <SectionSliderRailCard movie={movie} key={index} />
                 </Suspense>
               );
