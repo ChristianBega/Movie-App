@@ -1,5 +1,7 @@
-import { initializeApp } from "firebase/app";
-
+// Import firebase firestore
+import { doc, getDoc, setDoc } from "firebase/firestore";
+// Import firebase from index
+import { auth, db } from "./index.firebase";
 // Import firebase Auth
 import {
   signInWithPopup,
@@ -11,24 +13,6 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 
-// Import firebase firestore
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
-// Web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: import.meta.env.VITE_API_KEY,
-  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_APP_ID,
-};
-
-// Initializing firebase instance
-initializeApp(firebaseConfig);
-
-// Creating google auth object
-export const auth = getAuth();
-
 // Google Auth
 // 1. creating provider instance
 const googleProvider = new GoogleAuthProvider();
@@ -36,9 +20,6 @@ const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({
   prompt: "select_account",
 });
-
-// Returns the existing default Firestore instance that is associated with the provided FirebaseApp
-export const db = getFirestore();
 
 //* Creating async function to handle creating a user from email and password
 export const createAuthUserWithEmailAndPassword = async (email, password) => {

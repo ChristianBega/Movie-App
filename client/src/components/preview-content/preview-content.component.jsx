@@ -4,8 +4,15 @@ import { PreviewContentContainer } from "./preview-content.styles";
 import { AiOutlinePlus } from "react-icons/ai";
 import CustomButton, { BUTTON_TYPES_CLASSES } from "../button/button.component";
 import { generateGenre } from "../../utils/generateGenre";
+import { createFavoriteDocumentIfAuthenticated } from "../../utils/firebase/favorites.firebase";
+
 export const PreviewContent = ({ movie }) => {
-  const { overview, vote_average, title, release_date, genre_ids, name, first_air_date } = movie;
+  const { overview, vote_average, title, release_date, genre_ids, name, first_air_date, id } = movie;
+
+  const handleAddToFavorites = async () => {
+    console.log("Movie id", id);
+    await createFavoriteDocumentIfAuthenticated(id);
+  };
 
   return (
     <PreviewContentContainer>
@@ -27,7 +34,7 @@ export const PreviewContent = ({ movie }) => {
         </div>
       </span>
       <p className="movie-overview">{overview}</p>
-      <CustomButton buttonType={BUTTON_TYPES_CLASSES.favorites}>
+      <CustomButton onClick={handleAddToFavorites} buttonType={BUTTON_TYPES_CLASSES.favorites}>
         <AiOutlinePlus />
         Add to favorites
       </CustomButton>

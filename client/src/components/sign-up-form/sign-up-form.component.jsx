@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FormInput } from "../form-input/form-input.component";
-import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../utils/firebase.utils";
+import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../utils/firebase/authentication.firebase";
 import { useNavigate } from "react-router-dom";
 import CustomButton from "../button/button.component";
 import { StyledForm, StyledLink } from "../sign-in-form/sign-in-form.styles";

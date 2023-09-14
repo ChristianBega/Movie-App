@@ -2,7 +2,8 @@ import React, { useState } from "react";
 
 import { ProfileBackgroundBlur, StyledProfileContainer, StyledProfilePageHeader, StyledProfileSection } from "./profile-page.styles";
 import CustomButton from "../../components/button/button.component";
-
+import { signOutUser } from "../../utils/firebase/authentication.firebase";
+import { useNavigate } from "react-router-dom";
 const profileDATA = [
   {
     profileImg: "",
@@ -28,10 +29,16 @@ const ProfilePage = () => {
   // const navigate = useNavigate();
   const [hoveredIndex, setHoveredIndex] = useState(1);
 
+  const navigate = useNavigate();
+
   const handleHoverEvent = (index) => {
     setHoveredIndex(index);
   };
 
+  const handleSignOut = () => {
+    signOutUser();
+    navigate("/");
+  };
   return (
     <>
       <StyledProfilePageHeader>Who's Watching?</StyledProfilePageHeader>
@@ -58,7 +65,7 @@ const ProfilePage = () => {
         <ProfileBackgroundBlur />
       </StyledProfileSection>
       <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-        <CustomButton>Sign Out</CustomButton>
+        <CustomButton onClick={handleSignOut}>Sign Out</CustomButton>
       </div>
     </>
   );

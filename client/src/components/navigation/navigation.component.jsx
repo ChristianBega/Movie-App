@@ -11,6 +11,7 @@ import { VscAccount } from "react-icons/vsc";
 import "../../app.scss";
 export const Navigation = () => {
   const { isAuthorized } = useContext(AuthContext);
+  console.log(isAuthorized);
   const location = useLocation();
 
   const isLaptopOrLarger = useMediaQuery({

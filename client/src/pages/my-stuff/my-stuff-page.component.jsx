@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { LoadingRail } from "../../components/loading/loading-rail/loading-rail.component";
 
 const MyStuffPage = () => {
