@@ -3,6 +3,7 @@ import { FavoritesContext } from "../../contexts/favorites.context";
 import { UserContext } from "../../contexts/user.context";
 import { useQueries } from "@tanstack/react-query";
 import axios from "axios";
+import { FavoritesCard } from "../../components/favorites-card/favorites-card.component";
 
 const MyStuffPage = () => {
   const { currentFavorites, fetchFavorites } = useContext(FavoritesContext);
@@ -31,7 +32,7 @@ const MyStuffPage = () => {
   const favoritesQueries = useQueries({
     queries: currentFavorites.map((favoriteId) => {
       return {
-        queryKey: favoriteId,
+        queryKey: [favoriteId],
         queryFn: () => fetchQuery(favoriteId.id),
       };
     }),
@@ -39,25 +40,17 @@ const MyStuffPage = () => {
 
   return (
     <>
-      {favoritesQueries.map((query, index) => {
-        if (query.isLoading) {
-          return <p key={index}>Loading...</p>;
-        } else if (query.isError) {
-          return <p key={index}>Error: {query.error.message}</p>;
-        } else {
-          const { title, overview, name, air_date, season_number, backdrop_path, budget, vote_average, genres } = query.data;
-          return (
-            <div key={index}>
-              {/* Render your data here */}
-              <div style={{ border: "1px solid red", margin: "2rem", maxWidth: "250px" }} key={index}>
-                <p>{title || name}</p>
-                {/* <p>{overview}</p>
-                <p>{vote_average * 10}%</p> */}
-              </div>
-            </div>
-          );
-        }
-      })}
+      <section style={{ display: "flex", flexWrap: "wrap", flexDirection: "row", justifyContent: "center", maxWidth: "1400px", margin: "4rem auto" }}>
+        {favoritesQueries.map((query, index) => {
+          if (query.isLoading) {
+            return <p key={index}>Loading...</p>;
+          } else if (query.isError) {
+            return <p key={index}>Error: {query.error.message}</p>;
+          } else {
+            return <FavoritesCard key={index} movie={query.data} />;
+          }
+        })}
+      </section>
     </>
   );
 };

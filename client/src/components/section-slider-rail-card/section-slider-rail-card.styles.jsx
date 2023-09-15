@@ -31,6 +31,8 @@ export const StyledCardOverLay = styled(motion.div)`
     z-index: 1;
     transition: all 0.2s ease-in-out;
   }
+
+  
   & .text-container {
     display: flex;
     flex-direction: column;
