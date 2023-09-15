@@ -2,25 +2,15 @@
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { auth, db } from "./index.firebase";
 
-export const createFavoriteDocumentIfAuthenticated = async (movieId) => {
+export const createFavoriteDocumentIfAuthenticated = async (movieId, userUid) => {
   try {
-    // Check if user is authenticated
-    if (!auth.currentUser) {
-      console.log("User is not authenticated. Cannot create a favorite document.");
-      return;
-    }
-
-    // Reference to the user's favorite document
-    const favoritesRef = doc(db, "favorites", auth.currentUser.uid);
-
-    // Check if the document exists
+    const favoritesRef = doc(db, "favorites", userUid);
     const docSnapshot = await getDoc(favoritesRef);
-
+    // Check if the document exists
     if (docSnapshot.exists()) {
       // If the document already exists, update it with the new movie ID
       const data = docSnapshot.data();
       const moviesArray = data?.movies || [];
-
       // Check if the movieId is already in the array to prevent duplicates
       if (!moviesArray.includes(movieId)) {
         moviesArray.push(movieId);
@@ -39,5 +29,22 @@ export const createFavoriteDocumentIfAuthenticated = async (movieId) => {
     }
   } catch (error) {
     console.error("Error updating/creating document: ", error);
+  }
+};
+
+export const getFavoriteDocument = async (userId) => {
+  try {
+    const favoritesRef = doc(db, "favorites", userId);
+    const docSnapshot = await getDoc(favoritesRef);
+    if (docSnapshot.exists()) {
+      const data = docSnapshot.data();
+      return data.movies;
+    } else {
+      console.log("Favorites document does not exist.");
+      return null; // You can return null or an empty object as appropriate
+    }
+  } catch (error) {
+    console.error("Error fetching favorites document: ", error);
+    throw error; // Re-throw the error to handle it in the calling code
   }
 };

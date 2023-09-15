@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import TomatoImage from "../../../src/assets/tomato.png";
 import { PreviewContentContainer } from "./preview-content.styles";
 import { AiOutlinePlus } from "react-icons/ai";
 import CustomButton, { BUTTON_TYPES_CLASSES } from "../button/button.component";
 import { generateGenre } from "../../utils/generateGenre";
 import { createFavoriteDocumentIfAuthenticated } from "../../utils/firebase/favorites.firebase";
-
+import { UserContext } from "../../contexts/user.context";
 export const PreviewContent = ({ movie }) => {
   const { overview, vote_average, title, release_date, genre_ids, name, first_air_date, id } = movie;
+  const { currentUser } = useContext(UserContext);
 
   const handleAddToFavorites = async () => {
-    console.log("Movie id", id);
-    await createFavoriteDocumentIfAuthenticated(id);
+    await createFavoriteDocumentIfAuthenticated(id, currentUser.uid);
   };
 
   return (

@@ -19,6 +19,8 @@ const staticMovieAndShowsSectionData = [
   },
 ];
 
+// https://api.themoviedb.org/3/movie/{movie_id}/recommendations
+
 const PreviewPage = () => {
   const location = useLocation();
   const [currentSectionData, setCurrentSectionData] = useState([]);

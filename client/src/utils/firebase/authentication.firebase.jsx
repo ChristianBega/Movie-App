@@ -41,7 +41,6 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
     // if a user doesn't exist then create it
     if (!userSnapshot.exists()) {
       const { email } = userAuth;
-      console.log(userAuth, "line 63 firebase");
       const createdAt = new Date();
 
       await setDoc(userDocRef, {

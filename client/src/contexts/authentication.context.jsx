@@ -9,19 +9,21 @@ export const AuthContext = createContext({
 export const AuthProvider = ({ children }) => {
   const [isAuthorized, setIsAuthorized] = useState(false);
 
-  const authStateListener = () => {
-    auth.onAuthStateChanged(async (user) => {
-      if (!user) {
-        return setIsAuthorized(false);
-      }
-      return setIsAuthorized(true);
-    });
-  };
   useEffect(() => {
-    authStateListener();
-  }, [authStateListener]);
+    // Set up the listener when the component mounts
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setIsAuthorized(true);
+      } else {
+        setIsAuthorized(false);
+      }
+    });
+
+    // Clean up the listener when the component unmounts
+    return () => unsubscribe();
+  }, []);
 
   const value = { isAuthorized };
-  // UseEffect is called on mount
+
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
