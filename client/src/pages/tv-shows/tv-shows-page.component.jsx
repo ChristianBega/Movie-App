@@ -33,7 +33,7 @@ const TvShowsPage = () => {
       {fetchedData ? (
         <>
           {fetchedData.map((item, index) => {
-            return <SectionSliderRail key={index} urlPath={queryForTvShowsWithGenresURL} sectionData={item} />;
+            return <SectionSliderRail key={index} urlPath={queryForTvShowsWithGenresURL} sectionData={item} mediaType={"tv"} />;
           })}
         </>
       ) : (

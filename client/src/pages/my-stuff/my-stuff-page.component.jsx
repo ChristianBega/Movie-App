@@ -13,6 +13,7 @@ const MyStuffPage = () => {
   }, []);
 
   const fetchQuery = async (id) => {
+    console.log(id);
     const options = {
       headers: {
         accept: "application/json",
@@ -31,29 +32,32 @@ const MyStuffPage = () => {
     queries: currentFavorites.map((favoriteId) => {
       return {
         queryKey: favoriteId,
-        queryFn: () => fetchQuery(favoriteId),
+        queryFn: () => fetchQuery(favoriteId.id),
       };
     }),
   });
 
   return (
     <>
-      <h1>My Stuff</h1>
-      <h1>Movies</h1>
       {favoritesQueries.map((query, index) => {
-        if (query.data) {
-          const { title, overview, air_date, season_number, backdrop_path, budget, vote_average, genres } = query.data;
+        if (query.isLoading) {
+          return <p key={index}>Loading...</p>;
+        } else if (query.isError) {
+          return <p key={index}>Error: {query.error.message}</p>;
+        } else {
+          const { title, overview, name, air_date, season_number, backdrop_path, budget, vote_average, genres } = query.data;
           return (
-            <div style={{ border: "1px solid red", marginBlock: "2rem", maxWidth: "250px" }} key={index}>
-              <p>{title}</p>
-              <p>{overview}</p>
-              <p>{vote_average * 10}%</p>
+            <div key={index}>
+              {/* Render your data here */}
+              <div style={{ border: "1px solid red", margin: "2rem", maxWidth: "250px" }} key={index}>
+                <p>{title || name}</p>
+                {/* <p>{overview}</p>
+                <p>{vote_average * 10}%</p> */}
+              </div>
             </div>
           );
         }
-        return "Loading... Line 56";
       })}
-      <h1>Tv Shows</h1>
     </>
   );
 };

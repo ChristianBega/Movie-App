@@ -17,7 +17,7 @@ import { sliderVariants } from "../../animations/framer-motion-variants";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { LoadingCard } from "../loading/loading-card/loading-card.component";
 
-const SectionSliderRail = ({ sectionData, urlPath }) => {
+const SectionSliderRail = ({ sectionData, urlPath, mediaType }) => {
   const sliderRef = useHorizontalScroll();
 
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -73,7 +73,7 @@ const SectionSliderRail = ({ sectionData, urlPath }) => {
             {data.data.results.map((movie, index) => {
               return (
                 <Suspense key={index} fallback={<LoadingCard />}>
-                  <SectionSliderRailCard movie={movie} key={index} mediaType={sectionData.mediaType} />
+                  <SectionSliderRailCard movie={movie} key={index} mediaType={sectionData.mediaType || mediaType} />
                 </Suspense>
               );
             })}

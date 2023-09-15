@@ -24,59 +24,73 @@ const staticMovieAndShowsSectionData = [
   {
     sectionName: "Just Added",
     fetchUrl: "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
+    mediaType: "movie",
   },
   // movie genres 13
   {
     sectionName: "Action",
     fetchUrl: `${genreFetchUrl}28`,
+    mediaType: "movie",
   },
   {
     sectionName: "Adventure",
     fetchUrl: `${genreFetchUrl}12`,
+    mediaType: "movie",
   },
   {
     sectionName: "Animation",
     fetchUrl: `${genreFetchUrl}16`,
+    mediaType: "movie",
   },
   {
     sectionName: "Comedy",
     fetchUrl: `${genreFetchUrl}35`,
+    mediaType: "movie",
   },
   {
     sectionName: "Crime",
     fetchUrl: `${genreFetchUrl}80`,
+    mediaType: "movie",
   },
   {
     sectionName: "Drama",
     fetchUrl: `${genreFetchUrl}18`,
+    mediaType: "movie",
   },
   {
     sectionName: "Family",
     fetchUrl: `${genreFetchUrl}10751`,
+    mediaType: "movie",
   },
   {
     sectionName: "Fantasy",
     fetchUrl: `${genreFetchUrl}14`,
+    mediaType: "movie",
   },
   {
     sectionName: "Horror",
     fetchUrl: `${genreFetchUrl}27`,
+    mediaType: "movie",
   },
   {
     sectionName: "Mystery",
     fetchUrl: `${genreFetchUrl}9648`,
+    mediaType: "movie",
   },
   {
     sectionName: "Romance",
     fetchUrl: `${genreFetchUrl}10749`,
+    mediaType: "movie",
   },
   {
     sectionName: "SciFi",
     fetchUrl: `${genreFetchUrl}878`,
+    mediaType: "movie",
   },
   {
     sectionName: "Thriller",
     fetchUrl: `${genreFetchUrl}53`,
+    mediaType: "movie",
   },
   // tv genres 13
 ];
