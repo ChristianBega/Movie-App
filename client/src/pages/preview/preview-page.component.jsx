@@ -11,11 +11,14 @@ const staticMovieAndShowsSectionData = [
     sectionName: "Movies you may also like",
     fetchUrl:
       "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=",
+    mediaType: "movie",
   },
+
   {
     sectionName: "Tv Shows you may also like",
     fetchUrl:
       "https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=",
+    mediaType: "tv",
   },
 ];
 
@@ -23,6 +26,7 @@ const staticMovieAndShowsSectionData = [
 
 const PreviewPage = () => {
   const location = useLocation();
+
   const [currentSectionData, setCurrentSectionData] = useState([]);
   const [currentGenres, setCurrentGenres] = useState(convertMovieGenreId(location?.state.movie.genre_ids) || []);
   const [currentTvGenres, setCurrentTvGenres] = useState(convertTvGenreId(location?.state.movie.genre_ids) || []);
@@ -58,7 +62,7 @@ const PreviewPage = () => {
         <PreviewHero movieBackDrop={location.state.movie?.backdrop_path} />
       </section>
       <PreviewContentSection id="preview-content-section">
-        <PreviewContent movie={location.state.movie} />
+        <PreviewContent movie={location.state.movie} mediaType={location.state.mediaType} />
       </PreviewContentSection>
       <section id="related-suggestions" style={{ marginTop: "2rem", padding: "1rem" }}>
         {currentSectionData.map((section, index) => {

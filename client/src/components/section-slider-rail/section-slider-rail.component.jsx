@@ -73,7 +73,7 @@ const SectionSliderRail = ({ sectionData, urlPath }) => {
             {data.data.results.map((movie, index) => {
               return (
                 <Suspense key={index} fallback={<LoadingCard />}>
-                  <SectionSliderRailCard movie={movie} key={index} />
+                  <SectionSliderRailCard movie={movie} key={index} mediaType={sectionData.mediaType} />
                 </Suspense>
               );
             })}

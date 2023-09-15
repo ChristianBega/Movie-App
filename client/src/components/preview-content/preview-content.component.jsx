@@ -6,12 +6,13 @@ import CustomButton, { BUTTON_TYPES_CLASSES } from "../button/button.component";
 import { generateGenre } from "../../utils/generateGenre";
 import { createFavoriteDocumentIfAuthenticated } from "../../utils/firebase/favorites.firebase";
 import { UserContext } from "../../contexts/user.context";
-export const PreviewContent = ({ movie }) => {
+export const PreviewContent = ({ movie, mediaType }) => {
   const { overview, vote_average, title, release_date, genre_ids, name, first_air_date, id } = movie;
+  console.log(mediaType);
   const { currentUser } = useContext(UserContext);
 
   const handleAddToFavorites = async () => {
-    await createFavoriteDocumentIfAuthenticated(id, currentUser.uid);
+    await createFavoriteDocumentIfAuthenticated(id, mediaType, currentUser.uid);
   };
 
   return (

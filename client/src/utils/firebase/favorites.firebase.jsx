@@ -2,30 +2,41 @@
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { auth, db } from "./index.firebase";
 
-export const createFavoriteDocumentIfAuthenticated = async (movieId, userUid) => {
+export const createFavoriteDocumentIfAuthenticated = async (movieId, mediaType, userUid) => {
   try {
     const favoritesRef = doc(db, "favorites", userUid);
     const docSnapshot = await getDoc(favoritesRef);
-    // Check if the document exists
+
+    // Create the new movie object
+    const newMovie = { id: movieId, mediaType: mediaType };
+
     if (docSnapshot.exists()) {
-      // If the document already exists, update it with the new movie ID
       const data = docSnapshot.data();
       const moviesArray = data?.movies || [];
+      let movieExists = false;
+
       // Check if the movieId is already in the array to prevent duplicates
-      if (!moviesArray.includes(movieId)) {
-        moviesArray.push(movieId);
+      moviesArray.forEach((movie) => {
+        if (movie.id === movieId && movie.mediaType === mediaType) {
+          movieExists = true;
+        }
+      });
+
+      if (!movieExists) {
+        moviesArray.push(newMovie);
         await updateDoc(favoritesRef, {
           movies: moviesArray,
         });
-        console.log("Movie ID added to the existing document.");
+        console.log("Movie added to the existing document.");
       } else {
-        console.log("Movie ID already exists in the document.");
+        console.log("Movie already exists in the document.");
       }
     } else {
-      // If the document does not exist, create a new one with the movie ID
+      // If the document does not exist, create a new one with the movie object
       await setDoc(favoritesRef, {
-        movies: [movieId],
+        movies: [newMovie],
       });
+      console.log("New document created with the movie.");
     }
   } catch (error) {
     console.error("Error updating/creating document: ", error);
