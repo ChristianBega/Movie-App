@@ -1,10 +1,8 @@
 import React, { useContext } from "react";
 import { NavigationItemContainer, NavigationBar, StyleLogo } from "./navigation.styles";
 import CustomButton from "../button/button.component";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../contexts/authentication.context";
-
-import { signOutUser } from "../../utils/firebase.utils";
 import { NavigationList } from "../../components/navigation-list/navigation-list.component";
 import { useMediaQuery } from "react-responsive";
 import { device } from "../../device-breakpoints.styles";
@@ -13,13 +11,8 @@ import { VscAccount } from "react-icons/vsc";
 import "../../app.scss";
 export const Navigation = () => {
   const { isAuthorized } = useContext(AuthContext);
+  console.log(isAuthorized);
   const location = useLocation();
-  const navigate = useNavigate();
-
-  const handleSignOut = () => {
-    signOutUser();
-    navigate("/");
-  };
 
   const isLaptopOrLarger = useMediaQuery({
     query: device.desktop,

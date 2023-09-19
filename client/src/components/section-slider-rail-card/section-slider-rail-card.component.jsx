@@ -4,10 +4,9 @@ import { useAnimation, useInView } from "framer-motion";
 import { cardVariants } from "../../animations/framer-motion-variants";
 import TomatoImage from "../../../src/assets/tomato.png";
 import { Link } from "react-router-dom";
-const SectionSliderRailCard = ({ movie }) => {
-  // console.log(movie);
+const SectionSliderRailCard = ({ movie, mediaType }) => {
   const Card = () => {
-    const { vote_average, title, poster_path } = movie;
+    const { vote_average, title, poster_path, name } = movie;
     const ref = useRef();
     const controls = useAnimation();
     const inView = useInView(ref);
@@ -31,9 +30,9 @@ const SectionSliderRailCard = ({ movie }) => {
         rating={vote_average}
       >
         <StyledCardOverLay>
-          <Link to="/preview" state={{ movie: movie }}>
+          <Link to="/preview" state={{ movie: movie, mediaType: mediaType }}>
             <div className="text-container">
-              <h3>{title}</h3>
+              <h3>{title || name}</h3>
               <span>
                 <img src={TomatoImage} width="25px" height="25px"></img>
                 <small>{vote_average * 10}%</small>

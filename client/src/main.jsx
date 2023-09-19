@@ -8,6 +8,7 @@ import { UserProvider } from "./contexts/user.context.jsx";
 import { AuthProvider } from "./contexts/authentication.context.jsx";
 import { BrowserRouter as Router } from "react-router-dom";
 import { RecommendationProvider } from "./contexts/recommendations.context.jsx";
+import { FavoritesProvider } from "./contexts/favorites.context.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <QueryClientProvider client={queryClient}>
@@ -15,7 +16,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <AuthProvider>
         <UserProvider>
           <RecommendationProvider>
-            <App />
+            <FavoritesProvider>
+              <App />
+            </FavoritesProvider>
           </RecommendationProvider>
         </UserProvider>
       </AuthProvider>

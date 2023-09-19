@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import TomatoImage from "../../../src/assets/tomato.png";
 import { PreviewContentContainer } from "./preview-content.styles";
 import { AiOutlinePlus } from "react-icons/ai";
 import CustomButton, { BUTTON_TYPES_CLASSES } from "../button/button.component";
 import { generateGenre } from "../../utils/generateGenre";
-export const PreviewContent = ({ movie }) => {
-  const { overview, vote_average, title, release_date, genre_ids, name, first_air_date } = movie;
+import { createFavoriteDocumentIfAuthenticated } from "../../utils/firebase/favorites.firebase";
+import { UserContext } from "../../contexts/user.context";
+export const PreviewContent = ({ movie, mediaType }) => {
+  const { overview, vote_average, title, release_date, genre_ids, name, first_air_date, id } = movie;
+  console.log(mediaType);
+  const { currentUser } = useContext(UserContext);
+
+  const handleAddToFavorites = async () => {
+    await createFavoriteDocumentIfAuthenticated(id, mediaType, currentUser.uid);
+  };
 
   return (
     <PreviewContentContainer>
@@ -27,7 +35,7 @@ export const PreviewContent = ({ movie }) => {
         </div>
       </span>
       <p className="movie-overview">{overview}</p>
-      <CustomButton buttonType={BUTTON_TYPES_CLASSES.favorites}>
+      <CustomButton onClick={handleAddToFavorites} buttonType={BUTTON_TYPES_CLASSES.favorites}>
         <AiOutlinePlus />
         Add to favorites
       </CustomButton>
