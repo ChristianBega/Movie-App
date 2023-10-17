@@ -25,12 +25,12 @@ const SliderNavigationButtonCss = css`
 export const LeftArrowButton = styled.button`
   ${SliderNavigationButtonCss}
   left : 0;
-  display: ${({ isHovered }) => `${isHovered ? "block" : "none"}`};
+  display: ${({ ishovered }) => `${ishovered ? "block" : "none"}`};
 `;
 export const RightArrowButton = styled.button`
   ${SliderNavigationButtonCss}
   right : 0;
-  display: ${({ isHovered }) => `${isHovered ? "block" : "none"}`};
+  display: ${({ ishovered }) => `${ishovered ? "block" : "none"}`};
 `;
 
 export const StyledSliderRailHeader = styled(motion.h2)`

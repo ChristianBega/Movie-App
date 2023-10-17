@@ -24,7 +24,7 @@ const SectionSliderRail = ({ sectionData, urlPath, mediaType }) => {
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
   const isDesktop = useMediaQuery({ minWidth: 1024 });
 
-  const [isHovered, setIsHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState("false");
 
   const generateUrl = () => {
     const options = {
@@ -64,8 +64,8 @@ const SectionSliderRail = ({ sectionData, urlPath, mediaType }) => {
   return (
     <>
       <StyledSliderRailHeader>{sectionData?.sectionName || sectionData?.name || sectionData?.sectionName}</StyledSliderRailHeader>
-      <StyledSliderWrapper onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-        <LeftArrowButton isHovered={isHovered} className="slider-navigation-buttons" onClick={() => handleScroll("left")}>
+      <StyledSliderWrapper onMouseEnter={() => setIsHovered("true")} onMouseLeave={() => setIsHovered("false")}>
+        <LeftArrowButton $ishovered={isHovered} className="slider-navigation-buttons" onClick={() => handleScroll("left")}>
           <BiChevronLeft style={{ fontSize: "2rem" }} />
         </LeftArrowButton>
         {isFetched && (
@@ -79,7 +79,7 @@ const SectionSliderRail = ({ sectionData, urlPath, mediaType }) => {
             })}
           </StyledSliderRailContainer>
         )}
-        <RightArrowButton isHovered={isHovered} className="slider-navigation-buttons" onClick={() => handleScroll("right")}>
+        <RightArrowButton $ishovered={isHovered} className="slider-navigation-buttons" onClick={() => handleScroll("right")}>
           <BiChevronRight style={{ fontSize: "2rem" }} />
         </RightArrowButton>
       </StyledSliderWrapper>
