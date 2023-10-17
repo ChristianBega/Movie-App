@@ -26,11 +26,15 @@ const staticMovieAndShowsSectionData = [
 
 const PreviewPage = () => {
   const location = useLocation();
+  const [previousPath, setPreviousPath] = useState();
 
   const [currentSectionData, setCurrentSectionData] = useState([]);
   const [currentGenres, setCurrentGenres] = useState(convertMovieGenreId(location?.state.movie.genre_ids) || []);
   const [currentTvGenres, setCurrentTvGenres] = useState(convertTvGenreId(location?.state.movie.genre_ids) || []);
 
+  useEffect(() => {
+    setPreviousPath(location.state.previousPath);
+  }, []);
   useEffect(() => {
     setCurrentGenres(location?.state.movie.genre_ids || []);
   }, [location?.state.movie.genre_ids]);
@@ -59,7 +63,7 @@ const PreviewPage = () => {
   return (
     <div style={{ position: "relative" }}>
       <section id="preview-hero-section">
-        <PreviewHero movieBackDrop={location.state.movie?.backdrop_path} />
+        <PreviewHero previousPath={previousPath} movieBackDrop={location.state.movie?.backdrop_path} />
       </section>
       <PreviewContentSection id="preview-content-section">
         <PreviewContent movie={location.state.movie} mediaType={location.state.mediaType} />
