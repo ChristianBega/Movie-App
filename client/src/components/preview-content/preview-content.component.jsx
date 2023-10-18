@@ -8,12 +8,14 @@ import { createFavoriteDocumentIfAuthenticated } from "../../utils/firebase/favo
 import { UserContext } from "../../contexts/user.context";
 export const PreviewContent = ({ movie, mediaType }) => {
   const { overview, vote_average, title, release_date, genre_ids, name, first_air_date, id } = movie;
-  console.log(mediaType);
+  // console.log(mediaType);
   const { currentUser } = useContext(UserContext);
 
   const handleAddToFavorites = async () => {
     await createFavoriteDocumentIfAuthenticated(id, mediaType, currentUser.uid);
   };
+
+  console.log(movie);
 
   return (
     <PreviewContentContainer>
@@ -28,7 +30,7 @@ export const PreviewContent = ({ movie, mediaType }) => {
           {genre_ids?.slice(0, 4).map((id) => {
             return (
               <p key={id} className="genre">
-                &#183; &nbsp;{generateGenre(id)}&nbsp;
+                &#183; &nbsp;{generateGenre(id) + id}&nbsp;
               </p>
             );
           })}

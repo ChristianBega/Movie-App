@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { StyledCardOverLay, StyledSliderRailCard } from "./section-slider-rail-card.styles";
 import { useAnimation, useInView } from "framer-motion";
 import { cardVariants } from "../../animations/framer-motion-variants";
@@ -7,7 +7,8 @@ import { Link, useLocation } from "react-router-dom";
 const SectionSliderRailCard = ({ movie, mediaType }) => {
   const location = useLocation();
   const Card = () => {
-    const { vote_average, title, poster_path, name } = movie;
+    const { vote_average, title, poster_path, name, genre_ids } = movie;
+    // console.log("line 11", genre_ids);
     const ref = useRef();
     const controls = useAnimation();
     const inView = useInView(ref);
@@ -33,7 +34,12 @@ const SectionSliderRailCard = ({ movie, mediaType }) => {
         <StyledCardOverLay>
           <Link to="/preview" state={{ movie: movie, mediaType: mediaType, previousPath: location.pathname }}>
             <div className="text-container">
-              <h3>{title || name}</h3>
+              <h3>{title + "123" || name}</h3>
+              <ul>
+                {genre_ids.map((genre) => {
+                  return <li>{genre}</li>;
+                })}
+              </ul>
               <span>
                 <img src={TomatoImage} width="25px" height="25px"></img>
                 <small>{vote_average * 10}%</small>

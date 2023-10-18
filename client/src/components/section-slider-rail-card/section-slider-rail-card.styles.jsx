@@ -32,7 +32,6 @@ export const StyledCardOverLay = styled(motion.div)`
     transition: all 0.2s ease-in-out;
   }
 
-  
   & .text-container {
     display: flex;
     flex-direction: column;
@@ -48,6 +47,18 @@ export const StyledCardOverLay = styled(motion.div)`
       display: flex;
       align-items: center;
       gap: 0.2;
+    }
+    ul {
+      border: 1px solid red;
+      width: 100%;
+      min-height: 12%;
+      max-height: 18%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      li {
+        border-right: 1px solid red;
+      }
     }
     &:hover {
       opacity: 1;
