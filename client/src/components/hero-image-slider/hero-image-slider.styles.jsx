@@ -22,6 +22,7 @@ export const HeroImageSliderContainer = styled.div`
     background-image: linear-gradient(0deg, rgba(18, 21, 30, 1) 10%, rgba(18, 21, 30, 0.95) 25%, rgba(157, 157, 157, 0.3) 91%);
     position: absolute;
     inset: 0;
+    height: 101%;
   }
 
   & .hero-section-container {

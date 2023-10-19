@@ -37,7 +37,7 @@ export const RecommendationProvider = ({ children }) => {
 
   useEffect(() => {
     setPreviousPath(location?.state?.previousPath);
-  }, []);
+  }, [location?.state?.previousPath]);
 
   useEffect(() => {
     if (location?.state?.movie?.genre_ids) {

@@ -8,7 +8,7 @@ import { createFavoriteDocumentIfAuthenticated } from "../../utils/firebase/favo
 import { UserContext } from "../../contexts/user.context";
 import { FavoritesContext } from "../../contexts/favorites.context";
 
-export const PreviewContent = ({ movie, mediaType }) => {
+export const PreviewContent = ({ movie = {}, mediaType }) => {
   const { overview, vote_average, title, release_date, genre_ids, name, first_air_date, id } = movie;
   const { currentUser } = useContext(UserContext);
   const { fetchFavorites, currentFavorites } = useContext(FavoritesContext);
@@ -24,6 +24,7 @@ export const PreviewContent = ({ movie, mediaType }) => {
   }, [movie]);
 
   const checkIfAddedToFavorites = (itemId) => {
+    if (!itemId) return;
     return !!currentFavorites.find((item) => item.id === itemId);
   };
 

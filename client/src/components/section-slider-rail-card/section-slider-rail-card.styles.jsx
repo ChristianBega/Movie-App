@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
+import { device } from "../../device-breakpoints.styles";
 
 const CardPositionStyles = css`
   position: absolute;
@@ -9,13 +10,16 @@ const CardPositionStyles = css`
 `;
 export const StyledSliderRailCard = styled(motion.div)`
   background-image: ${({ image }) => `url(${image})`};
-  min-width: 174px;
-  min-height: 264px;
   background-position: center;
   background-size: cover;
   border-radius: 18px;
   position: relative;
-
+  min-width: 110px;
+  min-height: 154px;
+  @media ${device.laptop} {
+    min-width: 174px;
+    min-height: 264px;
+  }
   &:hover {
     transform: scale(1.1) !important;
     cursor: pointer;
@@ -26,13 +30,12 @@ export const StyledCardOverLay = styled(motion.div)`
   ${CardPositionStyles}
   &:hover {
     border-radius: 18px;
-    /* background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 40%, rgba(85, 85, 85, 0.4) 36%, rgba(57, 57, 57, 0.3) 50%, rgba(41, 41, 41, 0.3) 58%);
-     */
+
     background: rgb(0, 0, 4);
     background: linear-gradient(
       0deg,
       rgba(0, 0, 4, 0.927608543417367) 0%,
-      rgba(1, 1, 27, 0.874) 27%,
+      rgba(17, 17, 18, 0.928) 27%,
       rgba(0, 1, 11, 0.5466561624649859) 62%,
       rgba(0, 0, 0, 0.21612394957983194) 99%
     );
