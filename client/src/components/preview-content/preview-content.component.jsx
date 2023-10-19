@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import TomatoImage from "../../../src/assets/tomato.png";
 import { PreviewContentContainer } from "./preview-content.styles";
-import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { AiOutlineCheck, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import CustomButton, { BUTTON_TYPES_CLASSES } from "../button/button.component";
 import { generateGenre } from "../../utils/generateGenre";
 import { createFavoriteDocumentIfAuthenticated } from "../../utils/firebase/favorites.firebase";
@@ -12,11 +12,16 @@ export const PreviewContent = ({ movie, mediaType }) => {
   const { overview, vote_average, title, release_date, genre_ids, name, first_air_date, id } = movie;
   const { currentUser } = useContext(UserContext);
   const { fetchFavorites, currentFavorites } = useContext(FavoritesContext);
+  const [showSuccessAlert, setShowSuccessAlert] = useState(null);
   const [status, setStatus] = useState(null);
 
   useEffect(() => {
     fetchFavorites();
   }, []);
+
+  useEffect(() => {
+    setStatus(null);
+  }, [movie]);
 
   const checkIfAddedToFavorites = (itemId) => {
     return !!currentFavorites.find((item) => item.id === itemId);
@@ -26,6 +31,10 @@ export const PreviewContent = ({ movie, mediaType }) => {
     try {
       await createFavoriteDocumentIfAuthenticated(id, mediaType, currentUser.uid);
       setStatus(true);
+      setShowSuccessAlert(true);
+      setTimeout(() => {
+        setShowSuccessAlert(false);
+      }, 3000);
     } catch (error) {
       setStatus(false);
     }
@@ -64,7 +73,7 @@ export const PreviewContent = ({ movie, mediaType }) => {
       <>
         {checkIfAddedToFavorites(id) ? (
           <>
-            <CustomButton onClick={handleRemoveFromFavorites} buttonType={BUTTON_TYPES_CLASSES.favorites}>
+            <CustomButton onClick={handleRemoveFromFavorites} buttonType={BUTTON_TYPES_CLASSES.removeFavorites}>
               <AiOutlineMinus />
               Remove from favorites
             </CustomButton>
@@ -72,10 +81,17 @@ export const PreviewContent = ({ movie, mediaType }) => {
         ) : (
           <>
             {status === true ? (
-              <CustomButton onClick={handleRemoveFromFavorites} buttonType={BUTTON_TYPES_CLASSES.favorites}>
-                <AiOutlineMinus />
-                Remove from favorites
-              </CustomButton>
+              <div className="button-container">
+                <CustomButton onClick={handleRemoveFromFavorites} buttonType={BUTTON_TYPES_CLASSES.removeFavorites}>
+                  <AiOutlineMinus />
+                  Remove from favorites
+                </CustomButton>
+                {showSuccessAlert && (
+                  <p className="success-alert">
+                    <span>Added</span> <AiOutlineCheck />
+                  </p>
+                )}
+              </div>
             ) : (
               <CustomButton onClick={handleAddToFavorites} buttonType={BUTTON_TYPES_CLASSES.favorites}>
                 <AiOutlinePlus />

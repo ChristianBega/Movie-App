@@ -1,9 +1,14 @@
 import { css, styled } from "styled-components";
-import { DEFAULT_HOVER, FLEX_CENTERED } from "../../index.styles";
+import { DEFAULT_HOVER, FLEX_CENTERED, REMOVE_DEFAULT_HOVER } from "../../index.styles";
 import { device } from "../../device-breakpoints.styles";
 const DEFAULT_BUTTON_COLORS = css`
   background-color: #141414;
   border: 2px solid #0f4392 !important;
+`;
+
+const REMOVE_BUTTON_COLORS = css`
+  background-color: #141414;
+  border: 2px solid #923f0fc7 !important;
 `;
 const DEFAULT_BUTTON_STYLES = css`
   padding: 10px 20px;
@@ -59,6 +64,15 @@ export const FavoritesButtonSm = styled.button`
   ${FLEX_CENTERED}
   ${DEFAULT_BUTTON_STYLES}
   ${DEFAULT_HOVER}
+`;
+export const RemoveFavoritesButton = styled.button`
+  gap: 1rem;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 16px;
+  ${REMOVE_BUTTON_COLORS}
+  ${REMOVE_DEFAULT_HOVER}
+  ${FLEX_CENTERED}
 `;
 export const BackButton = styled.button`
   position: absolute;

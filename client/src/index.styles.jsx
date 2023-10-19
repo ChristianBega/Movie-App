@@ -16,6 +16,13 @@ export const DEFAULT_HOVER = css`
     transform: scale(1.01);
   }
 `;
+export const REMOVE_DEFAULT_HOVER = css`
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 12px 4px #923f0fc7;
+    transform: scale(1.01);
+  }
+`;
 export const FLEX_CENTERED_BETWEEN = css`
   display: flex;
   align-items: center;
