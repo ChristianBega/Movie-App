@@ -86,12 +86,12 @@ export const LANDING_HEADER_1 = css`
 
 export const LANDING_HEADER_2 = css`
   font-weight: bold;
-  font-size: 20px !important;
+  font-size: 34px !important;
   @media ${device.laptop} {
-    font-size: 24px !important;
+    font-size: 40px !important;
   }
   @media ${device.desktop} {
-    font-size: 28px !important;
+    font-size: 50px !important;
   }
 `;
 
