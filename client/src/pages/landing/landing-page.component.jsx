@@ -28,8 +28,8 @@ const LandingPage = () => {
         <LandingHero />
       </section>
       <LandingContentSection id="landing-content-section">
-        {MOCK_DATA.map((content) => {
-          return <LandingContent content={content} />;
+        {MOCK_DATA.map((content, index) => {
+          return <LandingContent key={index} content={content} />;
         })}
       </LandingContentSection>
     </>

@@ -3,10 +3,12 @@ import { StyledCardOverLay, StyledSliderRailCard } from "./section-slider-rail-c
 import { useAnimation, useInView } from "framer-motion";
 import { cardVariants } from "../../animations/framer-motion-variants";
 import TomatoImage from "../../../src/assets/tomato.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { generateGenre } from "../../utils/generateGenre";
 const SectionSliderRailCard = ({ movie, mediaType }) => {
+  const location = useLocation();
   const Card = () => {
-    const { vote_average, title, poster_path, name } = movie;
+    const { vote_average, title, poster_path, name, genre_ids } = movie;
     const ref = useRef();
     const controls = useAnimation();
     const inView = useInView(ref);
@@ -30,9 +32,18 @@ const SectionSliderRailCard = ({ movie, mediaType }) => {
         rating={vote_average}
       >
         <StyledCardOverLay>
-          <Link to="/preview" state={{ movie: movie, mediaType: mediaType }}>
+          <Link to="/preview" state={{ movie: movie, mediaType: mediaType, previousPath: location.pathname }}>
             <div className="text-container">
               <h3>{title || name}</h3>
+              <ul>
+                {genre_ids.slice(0, 4).map((genreId, index) => {
+                  return (
+                    <li key={index} className="genre">
+                      {generateGenre(genreId)}
+                    </li>
+                  );
+                })}
+              </ul>
               <span>
                 <img src={TomatoImage} width="25px" height="25px"></img>
                 <small>{vote_average * 10}%</small>

@@ -62,4 +62,19 @@ export const PreviewContentContainer = styled.div`
     display: block;
     max-width: 650px;
   }
+  .button-container {
+    display: flex;
+    gap: 0.5rem;
+    & .success-alert {
+      border-radius: 12px;
+      border: 2px solid #4caf4fbf;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.25rem;
+    }
+  }
 `;

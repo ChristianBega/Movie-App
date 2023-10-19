@@ -106,11 +106,11 @@ export const SliderBarPagination = styled.div`
   span {
     height: 3px;
     width: 40px;
-    background-color: ${({ activeState }) => `${activeState ? "#f3eaea" : "#b1ababd3"}`};
+    background-color: ${({ activestate }) => `${activestate ? "#f3eaea" : "#b1ababd3"}`};
     margin-bottom: 0.5rem;
   }
   small {
-    color: ${({ activeState }) => `${activeState ? "#f3eaea" : "#b1ababd3"}`};
+    color: ${({ activestate }) => `${activestate ? "#f3eaea" : "#b1ababd3"}`};
     font-weight: bold;
   }
 `;

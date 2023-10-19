@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState } from "react";
+import React, { lazy, Suspense, useContext, useState } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { useMediaQuery } from "react-responsive";
@@ -16,8 +16,10 @@ import { useHorizontalScroll } from "./useSideScroll";
 import { sliderVariants } from "../../animations/framer-motion-variants";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { LoadingCard } from "../loading/loading-card/loading-card.component";
+import { RecommendationContext } from "../../contexts/recommendations.context";
 
 const SectionSliderRail = ({ sectionData, urlPath, mediaType }) => {
+  const { count } = useContext(RecommendationContext);
   const sliderRef = useHorizontalScroll();
 
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -26,7 +28,7 @@ const SectionSliderRail = ({ sectionData, urlPath, mediaType }) => {
 
   const [isHovered, setIsHovered] = useState(false);
 
-  const generateUrl = () => {
+  const generateUrl = ({ sectionData }) => {
     const options = {
       headers: {
         accept: "application/json",
@@ -36,7 +38,9 @@ const SectionSliderRail = ({ sectionData, urlPath, mediaType }) => {
     return axios.get(urlPath + sectionData.id || sectionData.fetchUrl, options);
   };
 
-  const { isLoading, data, isError, error, isFetched } = useQuery([`${sectionData?.sectionName || sectionData?.name}`], generateUrl);
+  const { isLoading, data, isError, error, isFetched } = useQuery(["sectionData", sectionData], () => generateUrl({ sectionData }), {
+    enabled: !!sectionData,
+  });
 
   const calculateScrollAmount = () => (isMobile ? 400 : isTablet ? 550 : isDesktop ? 800 : 2000);
 
@@ -65,7 +69,7 @@ const SectionSliderRail = ({ sectionData, urlPath, mediaType }) => {
     <>
       <StyledSliderRailHeader>{sectionData?.sectionName || sectionData?.name || sectionData?.sectionName}</StyledSliderRailHeader>
       <StyledSliderWrapper onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-        <LeftArrowButton isHovered={isHovered} className="slider-navigation-buttons" onClick={() => handleScroll("left")}>
+        <LeftArrowButton ishovered={isHovered} className="slider-navigation-buttons" onClick={() => handleScroll("left")}>
           <BiChevronLeft style={{ fontSize: "2rem" }} />
         </LeftArrowButton>
         {isFetched && (
@@ -73,13 +77,13 @@ const SectionSliderRail = ({ sectionData, urlPath, mediaType }) => {
             {data.data.results.map((movie, index) => {
               return (
                 <Suspense key={index} fallback={<LoadingCard />}>
-                  <SectionSliderRailCard movie={movie} key={index} mediaType={sectionData.mediaType || mediaType} />
+                  <SectionSliderRailCard movie={movie} key={index + count} mediaType={sectionData.mediaType || mediaType} />
                 </Suspense>
               );
             })}
           </StyledSliderRailContainer>
         )}
-        <RightArrowButton isHovered={isHovered} className="slider-navigation-buttons" onClick={() => handleScroll("right")}>
+        <RightArrowButton ishovered={isHovered} className="slider-navigation-buttons" onClick={() => handleScroll("right")}>
           <BiChevronRight style={{ fontSize: "2rem" }} />
         </RightArrowButton>
       </StyledSliderWrapper>

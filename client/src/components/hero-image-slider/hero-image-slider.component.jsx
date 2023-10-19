@@ -56,7 +56,7 @@ const HeroImageSlider = ({ topRated }) => {
           </div>
           <SliderBarsContainer>
             {topRated.map((movies, index) => (
-              <SliderBarPagination activeState={currentIndex === index && true} key={index} onClick={() => goToSlide(index)}>
+              <SliderBarPagination activestate={currentIndex === index ? "true" : "false"} key={index} onClick={() => goToSlide(index)}>
                 <span></span>
                 <small>{index + 1}</small>
               </SliderBarPagination>

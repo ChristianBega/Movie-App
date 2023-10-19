@@ -8,6 +8,7 @@ import {
   FavoritesButtonSm,
   FormButton,
   InvertedButton,
+  RemoveFavoritesButton,
 } from "./button.styles";
 
 export const BUTTON_TYPES_CLASSES = {
@@ -19,6 +20,7 @@ export const BUTTON_TYPES_CLASSES = {
   favorites: "favorites",
   favoritesSm: "favoritesSm",
   back: "back",
+  removeFavorites: "removeFavorites",
 };
 
 const getButton = (buttonType = BUTTON_TYPES_CLASSES.base) =>
@@ -29,6 +31,7 @@ const getButton = (buttonType = BUTTON_TYPES_CLASSES.base) =>
     [BUTTON_TYPES_CLASSES.dropdown]: DropDownMenuButton,
     [BUTTON_TYPES_CLASSES.close]: CloseButton,
     [BUTTON_TYPES_CLASSES.favorites]: FavoritesButton,
+    [BUTTON_TYPES_CLASSES.removeFavorites]: RemoveFavoritesButton,
     [BUTTON_TYPES_CLASSES.favoritesSm]: FavoritesButtonSm,
     [BUTTON_TYPES_CLASSES.back]: BackButton,
   }[buttonType]);

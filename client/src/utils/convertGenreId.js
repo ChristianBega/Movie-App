@@ -1,51 +1,45 @@
 export const convertTvGenreId = (idArray) => {
-  // Defining the conditions and corresponding values
-  const genreMappings = {
-    12: 10759,
-    28: 10759,
-    878: 10765,
-    14: 10765,
-    10752: 10768,
-    36: null,
-    27: null,
-    10402: null,
-    10749: null,
-    // 10759: 12,
-    // 10759: 28,
-    10770: null,
-    53: null,
-    10751: null,
-  };
+  const genreMappings = [
+    { from: 27, to: "" },
+    { from: 10402, to: "" },
+    { from: 10770, to: "" },
+    { from: 12, to: 10759 },
+    { from: 28, to: 10759 },
+    { from: 53, to: 9648 },
+    { from: 14, to: 10765 },
+    { from: 10749, to: 10766 },
+    { from: 36, to: 10768 },
+    { from: 878, to: 10765 },
+    { from: 53, to: 10759 },
+    { from: 10752, to: 10768 },
+  ];
 
-  // Mapping the genre IDs to new values based on conditions
   const mappedGenres = idArray.map((id) => {
-    return genreMappings[id] !== undefined ? genreMappings[id] : id;
+    const mapping = genreMappings.find((mapping) => mapping.from === id);
+    return mapping ? mapping.to : id;
   });
-
   return mappedGenres;
 };
 
 export const convertMovieGenreId = (idArray) => {
-  // Defining the conditions and corresponding values
-  const genreMappings = {
-    10759: 12,
-    10759: 28,
-    10765: 878,
-    10765: 14,
-    10768: 10752,
-    10762: 10751,
-  };
-  // 36: null,
-  // 27: null,
-  // 10402: null,
-  // 10749: null,
-  // 10770: null,
-  // 53: null,
-  // 10751: null,
+  const genreMappings = [
+    { from: "", to: 27 },
+    { from: "", to: 10402 },
+    { from: "", to: 10770 },
+    { from: 10759, to: 12 },
+    { from: 10759, to: 28 },
+    { from: 9648, to: 53 },
+    { from: 10765, to: 14 },
+    { from: 10766, to: 10749 },
+    { from: 10768, to: 36 },
+    { from: 10765, to: 878 },
+    { from: 10759, to: 53 },
+    { from: 10768, to: 10752 },
+  ];
 
-  // Mapping the genre IDs to new values based on conditions
   const mappedGenres = idArray.map((id) => {
-    return genreMappings[id] !== undefined ? genreMappings[id] : id;
+    const mapping = genreMappings.find((mapping) => mapping.from === id);
+    return mapping ? mapping.to : id;
   });
 
   return mappedGenres;
