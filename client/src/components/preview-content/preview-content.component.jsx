@@ -1,17 +1,43 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import TomatoImage from "../../../src/assets/tomato.png";
 import { PreviewContentContainer } from "./preview-content.styles";
-import { AiOutlinePlus } from "react-icons/ai";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import CustomButton, { BUTTON_TYPES_CLASSES } from "../button/button.component";
 import { generateGenre } from "../../utils/generateGenre";
 import { createFavoriteDocumentIfAuthenticated } from "../../utils/firebase/favorites.firebase";
 import { UserContext } from "../../contexts/user.context";
+import { FavoritesContext } from "../../contexts/favorites.context";
+
 export const PreviewContent = ({ movie, mediaType }) => {
   const { overview, vote_average, title, release_date, genre_ids, name, first_air_date, id } = movie;
   const { currentUser } = useContext(UserContext);
+  const { fetchFavorites, currentFavorites } = useContext(FavoritesContext);
+  const [status, setStatus] = useState(null);
+
+  useEffect(() => {
+    fetchFavorites();
+  }, []);
+
+  const checkIfAddedToFavorites = (itemId) => {
+    return !!currentFavorites.find((item) => item.id === itemId);
+  };
 
   const handleAddToFavorites = async () => {
-    await createFavoriteDocumentIfAuthenticated(id, mediaType, currentUser.uid);
+    try {
+      await createFavoriteDocumentIfAuthenticated(id, mediaType, currentUser.uid);
+      setStatus(true);
+    } catch (error) {
+      setStatus(false);
+    }
+  };
+
+  const handleRemoveFromFavorites = async () => {
+    try {
+      //  await removeFavoriteDocumentIfAuthenticated(id, mediaType, currentUser.uid);
+      //  setStatus(true);
+    } catch (error) {
+      //  setStatus(false);
+    }
   };
 
   return (
@@ -20,7 +46,7 @@ export const PreviewContent = ({ movie, mediaType }) => {
       <p className="movie-release-date">({release_date?.slice(0, 4) || first_air_date?.slice(0, 4)})</p>
       <span className="movie-details">
         <div>
-          <img src={TomatoImage} />
+          <img src={TomatoImage} alt="Tomato" />
         </div>
         <small>{vote_average * 10}%</small>
         <div className="genres-container">
@@ -34,10 +60,31 @@ export const PreviewContent = ({ movie, mediaType }) => {
         </div>
       </span>
       <p className="movie-overview">{overview}</p>
-      <CustomButton onClick={handleAddToFavorites} buttonType={BUTTON_TYPES_CLASSES.favorites}>
-        <AiOutlinePlus />
-        Add to favorites
-      </CustomButton>
+
+      <>
+        {checkIfAddedToFavorites(id) ? (
+          <>
+            <CustomButton onClick={handleRemoveFromFavorites} buttonType={BUTTON_TYPES_CLASSES.favorites}>
+              <AiOutlineMinus />
+              Remove from favorites
+            </CustomButton>
+          </>
+        ) : (
+          <>
+            {status === true ? (
+              <CustomButton onClick={handleRemoveFromFavorites} buttonType={BUTTON_TYPES_CLASSES.favorites}>
+                <AiOutlineMinus />
+                Remove from favorites
+              </CustomButton>
+            ) : (
+              <CustomButton onClick={handleAddToFavorites} buttonType={BUTTON_TYPES_CLASSES.favorites}>
+                <AiOutlinePlus />
+                Add to favorites
+              </CustomButton>
+            )}
+          </>
+        )}
+      </>
     </PreviewContentContainer>
   );
 };
