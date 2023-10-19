@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState } from "react";
+import React, { lazy, Suspense, useContext, useState } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { useMediaQuery } from "react-responsive";
@@ -16,8 +16,11 @@ import { useHorizontalScroll } from "./useSideScroll";
 import { sliderVariants } from "../../animations/framer-motion-variants";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { LoadingCard } from "../loading/loading-card/loading-card.component";
+import { RecommendationContext } from "../../contexts/recommendations.context";
 
 const SectionSliderRail = ({ sectionData, urlPath, mediaType }) => {
+  // use context
+  const { count } = useContext(RecommendationContext);
   const sliderRef = useHorizontalScroll();
 
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -33,6 +36,7 @@ const SectionSliderRail = ({ sectionData, urlPath, mediaType }) => {
         Authorization: import.meta.env.VITE_AUTHORIZATION,
       },
     };
+    console.log(sectionData.fetchUrl);
     return axios.get(urlPath + sectionData.id || sectionData.fetchUrl, options);
   };
 
