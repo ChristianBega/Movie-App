@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { HeroContainer } from "./preview-hero.styles";
 import CustomButton, { BUTTON_TYPES_CLASSES } from "../button/button.component";
 import { Link } from "react-router-dom";
 import { BiChevronLeft } from "react-icons/bi";
 
 export const PreviewHero = ({ movieBackDrop, previousPath }) => {
+  const [originalPath, setOriginalPath] = useState(previousPath);
+
+  useEffect(() => {
+    if (previousPath === "/" || previousPath === "/movies" || previousPath === "/tv-shows") {
+      setOriginalPath(previousPath);
+    }
+  }, [previousPath]);
+
   return (
     <>
       <HeroContainer moviebackdrop={`https://image.tmdb.org/t/p/original/${movieBackDrop}`}>
         <CustomButton buttonType={BUTTON_TYPES_CLASSES.back}>
-          <Link to={previousPath === "/" ? "/" : previousPath === "/movies" ? "/movies" : previousPath === "/tv-shows" ? "/tv-shows" : null}>
+          <Link to={originalPath === "/preview" ? `/` : originalPath}>
             <BiChevronLeft style={{ fontSize: "2rem" }} />
           </Link>
         </CustomButton>

@@ -16,7 +16,7 @@ const PreviewPage = () => {
       <PreviewContentSection id="preview-content-section">
         <PreviewContent movie={location?.state?.movie} mediaType={location?.state?.mediaType} />
       </PreviewContentSection>
-      <section id="related-suggestions" style={{ marginTop: "2rem", padding: "1rem" }}>
+      <section id="related-suggestions" style={{ marginTop: "2rem", padding: ".2rem" }}>
         {currentSectionData.map((section) => {
           return <SectionSliderRail key={`${section.sectionName}-${section.id}`} sectionData={section} />;
         })}

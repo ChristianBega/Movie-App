@@ -109,7 +109,7 @@ export const PREVIEW_HEADER_2 = css`
 export const SLIDER_SECTION = css`
   margin: auto;
   max-width: 1600px;
-  padding: 2rem;
+  margin-top: 1rem;
   @media ${device.desktop} {
     padding: 3rem;
   }

@@ -35,6 +35,7 @@ export const RightArrowButton = styled.button`
 
 export const StyledSliderRailHeader = styled(motion.h2)`
   ${HEADER_2}
+  padding-left : 1rem;
 `;
 export const StyledSliderRailContainer = styled(motion.div)`
   ${PADDING_SM}
