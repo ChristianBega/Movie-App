@@ -62,7 +62,7 @@ export const PreviewContent = ({ movie, mediaType }) => {
           {genre_ids?.slice(0, 4).map((id) => {
             return (
               <p key={id} className="genre">
-                &#183; &nbsp;{generateGenre(id) + id}&nbsp;
+                &#183; &nbsp;{generateGenre(id)}&nbsp;
               </p>
             );
           })}

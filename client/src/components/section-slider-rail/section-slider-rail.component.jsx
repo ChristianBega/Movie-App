@@ -19,7 +19,6 @@ import { LoadingCard } from "../loading/loading-card/loading-card.component";
 import { RecommendationContext } from "../../contexts/recommendations.context";
 
 const SectionSliderRail = ({ sectionData, urlPath, mediaType }) => {
-  // use context
   const { count } = useContext(RecommendationContext);
   const sliderRef = useHorizontalScroll();
 

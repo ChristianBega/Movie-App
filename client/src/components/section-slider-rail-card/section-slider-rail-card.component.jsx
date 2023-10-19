@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { StyledCardOverLay, StyledSliderRailCard } from "./section-slider-rail-card.styles";
 import { useAnimation, useInView } from "framer-motion";
 import { cardVariants } from "../../animations/framer-motion-variants";
 import TomatoImage from "../../../src/assets/tomato.png";
 import { Link, useLocation } from "react-router-dom";
+import { generateGenre } from "../../utils/generateGenre";
 const SectionSliderRailCard = ({ movie, mediaType }) => {
   const location = useLocation();
   const Card = () => {
     const { vote_average, title, poster_path, name, genre_ids } = movie;
-    // console.log("line 11", genre_ids);
     const ref = useRef();
     const controls = useAnimation();
     const inView = useInView(ref);
@@ -34,10 +34,14 @@ const SectionSliderRailCard = ({ movie, mediaType }) => {
         <StyledCardOverLay>
           <Link to="/preview" state={{ movie: movie, mediaType: mediaType, previousPath: location.pathname }}>
             <div className="text-container">
-              <h3>{title + "123" || name}</h3>
+              <h3>{title || name}</h3>
               <ul>
-                {genre_ids.map((genre) => {
-                  return <li>{genre}</li>;
+                {genre_ids.slice(0, 4).map((genreId, index) => {
+                  return (
+                    <li key={index} className="genre">
+                      {generateGenre(genreId)}
+                    </li>
+                  );
                 })}
               </ul>
               <span>
