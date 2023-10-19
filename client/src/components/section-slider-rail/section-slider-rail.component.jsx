@@ -29,18 +29,19 @@ const SectionSliderRail = ({ sectionData, urlPath, mediaType }) => {
 
   const [isHovered, setIsHovered] = useState(false);
 
-  const generateUrl = () => {
+  const generateUrl = ({ sectionData }) => {
     const options = {
       headers: {
         accept: "application/json",
         Authorization: import.meta.env.VITE_AUTHORIZATION,
       },
     };
-    console.log(sectionData.fetchUrl);
     return axios.get(urlPath + sectionData.id || sectionData.fetchUrl, options);
   };
 
-  const { isLoading, data, isError, error, isFetched } = useQuery([`${sectionData?.sectionName || sectionData?.name}`], generateUrl);
+  const { isLoading, data, isError, error, isFetched } = useQuery(["sectionData", sectionData], () => generateUrl({ sectionData }), {
+    enabled: !!sectionData,
+  });
 
   const calculateScrollAmount = () => (isMobile ? 400 : isTablet ? 550 : isDesktop ? 800 : 2000);
 
@@ -77,7 +78,7 @@ const SectionSliderRail = ({ sectionData, urlPath, mediaType }) => {
             {data.data.results.map((movie, index) => {
               return (
                 <Suspense key={index} fallback={<LoadingCard />}>
-                  <SectionSliderRailCard movie={movie} key={index} mediaType={sectionData.mediaType || mediaType} />
+                  <SectionSliderRailCard movie={movie} key={index + count} mediaType={sectionData.mediaType || mediaType} />
                 </Suspense>
               );
             })}
