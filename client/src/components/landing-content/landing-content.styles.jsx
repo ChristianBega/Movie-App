@@ -9,46 +9,49 @@ export const StyledLandingContent = styled.div`
   flex-direction: column;
   align-items: center;
   margin-block: 3rem;
-  position: relative;
-  overflow: visible;
+  overflow: hidden;
   ${PADDING_SM}
 
   @media ${device.desktop} {
+    overflow: visible;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 4rem;
+  }
+
+  & .text-container {
+    position: relative;
 
     &::before {
       content: "";
-      height: 700px !important;
-      width: 100%;
-      left: -400px !important;
-      top: -100px !important;
-      transform: scale(0.5) rotate(5deg);
       position: absolute;
       background: transparent;
-      border: transparent;
-      opacity: 0.1;
-      background-image: ${({ backgroundImage }) => `url(${backgroundImage})`};
       background-size: cover;
       background-position: center;
+      background-image: ${({ backgroundImage }) => `url(${backgroundImage.backgroundUrl})`};
+      height: ${({ backgroundImage }) => `${backgroundImage.styling.height}px`};
+      width: ${({ backgroundImage }) => `${backgroundImage.styling.width}px`};
+      left: ${({ backgroundImage }) => `${backgroundImage.styling.left}px`};
+      right: ${({ backgroundImage }) => `${backgroundImage.styling.right}px`};
+      top: ${({ backgroundImage }) => `${backgroundImage.styling.top}px`};
+      bottom: ${({ backgroundImage }) => `${backgroundImage.styling.bottom}px`};
+      transform: ${({ backgroundImage }) => `rotate(${backgroundImage.styling.rotate})`};
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      opacity: 0.2;
       z-index: -1;
+      overflow: visible;
       @media ${device.desktop} {
-        height: 800px;
-        width: 100%;
-        left: -500px; /* Adjust the value to control horizontal position */
-        top: -100px; /* Adjust the value to control vertical position */
+        height: ${({ backgroundImage }) => `${backgroundImage.styling.height}`};
+        width: ${({ backgroundImage }) => `${backgroundImage.styling.width}`};
       }
     }
-  }
-  & .text-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+
     h2 {
       ${LANDING_HEADER_2}
-      margin-bottom : 1.5rem;
+      margin-bottom: 1.5rem;
       letter-spacing: 0.2rem;
     }
     p {
@@ -56,6 +59,7 @@ export const StyledLandingContent = styled.div`
       max-width: 850px;
     }
   }
+
   & .image-container {
     margin-top: 1rem;
     max-width: 550px;

@@ -25,6 +25,7 @@ export const LandingHeroContainer = styled.div`
     position: absolute;
     inset: 0;
     z-index: -1000;
+    height: 101%;
   }
   &:after {
     content: url(${BackgroundImage});
