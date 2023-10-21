@@ -21,7 +21,7 @@ export const LandingHeroContainer = styled.div`
   &:before {
     content: "";
     /* background-image: linear-gradient(to top, #12151e, transparent); */
-    background-image: linear-gradient(to top, #12151e, #12151eed, #23293ada, #3e455890);
+    background-image: linear-gradient(to top, #11151e, #12151eed, #23293ada, #464f6890);
     position: absolute;
     inset: 0;
     z-index: -1000;

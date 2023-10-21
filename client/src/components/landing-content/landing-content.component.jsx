@@ -11,7 +11,7 @@ export const LandingContent = ({ content, index }) => {
       const updatedHeight = backgroundImage?.styling?.height / 1.7;
       const updatedWidth = backgroundImage?.styling?.width / 1.7;
       const updatedLeft = backgroundImage?.styling?.left / 1.5;
-      const updatedTop = backgroundImage?.styling?.top / 3;
+      const updatedTop = backgroundImage?.styling?.top / 5;
       const updatedBottom = backgroundImage?.styling?.bottom / 1.5;
       return {
         ...backgroundImage,

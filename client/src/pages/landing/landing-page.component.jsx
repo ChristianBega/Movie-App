@@ -2,7 +2,7 @@ import React from "react";
 
 import { LandingHero } from "../../components/landing-hero/landing-hero.component";
 import { LandingContent } from "../../components/landing-content/landing-content.component";
-import { LandingContentSection } from "./landing-page.styles";
+import { LandingContentSection, StyledLandingPageWrapper } from "./landing-page.styles";
 
 import image3 from "../../assets/pexels-jeshootscom-1040158.jpg";
 import image6 from "../../assets/pexels-ron-lach-9807277.jpg";
@@ -22,7 +22,7 @@ const MOCK_DATA = [
       backgroundUrl: image12,
       styling: {
         left: "-100",
-        top: "-180",
+        top: "-165",
         bottom: "200",
         height: "600",
         width: "600",
@@ -71,11 +71,13 @@ const LandingPage = () => {
       <section id="landing-hero-section">
         <LandingHero />
       </section>
-      <LandingContentSection id="landing-content-section">
-        {MOCK_DATA.map((content, index) => {
-          return <LandingContent key={index} index={index + 1} content={content} />;
-        })}
-      </LandingContentSection>
+      <StyledLandingPageWrapper>
+        <LandingContentSection id="landing-content-section">
+          {MOCK_DATA.map((content, index) => {
+            return <LandingContent key={index} index={index + 1} content={content} />;
+          })}
+        </LandingContentSection>
+      </StyledLandingPageWrapper>
     </>
   );
 };

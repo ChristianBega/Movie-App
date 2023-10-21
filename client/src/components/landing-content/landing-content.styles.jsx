@@ -8,21 +8,18 @@ export const StyledLandingContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-block: 3rem;
-  overflow: hidden;
+  margin-block: 1rem;
   ${PADDING_SM}
 
   @media ${device.desktop} {
     overflow: visible;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
     gap: 4rem;
   }
 
   & .text-container {
     position: relative;
-
     &::before {
       content: "";
       position: absolute;
@@ -40,12 +37,15 @@ export const StyledLandingContent = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: center;
-      opacity: 0.2;
+      opacity: 0.4;
       z-index: -1;
-      overflow: visible;
+      filter: grayscale(50%);
+
+      /* overflow: visible; */
       @media ${device.desktop} {
         height: ${({ backgroundImage }) => `${backgroundImage.styling.height}`};
         width: ${({ backgroundImage }) => `${backgroundImage.styling.width}`};
+        opacity: 0.2;
       }
     }
 
@@ -67,7 +67,7 @@ export const StyledLandingContent = styled.div`
     display: flex;
     flex-wrap: wrap;
     img {
-      opacity: 0.78;
+      opacity: 0.9;
       border-radius: 12px;
       max-width: 100%;
       transition: opacity 0.3s;
