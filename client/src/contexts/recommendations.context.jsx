@@ -44,8 +44,14 @@ export const RecommendationProvider = ({ children }) => {
       setCurrentMovieGenres(convertMovieGenreId(location?.state?.movie?.genre_ids));
       setCurrentTvShowGenres(convertTvGenreId(location?.state?.movie?.genre_ids));
       setCount((prevCount) => prevCount + 1);
+    } else if (location?.state?.movie?.genres) {
+      const genreIds = location?.state?.movie?.genres.map((genre) => genre.id);
+
+      setCurrentMovieGenres(convertMovieGenreId(genreIds));
+      setCurrentTvShowGenres(convertTvGenreId(genreIds));
+      setCount((prevCount) => prevCount + 1);
     }
-  }, [location?.state?.movie?.genre_ids]);
+  }, [location?.state?.movie?.genre_ids, location?.state?.movie?.genres]);
 
   useEffect(() => {
     const updatedStaticMovieAndShowsSectionData = staticMovieAndShowsSectionData.map((item, index) => {

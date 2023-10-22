@@ -5,9 +5,8 @@ export const StyledFavoritesCard = styled.div`
   background-position: center;
   background-size: cover;
   margin: 0.5rem;
-
   height: 120px;
-  width: 180px;
+  width: 115px;
   position: relative;
   border-radius: 18px;
   &:hover {

@@ -69,7 +69,7 @@ const SectionSliderRail = ({ sectionData, urlPath, mediaType }) => {
     <>
       <StyledSliderRailHeader>{sectionData?.sectionName || sectionData?.name || sectionData?.sectionName}</StyledSliderRailHeader>
       <StyledSliderWrapper onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-        <LeftArrowButton ishovered={isHovered} className="slider-navigation-buttons" onClick={() => handleScroll("left")}>
+        <LeftArrowButton ishovered={isHovered.toString()} className="slider-navigation-buttons" onClick={() => handleScroll("left")}>
           <BiChevronLeft style={{ fontSize: "2rem" }} />
         </LeftArrowButton>
         {isFetched && (
@@ -83,7 +83,7 @@ const SectionSliderRail = ({ sectionData, urlPath, mediaType }) => {
             })}
           </StyledSliderRailContainer>
         )}
-        <RightArrowButton ishovered={isHovered} className="slider-navigation-buttons" onClick={() => handleScroll("right")}>
+        <RightArrowButton ishovered={isHovered.toString()} className="slider-navigation-buttons" onClick={() => handleScroll("right")}>
           <BiChevronRight style={{ fontSize: "2rem" }} />
         </RightArrowButton>
       </StyledSliderWrapper>
