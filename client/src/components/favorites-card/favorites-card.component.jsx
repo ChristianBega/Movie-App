@@ -15,8 +15,8 @@ export const FavoritesCard = ({ movie, error }) => {
             <StyledTextContainer className="text-container">
               <h3>{title || name}</h3>
               <span>
-                <img src={TomatoImage} width="25px" height="25px"></img>
-                <small>{vote_average * 10}%</small>
+                <img src={TomatoImage} width="24px" height="24px"></img>
+                <p>{vote_average * 10}%</p>
               </span>
             </StyledTextContainer>
           </StyledFavoritesCard>

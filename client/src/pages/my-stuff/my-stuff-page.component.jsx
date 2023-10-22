@@ -11,7 +11,7 @@ const MyStuffPage = () => {
 
   useEffect(() => {
     fetchFavorites(currentUser.uid);
-  }, []);
+  }, [currentUser.uid]);
 
   const fetchQuery = async (id, mediaType) => {
     const options = {
@@ -52,7 +52,10 @@ const MyStuffPage = () => {
           justifyContent: "center",
           maxWidth: "1400px",
           margin: "4rem auto",
-          gap: "1rem .5rem",
+          gap: "2rem 1rem",
+          width: "100%;",
+          overflow: "hidden",
+          padding: ".3rem",
         }}
       >
         {favoritesQueries.map((query, index) => {
