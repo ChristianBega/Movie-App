@@ -9,7 +9,7 @@ import { UserContext } from "../../contexts/user.context";
 import { FavoritesContext } from "../../contexts/favorites.context";
 
 export const PreviewContent = ({ movie = {}, mediaType }) => {
-  const { overview, vote_average, title, release_date, genre_ids, name, first_air_date, id } = movie;
+  const { overview, vote_average, title, release_date, genre_ids, genres, name, first_air_date, id } = movie;
   const { currentUser } = useContext(UserContext);
   const { fetchFavorites, currentFavorites } = useContext(FavoritesContext);
   const [showSuccessAlert, setShowSuccessAlert] = useState(null);
@@ -60,7 +60,8 @@ export const PreviewContent = ({ movie = {}, mediaType }) => {
         </div>
         <small>{vote_average * 10}%</small>
         <div className="genres-container">
-          {genre_ids?.slice(0, 4).map((id) => {
+          {(genre_ids || genres)?.slice(0, 4).map((item) => {
+            const id = typeof item === "object" ? item.id : item;
             return (
               <p key={id} className="genre">
                 &#183; &nbsp;{generateGenre(id)}&nbsp;

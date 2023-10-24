@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import { ScrollToTop } from "../components/scroll-to-top/scroll-to-top.component";
+import LoadingScreen from "../pages/loading/loading-page.component";
 
 const Page404 = lazy(() => import("../pages/404/404-page.component"));
 const HomePage = lazy(() => import("../pages/home/home-page.component"));
@@ -12,7 +13,7 @@ const PreviewPage = lazy(() => import("../pages/preview/preview-page.component")
 
 const AuthorizedRoutes = () => {
   return (
-    <Suspense fallback={<div>Loading Spinner</div>}>
+    <Suspense fallback={<LoadingScreen />}>
       <ScrollToTop />
       <Routes>
         <Route path="*" element={<Page404 />} />

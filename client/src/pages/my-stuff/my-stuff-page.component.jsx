@@ -11,10 +11,9 @@ const MyStuffPage = () => {
 
   useEffect(() => {
     fetchFavorites(currentUser.uid);
-  }, []);
+  }, [currentUser.uid]);
 
-  const fetchQuery = async (id) => {
-    console.log(id);
+  const fetchQuery = async (id, mediaType) => {
     const options = {
       headers: {
         accept: "application/json",
@@ -22,8 +21,13 @@ const MyStuffPage = () => {
       },
     };
     try {
-      const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}`, options);
-      return response.data;
+      if (mediaType === "movie") {
+        const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}`, options);
+        return response.data;
+      } else if (mediaType === "tv") {
+        const response = await axios.get(`https://api.themoviedb.org/3/tv/${id}`, options);
+        return response.data;
+      }
     } catch (error) {
       throw new Error("Network response was not ok");
     }
@@ -33,21 +37,34 @@ const MyStuffPage = () => {
     queries: currentFavorites.map((favoriteId) => {
       return {
         queryKey: [favoriteId],
-        queryFn: () => fetchQuery(favoriteId.id),
+        queryFn: () => fetchQuery(favoriteId.id, favoriteId.mediaType),
       };
     }),
   });
 
   return (
     <>
-      <section style={{ display: "flex", flexWrap: "wrap", flexDirection: "row", justifyContent: "center", maxWidth: "1400px", margin: "4rem auto" }}>
+      <section
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          flexDirection: "row",
+          justifyContent: "center",
+          maxWidth: "1400px",
+          margin: "4rem auto",
+          gap: "2rem 1rem",
+          width: "100%;",
+          overflow: "hidden",
+          padding: ".3rem",
+        }}
+      >
         {favoritesQueries.map((query, index) => {
           if (query.isLoading) {
             return <p key={index}>Loading...</p>;
           } else if (query.isError) {
             return <p key={index}>Error: {query.error.message}</p>;
           } else {
-            return <FavoritesCard key={index} movie={query.data} />;
+            return <FavoritesCard key={index} movie={query.data} error={query.isError} />;
           }
         })}
       </section>

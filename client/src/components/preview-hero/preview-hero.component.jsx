@@ -8,7 +8,7 @@ export const PreviewHero = ({ movieBackDrop, previousPath }) => {
   const [originalPath, setOriginalPath] = useState(previousPath);
 
   useEffect(() => {
-    if (previousPath === "/" || previousPath === "/movies" || previousPath === "/tv-shows") {
+    if (previousPath === "/" || previousPath === "/movies" || previousPath === "/tv-shows" || previousPath === "/my-stuff") {
       setOriginalPath(previousPath);
     }
   }, [previousPath]);
