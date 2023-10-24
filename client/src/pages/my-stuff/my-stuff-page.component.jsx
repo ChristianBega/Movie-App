@@ -34,12 +34,15 @@ const MyStuffPage = () => {
   };
 
   const favoritesQueries = useQueries({
-    queries: currentFavorites.map((favoriteId) => {
-      return {
-        queryKey: [favoriteId],
-        queryFn: () => fetchQuery(favoriteId.id, favoriteId.mediaType),
-      };
-    }),
+    queries:
+      currentFavorites && currentFavorites.length > 0
+        ? currentFavorites.map((favoriteId) => {
+            return {
+              queryKey: [favoriteId],
+              queryFn: () => fetchQuery(favoriteId.id, favoriteId.mediaType),
+            };
+          })
+        : [],
   });
 
   return (
@@ -58,15 +61,19 @@ const MyStuffPage = () => {
           padding: ".3rem",
         }}
       >
-        {favoritesQueries.map((query, index) => {
-          if (query.isLoading) {
-            return <p key={index}>Loading...</p>;
-          } else if (query.isError) {
-            return <p key={index}>Error: {query.error.message}</p>;
-          } else {
-            return <FavoritesCard key={index} movie={query.data} error={query.isError} />;
-          }
-        })}
+        {favoritesQueries.length === 0 ? (
+          <p>No favorites added yet</p>
+        ) : (
+          favoritesQueries.map((query, index) => {
+            if (query.isLoading) {
+              return <p key={index}>Loading...</p>;
+            } else if (query.isError) {
+              return <p key={index}>Error: {query.error.message}</p>;
+            } else {
+              return <FavoritesCard key={index} movie={query.data} error={query.isError} />;
+            }
+          })
+        )}
       </section>
     </>
   );

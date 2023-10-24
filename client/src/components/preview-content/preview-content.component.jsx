@@ -25,6 +25,7 @@ export const PreviewContent = ({ movie = {}, mediaType }) => {
 
   const checkIfAddedToFavorites = (itemId) => {
     if (!itemId) return;
+    if (!currentFavorites) return;
     return !!currentFavorites.find((item) => item.id === itemId);
   };
 
