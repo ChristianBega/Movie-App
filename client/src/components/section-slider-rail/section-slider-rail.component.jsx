@@ -17,6 +17,7 @@ import { sliderVariants } from "../../animations/framer-motion-variants";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { LoadingCard } from "../loading/loading-card/loading-card.component";
 import { RecommendationContext } from "../../contexts/recommendations.context";
+import LoadingScreen from "../../pages/loading/loading-page.component";
 
 const SectionSliderRail = ({ sectionData, urlPath, mediaType }) => {
   const { count } = useContext(RecommendationContext);
@@ -58,7 +59,7 @@ const SectionSliderRail = ({ sectionData, urlPath, mediaType }) => {
   };
 
   if (isLoading) {
-    return <h1>Loading in data...</h1>;
+    return <LoadingScreen />;
   }
 
   if (isError) {
