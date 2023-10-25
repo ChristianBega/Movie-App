@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { HeroContainer } from "./preview-hero.styles";
-import CustomButton, { BUTTON_TYPES_CLASSES } from "../button/button.component";
+import CustomButton, { BUTTON_TYPES_CLASSES } from "../../../../components/button/button.component";
 import { Link } from "react-router-dom";
 import { BiChevronLeft } from "react-icons/bi";
 

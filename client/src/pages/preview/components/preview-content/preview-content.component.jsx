@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
-import TomatoImage from "../../../src/assets/tomato.png";
+import TomatoImage from "../../../../assets/tomato.png";
 import { PreviewContentContainer } from "./preview-content.styles";
 import { AiOutlineCheck, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
-import CustomButton, { BUTTON_TYPES_CLASSES } from "../button/button.component";
-import { generateGenre } from "../../setup/utils/generateGenre";
-import { createFavoriteDocumentIfAuthenticated } from "../../setup/utils/firebase/favorites.firebase";
-import { UserContext } from "../../setup/contexts/user.context";
-import { FavoritesContext } from "../../setup/contexts/favorites.context";
+import CustomButton, { BUTTON_TYPES_CLASSES } from "../../../../components/button/button.component";
+import { generateGenre } from "../../../../setup/utils/generateGenre";
+import { createFavoriteDocumentIfAuthenticated } from "../../../../setup/utils/firebase/favorites.firebase";
+import { UserContext } from "../../../../setup/contexts/user.context";
+import { FavoritesContext } from "../../../../setup/contexts/favorites.context";
 
 export const PreviewContent = ({ movie = {}, mediaType }) => {
   const { overview, vote_average, title, release_date, genre_ids, genres, name, first_air_date, id } = movie;

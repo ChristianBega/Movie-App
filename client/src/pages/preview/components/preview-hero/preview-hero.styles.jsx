@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { device } from "../../device-breakpoints.styles";
+import { device } from "../../../../device-breakpoints.styles";
 
 // export const
 

@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
-import { HEADER_2, PADDING_SM, PREVIEW_HEADER_2 } from "../../index.styles";
-import { device } from "../../device-breakpoints.styles";
+import { PADDING_SM, PREVIEW_HEADER_2 } from "../../../../index.styles";
+import { device } from "../../../../device-breakpoints.styles";
 
 // export const
 
