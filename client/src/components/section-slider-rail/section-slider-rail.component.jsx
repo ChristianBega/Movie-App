@@ -13,7 +13,7 @@ import {
   StyledSliderWrapper,
 } from "./section-slider-rail.styles";
 import { useHorizontalScroll } from "./useSideScroll";
-import { sliderVariants } from "../../animations/framer-motion-variants";
+import { sliderVariants } from "../../setup/animations/framer-motion-variants";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { LoadingCard } from "../loading/loading-card/loading-card.component";
 import { RecommendationContext } from "../../setup/contexts/recommendations.context";

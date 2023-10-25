@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { StyledCardOverLay, StyledSliderRailCard } from "./section-slider-rail-card.styles";
 import { useAnimation, useInView } from "framer-motion";
-import { cardVariants } from "../../animations/framer-motion-variants";
+import { cardVariants } from "../../setup/animations/framer-motion-variants";
 import TomatoImage from "../../../src/assets/tomato.png";
 import { Link, useLocation } from "react-router-dom";
 import { generateGenre } from "../../setup/utils/generateGenre";
