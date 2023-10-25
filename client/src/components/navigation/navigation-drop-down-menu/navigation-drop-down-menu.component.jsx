@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CustomButton, { BUTTON_TYPES_CLASSES } from "../button/button.component";
+import CustomButton, { BUTTON_TYPES_CLASSES } from "../../button/button.component";
 import { FiChevronDown } from "react-icons/fi";
 import { NavigationList } from "../navigation-list/navigation-list.component";
 import { PiXBold } from "react-icons/pi";

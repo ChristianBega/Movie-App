@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { FORM_HEADER_1, LOGO, PADDING_SM } from "../../index.styles";
+import { FORM_HEADER_1, LOGO, PADDING_SM } from "../../../../index.styles";
 import { Link } from "react-router-dom";
 
 export const StyledForm = styled.form`

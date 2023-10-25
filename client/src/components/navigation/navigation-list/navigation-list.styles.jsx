@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "../../device-breakpoints.styles.jsx";
+import { device } from "../../../device-breakpoints.styles.jsx";
 export const NavigationListContainer = styled.ul`
   margin-right: auto;
   font-size: 1.4rem;

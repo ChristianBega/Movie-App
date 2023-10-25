@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { FormInput } from "../form-input/form-input.component";
-import { signInAuthWithEmailAndPassword } from "../../setup/utils/firebase/authentication.firebase";
+import { signInAuthWithEmailAndPassword } from "../../../../setup/utils/firebase/authentication.firebase";
 import { useNavigate } from "react-router-dom";
-import CustomButton from "../button/button.component";
+import CustomButton from "../../../../components/button/button.component";
 import { StyledForm, StyledLink } from "./sign-in-form.styles";
 const defaultFormFields = {
   email: "",

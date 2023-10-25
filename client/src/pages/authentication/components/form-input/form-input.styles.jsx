@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { BOX_SHADOW_INPUT } from "../../index.styles";
+import { BOX_SHADOW_INPUT } from "../../../../index.styles";
 export const StyledFormInputContainer = styled.div`
   display: flex;
   flex-direction: column;

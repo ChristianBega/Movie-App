@@ -3,10 +3,10 @@ import { NavigationItemContainer, NavigationBar, StyleLogo } from "./navigation.
 import CustomButton from "../button/button.component";
 import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../setup/contexts/authentication.context";
-import { NavigationList } from "../../components/navigation-list/navigation-list.component";
+import { NavigationList } from "./navigation-list/navigation-list.component";
 import { useMediaQuery } from "react-responsive";
 import { device } from "../../device-breakpoints.styles";
-import { NavigationDropDownMenu } from "../navigation-drop-down-menu/navigation-drop-down-menu.component";
+import { NavigationDropDownMenu } from "./navigation-drop-down-menu/navigation-drop-down-menu.component";
 import { VscAccount } from "react-icons/vsc";
 import "../../app.scss";
 export const Navigation = () => {
