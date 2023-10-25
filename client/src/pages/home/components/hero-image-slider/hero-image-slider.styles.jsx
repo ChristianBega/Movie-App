@@ -62,6 +62,17 @@ export const HeroImageSliderContainer = styled.div`
     & .button-container {
       display: flex;
       gap: 1rem;
+      & .success-alert {
+        border-radius: 12px;
+        border: 2px solid #4caf4fbf;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.25rem;
+      }
     }
   }
 
