@@ -4,7 +4,7 @@ import { useAnimation, useInView } from "framer-motion";
 import { cardVariants } from "../../animations/framer-motion-variants";
 import TomatoImage from "../../../src/assets/tomato.png";
 import { Link, useLocation } from "react-router-dom";
-import { generateGenre } from "../../utils/generateGenre";
+import { generateGenre } from "../../setup/utils/generateGenre";
 const SectionSliderRailCard = ({ movie, mediaType }) => {
   const location = useLocation();
   const Card = () => {

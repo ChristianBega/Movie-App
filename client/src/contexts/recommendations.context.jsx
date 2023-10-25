@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { convertMovieGenreId, convertTvGenreId } from "../utils/convertGenreId";
+import { convertMovieGenreId, convertTvGenreId } from "../setup/utils/convertGenreId";
 // Creating UserContext which represents the actual value you want to access === CONTEXT
 export const RecommendationContext = createContext({
   previousPath: "",

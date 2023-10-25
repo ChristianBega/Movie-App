@@ -3,8 +3,8 @@ import TomatoImage from "../../../src/assets/tomato.png";
 import { PreviewContentContainer } from "./preview-content.styles";
 import { AiOutlineCheck, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import CustomButton, { BUTTON_TYPES_CLASSES } from "../button/button.component";
-import { generateGenre } from "../../utils/generateGenre";
-import { createFavoriteDocumentIfAuthenticated } from "../../utils/firebase/favorites.firebase";
+import { generateGenre } from "../../setup/utils/generateGenre";
+import { createFavoriteDocumentIfAuthenticated } from "../../setup/utils/firebase/favorites.firebase";
 import { UserContext } from "../../contexts/user.context";
 import { FavoritesContext } from "../../contexts/favorites.context";
 

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { HeroImageSliderContainer, SliderBarPagination, SliderBarsContainer } from "./hero-image-slider.styles";
 import { AiOutlinePlus } from "react-icons/ai";
-import { generateGenre } from "../../utils/generateGenre";
-import TomatoImage from "../../../src/assets/tomato.png";
-import CustomButton, { BUTTON_TYPES_CLASSES } from "../../components/button/button.component";
+// import { generateGenre } from "../../utils/generateGenre";
+import { generateGenre } from "../../../../setup/utils/generateGenre";
+
+import TomatoImage from "../../../../assets/tomato.png";
+import CustomButton, { BUTTON_TYPES_CLASSES } from "../../../../components/button/button.component";
 import { Link } from "react-router-dom";
 
 const HeroImageSlider = ({ topRated }) => {
