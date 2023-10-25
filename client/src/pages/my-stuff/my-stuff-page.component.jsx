@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from "react";
-import { FavoritesContext } from "../../contexts/favorites.context";
-import { UserContext } from "../../contexts/user.context";
+import { FavoritesContext } from "../../setup/contexts/favorites.context";
+import { UserContext } from "../../setup/contexts/user.context";
 import { useQueries } from "@tanstack/react-query";
 import axios from "axios";
-import { FavoritesCard } from "../../components/favorites-card/favorites-card.component";
+import { FavoritesCard } from "./components/favorites-card/favorites-card.component";
 
 const MyStuffPage = () => {
   const { currentFavorites, fetchFavorites } = useContext(FavoritesContext);

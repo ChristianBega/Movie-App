@@ -1,7 +1,7 @@
 import React from "react";
 
-import { LandingHero } from "../../components/landing-hero/landing-hero.component";
-import { LandingContent } from "../../components/landing-content/landing-content.component";
+import { LandingHero } from "./components/landing-hero/landing-hero.component";
+import { LandingContent } from "./components/landing-content/landing-content.component";
 import { LandingContentSection, StyledLandingPageWrapper } from "./landing-page.styles";
 
 import image3 from "../../assets/pexels-jeshootscom-1040158.jpg";
