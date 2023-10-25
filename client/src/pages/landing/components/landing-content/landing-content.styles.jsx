@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { LANDING_HEADER_2, PADDING_SM } from "../../index.styles";
-import { device } from "../../device-breakpoints.styles";
+import { LANDING_HEADER_2, PADDING_SM } from "../../../../index.styles";
+import { device } from "../../../../device-breakpoints.styles";
 
 export const StyledLandingContent = styled.div`
   min-height: 450px;

@@ -1,7 +1,9 @@
 import { styled } from "styled-components";
-import { LANDING_HEADER_1, LOGO, PADDING_SM } from "../../index.styles";
-import { device } from "../../device-breakpoints.styles";
-import BackgroundImage from "../../assets/landing-page-hero-image.jpg";
+import { LANDING_HEADER_1, LOGO, PADDING_SM } from "../../../../index.styles";
+import { device } from "../../../../device-breakpoints.styles";
+import BackgroundImage from "../../../../assets/landing-page-hero-image.jpg";
+
+
 export const LandingHeroContainer = styled.div`
   height: 90vh;
   width: 100%;

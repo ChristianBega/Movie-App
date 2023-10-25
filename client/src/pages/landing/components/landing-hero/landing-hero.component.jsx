@@ -1,6 +1,6 @@
 import React from "react";
 import { LandingHeroContainer } from "./landing-hero.styles";
-import CustomButton from "../button/button.component";
+import CustomButton from "../../../../components/button/button.component";
 import { Link } from "react-router-dom";
 
 export const LandingHero = () => {
