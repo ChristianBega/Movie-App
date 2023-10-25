@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
-import { auth } from "../setup/utils/firebase/index.firebase";
+// import { auth } from "../setup/utils/firebase/index.firebase";
+import { auth } from "../utils/firebase/index.firebase";
 
 // Creating UserContext which represents the actual value you want to access === CONTEXT
 export const AuthContext = createContext({

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { NavigationItemContainer, NavigationBar, StyleLogo } from "./navigation.styles";
 import CustomButton from "../button/button.component";
 import { Link, useLocation } from "react-router-dom";
-import { AuthContext } from "../../contexts/authentication.context";
+import { AuthContext } from "../../setup/contexts/authentication.context";
 import { NavigationList } from "../../components/navigation-list/navigation-list.component";
 import { useMediaQuery } from "react-responsive";
 import { device } from "../../device-breakpoints.styles";

@@ -5,8 +5,8 @@ import { AiOutlineCheck, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import CustomButton, { BUTTON_TYPES_CLASSES } from "../button/button.component";
 import { generateGenre } from "../../setup/utils/generateGenre";
 import { createFavoriteDocumentIfAuthenticated } from "../../setup/utils/firebase/favorites.firebase";
-import { UserContext } from "../../contexts/user.context";
-import { FavoritesContext } from "../../contexts/favorites.context";
+import { UserContext } from "../../setup/contexts/user.context";
+import { FavoritesContext } from "../../setup/contexts/favorites.context";
 
 export const PreviewContent = ({ movie = {}, mediaType }) => {
   const { overview, vote_average, title, release_date, genre_ids, genres, name, first_air_date, id } = movie;

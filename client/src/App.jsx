@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AuthContext } from "./contexts/authentication.context";
+import { AuthContext } from "./setup/contexts/authentication.context";
 import { Navigation } from "./components/navigation/navigation.component";
 import ErrorBoundary from "./components/error-boundary/error-boundary.component";
 import UnauthorizedRoutes from "./setup/routes/unauthorized.routes";

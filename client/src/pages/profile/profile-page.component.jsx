@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { ProfileBackgroundBlur, StyledProfileContainer, StyledProfilePageHeader, StyledProfileSection } from "./profile-page.styles";
 import CustomButton from "../../components/button/button.component";
-import { signOutUser } from "../../utils/firebase/authentication.firebase";
+import { signOutUser } from "../../setup/utils/firebase/authentication.firebase";
 import { useNavigate } from "react-router-dom";
 const profileDATA = [
   {

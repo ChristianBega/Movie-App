@@ -16,7 +16,7 @@ import { useHorizontalScroll } from "./useSideScroll";
 import { sliderVariants } from "../../animations/framer-motion-variants";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { LoadingCard } from "../loading/loading-card/loading-card.component";
-import { RecommendationContext } from "../../contexts/recommendations.context";
+import { RecommendationContext } from "../../setup/contexts/recommendations.context";
 import LoadingScreen from "../../pages/loading/loading-page.component";
 
 const SectionSliderRail = ({ sectionData, urlPath, mediaType }) => {

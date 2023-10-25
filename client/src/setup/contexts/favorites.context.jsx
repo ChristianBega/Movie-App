@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { getFavoriteDocument } from "../setup/utils/firebase/favorites.firebase";
+import { getFavoriteDocument } from "../utils/firebase/favorites.firebase";
 
 import { UserContext } from "./user.context";
 export const FavoritesContext = createContext({
