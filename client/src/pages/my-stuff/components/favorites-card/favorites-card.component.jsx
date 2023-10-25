@@ -1,8 +1,8 @@
 import React from "react";
 import { StyledFavoritesCard, StyledTextContainer } from "./favorites-card.styles";
-import TomatoImage from "../../../src/assets/tomato.png";
+import TomatoImage from "../../../../assets/tomato.png";
 import { Link } from "react-router-dom";
-import { LoadingFavoriteCard } from "../../components/loading/loading-favorite-card/loading-favorite-card.component";
+import { LoadingFavoriteCard } from "../../../../components/loading/loading-favorite-card/loading-favorite-card.component";
 export const FavoritesCard = ({ movie, error }) => {
   const { title, overview, name, air_date, season_number, backdrop_path, budget, vote_average, genres, poster_path } = movie;
   return (
