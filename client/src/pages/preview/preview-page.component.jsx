@@ -7,6 +7,7 @@ import { RecommendationContext } from "../../setup/contexts/recommendations.cont
 
 const PreviewPage = () => {
   const { previousPath, currentSectionData, location } = useContext(RecommendationContext);
+  console.log(location);
   return (
     <div style={{ position: "relative" }}>
       <section id="preview-hero-section">

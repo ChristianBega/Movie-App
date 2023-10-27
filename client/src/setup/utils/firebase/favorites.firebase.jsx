@@ -1,8 +1,9 @@
 // Import firebase from index
-import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, query, setDoc, updateDoc, where } from "firebase/firestore";
 import { auth, db } from "./index.firebase";
 
 export const createFavoriteDocumentIfAuthenticated = async (movieId, mediaType, userUid) => {
+  console.log(movieId, mediaType, userUid);
   try {
     const favoritesRef = doc(db, "favorites", userUid);
     const docSnapshot = await getDoc(favoritesRef);
@@ -40,6 +41,27 @@ export const createFavoriteDocumentIfAuthenticated = async (movieId, mediaType, 
     }
   } catch (error) {
     console.error("Error updating/creating document: ", error);
+  }
+};
+
+export const deleteFavoriteDocumentIfAuthenticated = async (movieId, userUid) => {
+  console.log(movieId, userUid);
+  try {
+    const favoritesRef = doc(db, "favorites", userUid);
+    const favoritesSnapshot = await getDoc(favoritesRef);
+
+    if (favoritesSnapshot.exists()) {
+      const data = favoritesSnapshot.data();
+      const favoritesArray = data?.movies || [];
+
+      const updatedFavoritesArray = favoritesArray.filter((movie) => movie.id !== movieId);
+
+      await updateDoc(favoritesRef, {
+        movies: updatedFavoritesArray,
+      });
+    }
+  } catch (error) {
+    console.error("Error deleting favorite movie:", error);
   }
 };
 

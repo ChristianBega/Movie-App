@@ -22,7 +22,6 @@ const HeroImageSlider = ({ topRated }) => {
 
   // Destructuring each topRated object at the current index.
   const { backdrop_path, title, genre_ids, vote_average, id } = topRated[currentIndex];
-  console.log(id);
   // goToSlide - takes currentIndex and goes to that slide
   const goToSlide = (slideIndex) => {
     setCurrentIndex(slideIndex);

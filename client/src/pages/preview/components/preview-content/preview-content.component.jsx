@@ -4,7 +4,7 @@ import { PreviewContentContainer } from "./preview-content.styles";
 import { AiOutlineCheck, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import CustomButton, { BUTTON_TYPES_CLASSES } from "../../../../components/button/button.component";
 import { generateGenre } from "../../../../setup/utils/generateGenre";
-import { createFavoriteDocumentIfAuthenticated } from "../../../../setup/utils/firebase/favorites.firebase";
+import { createFavoriteDocumentIfAuthenticated, deleteFavoriteDocumentIfAuthenticated } from "../../../../setup/utils/firebase/favorites.firebase";
 import { UserContext } from "../../../../setup/contexts/user.context";
 import { FavoritesContext } from "../../../../setup/contexts/favorites.context";
 
@@ -33,10 +33,10 @@ export const PreviewContent = ({ movie = {}, mediaType }) => {
     try {
       await createFavoriteDocumentIfAuthenticated(id, mediaType, currentUser.uid);
       setStatus(true);
-      setShowSuccessAlert(true);
+      setShowSuccessAlert("Added to favorites");
       setTimeout(() => {
-        setShowSuccessAlert(false);
-      }, 3000);
+        setShowSuccessAlert(null);
+      }, 2000);
     } catch (error) {
       setStatus(false);
     }
@@ -44,15 +44,22 @@ export const PreviewContent = ({ movie = {}, mediaType }) => {
 
   const handleRemoveFromFavorites = async () => {
     try {
-      //  await removeFavoriteDocumentIfAuthenticated(id, mediaType, currentUser.uid);
-      //  setStatus(true);
+      await deleteFavoriteDocumentIfAuthenticated(id, currentUser.uid);
+      setStatus(true);
+      setShowSuccessAlert("Removed from favorites");
+      setTimeout(() => {
+        setStatus(false);
+        setShowSuccessAlert(null);
+      }, 2000);
+      fetchFavorites(); // currentFavorites state updates after being removed, rendering the correct button
     } catch (error) {
-      //  setStatus(false);
+      setStatus(false);
     }
   };
 
   return (
     <PreviewContentContainer>
+      <h1>{status}</h1>
       <h2 className="movie-title">{title || name}</h2>
       <p className="movie-release-date">({release_date?.slice(0, 4) || first_air_date?.slice(0, 4)})</p>
       <span className="movie-details">
@@ -73,28 +80,26 @@ export const PreviewContent = ({ movie = {}, mediaType }) => {
       </span>
       <p className="movie-overview">{overview}</p>
 
-      <>
+      <div className="button-container">
         {checkIfAddedToFavorites(id) ? (
-          <>
-            <CustomButton onClick={handleRemoveFromFavorites} buttonType={BUTTON_TYPES_CLASSES.removeFavorites}>
-              <AiOutlineMinus />
-              Remove from favorites
-            </CustomButton>
-          </>
+          <CustomButton onClick={handleRemoveFromFavorites} buttonType={BUTTON_TYPES_CLASSES.removeFavorites}>
+            <AiOutlineMinus />
+            Remove from favorites
+          </CustomButton>
         ) : (
           <>
             {status === true ? (
-              <div className="button-container">
+              <>
                 <CustomButton onClick={handleRemoveFromFavorites} buttonType={BUTTON_TYPES_CLASSES.removeFavorites}>
                   <AiOutlineMinus />
                   Remove from favorites
                 </CustomButton>
                 {showSuccessAlert && (
-                  <p className="success-alert">
-                    <span>Added</span> <AiOutlineCheck />
+                  <p className={showSuccessAlert === "Removed from favorites" ? "success-alert-remove" : "success-alert-add"}>
+                    <span>{showSuccessAlert}</span> <AiOutlineCheck />
                   </p>
                 )}
-              </div>
+              </>
             ) : (
               <CustomButton onClick={handleAddToFavorites} buttonType={BUTTON_TYPES_CLASSES.favorites}>
                 <AiOutlinePlus />
@@ -103,7 +108,7 @@ export const PreviewContent = ({ movie = {}, mediaType }) => {
             )}
           </>
         )}
-      </>
+      </div>
     </PreviewContentContainer>
   );
 };
