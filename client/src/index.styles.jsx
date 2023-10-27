@@ -114,3 +114,14 @@ export const SLIDER_SECTION = css`
     padding: 3rem;
   }
 `;
+
+export const DEFAULT_ALERT = css`
+  border-radius: 12px;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.25rem;
+`;

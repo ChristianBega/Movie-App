@@ -1,8 +1,6 @@
 import { styled } from "styled-components";
-import { PADDING_SM, PREVIEW_HEADER_2 } from "../../../../index.styles";
+import { PADDING_SM, PREVIEW_HEADER_2, DEFAULT_ALERT } from "../../../../index.styles";
 import { device } from "../../../../device-breakpoints.styles";
-
-// export const
 
 export const PreviewContentContainer = styled.div`
   ${PADDING_SM}
@@ -65,16 +63,13 @@ export const PreviewContentContainer = styled.div`
   .button-container {
     display: flex;
     gap: 0.5rem;
-    & .success-alert {
-      border-radius: 12px;
+    & .success-alert-add {
+      ${DEFAULT_ALERT}
       border: 2px solid #4caf4fbf;
-      color: #fff;
-      padding: 10px;
-      text-align: center;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 0.25rem;
+    }
+    & .success-alert-remove {
+      ${DEFAULT_ALERT}
+      border: 2px solid #afad4cbe;
     }
   }
 `;

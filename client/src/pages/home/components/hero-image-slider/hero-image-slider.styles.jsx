@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 import { device } from "../../../../device-breakpoints.styles";
-import { PADDING_SM, PREVIEW_HEADER_2 } from "../../../../index.styles";
+import { PADDING_SM, PREVIEW_HEADER_2, DEFAULT_ALERT } from "../../../../index.styles";
 
 // export const
 
@@ -62,6 +62,14 @@ export const HeroImageSliderContainer = styled.div`
     & .button-container {
       display: flex;
       gap: 1rem;
+      & .success-alert-add {
+        ${DEFAULT_ALERT}
+        border: 2px solid #4caf4fbf;
+      }
+      & .success-alert-remove {
+        ${DEFAULT_ALERT}
+        border: 2px solid #afad4cbe;
+      }
     }
   }
 

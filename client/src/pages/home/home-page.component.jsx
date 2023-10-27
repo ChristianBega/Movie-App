@@ -11,7 +11,9 @@ const HeroImageSlider = lazy(() => import("./components/hero-image-slider/hero-i
 const genreFetchUrl =
   "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=";
 
-const topRatedFetchUrl = "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1";
+const topRatedFetchUrl = "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=3";
+// const topRatedFetchUrl = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
+// const topRatedFetchUrl = "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
 
 const staticMovieAndShowsSectionData = [
   // {

@@ -1,24 +1,74 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { HeroImageSliderContainer, SliderBarPagination, SliderBarsContainer } from "./hero-image-slider.styles";
-import { AiOutlinePlus } from "react-icons/ai";
+import { AiOutlineCheck, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 // import { generateGenre } from "../../utils/generateGenre";
 import { generateGenre } from "../../../../setup/utils/generateGenre";
 
 import TomatoImage from "../../../../assets/tomato.png";
 import CustomButton, { BUTTON_TYPES_CLASSES } from "../../../../components/button/button.component";
 import { Link } from "react-router-dom";
+import { createFavoriteDocumentIfAuthenticated, deleteFavoriteDocumentIfAuthenticated } from "../../../../setup/utils/firebase/favorites.firebase";
+import { UserContext } from "../../../../setup/contexts/user.context";
+import { FavoritesContext } from "../../../../setup/contexts/favorites.context";
 
 const HeroImageSlider = ({ topRated }) => {
   // Tracking current index, starts at 0, used to determine which slide we are on.
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [status, setStatus] = useState(null);
+  const [showSuccessAlert, setShowSuccessAlert] = useState(null);
+
+  const { currentUser } = useContext(UserContext);
+  const { fetchFavorites, currentFavorites } = useContext(FavoritesContext);
 
   // Destructuring each topRated object at the current index.
-  const { backdrop_path, title, genre_ids, vote_average } = topRated[currentIndex];
-
+  const { backdrop_path, title, genre_ids, vote_average, id } = topRated[currentIndex];
   // goToSlide - takes currentIndex and goes to that slide
   const goToSlide = (slideIndex) => {
     setCurrentIndex(slideIndex);
   };
+
+  const checkIfAddedToFavorites = (itemId) => {
+    if (!itemId) return;
+    if (!currentFavorites) return;
+    return !!currentFavorites.find((item) => item.id === itemId);
+  };
+
+  const handleAddToFavorites = async () => {
+    console.log("test");
+    try {
+      await createFavoriteDocumentIfAuthenticated(id, "movie", currentUser.uid);
+      setStatus(true);
+      // setShowSuccessAlert(true);
+      setShowSuccessAlert("Added to favorites");
+      setTimeout(() => {
+        setShowSuccessAlert(false);
+      }, 3000);
+    } catch (error) {
+      setStatus(false);
+    }
+  };
+  const handleRemoveFromFavorites = async () => {
+    try {
+      await deleteFavoriteDocumentIfAuthenticated(id, currentUser.uid);
+      setStatus(true);
+      setShowSuccessAlert("Removed from favorites");
+      setTimeout(() => {
+        setStatus(false);
+        setShowSuccessAlert(null);
+      }, 2000);
+      fetchFavorites(); // currentFavorites state updates after being removed, rendering the correct button
+    } catch (error) {
+      setStatus(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchFavorites();
+  }, []);
+
+  useEffect(() => {
+    setStatus(null);
+  }, [topRated[currentIndex]]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -46,9 +96,32 @@ const HeroImageSlider = ({ topRated }) => {
               })}
             </span>
             <div className="button-container">
-              <CustomButton buttonType={BUTTON_TYPES_CLASSES.favoritesSm}>
-                <AiOutlinePlus />
-              </CustomButton>
+              <>
+                {checkIfAddedToFavorites(id) ? (
+                  <CustomButton onClick={handleRemoveFromFavorites} buttonType={BUTTON_TYPES_CLASSES.removeFavorites}>
+                    <AiOutlineMinus />
+                  </CustomButton>
+                ) : (
+                  <>
+                    {status === true ? (
+                      <>
+                        <CustomButton onClick={handleRemoveFromFavorites} buttonType={BUTTON_TYPES_CLASSES.removeFavorites}>
+                          <AiOutlineMinus />
+                        </CustomButton>
+                        {showSuccessAlert && (
+                          <p className={showSuccessAlert === "Removed from favorites" ? "success-alert-remove" : "success-alert-add"}>
+                            <span>{showSuccessAlert}</span> <AiOutlineCheck />
+                          </p>
+                        )}
+                      </>
+                    ) : (
+                      <CustomButton onClick={handleAddToFavorites} buttonType={BUTTON_TYPES_CLASSES.favorites}>
+                        <AiOutlinePlus />
+                      </CustomButton>
+                    )}
+                  </>
+                )}
+              </>
               <CustomButton buttonType={BUTTON_TYPES_CLASSES.favoritesSm}>
                 <Link to="/preview" state={{ movie: topRated[currentIndex] }}>
                   More info

@@ -4,6 +4,7 @@ import { UserContext } from "../../setup/contexts/user.context";
 import { useQueries } from "@tanstack/react-query";
 import axios from "axios";
 import { FavoritesCard } from "./components/favorites-card/favorites-card.component";
+import { query } from "firebase/firestore";
 
 const MyStuffPage = () => {
   const { currentFavorites, fetchFavorites } = useContext(FavoritesContext);
@@ -45,6 +46,7 @@ const MyStuffPage = () => {
         : [],
   });
 
+  console.log(currentFavorites);
   return (
     <>
       <section
