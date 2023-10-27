@@ -7,7 +7,7 @@ import { generateGenre } from "../../../../setup/utils/generateGenre";
 import TomatoImage from "../../../../assets/tomato.png";
 import CustomButton, { BUTTON_TYPES_CLASSES } from "../../../../components/button/button.component";
 import { Link } from "react-router-dom";
-import { createFavoriteDocumentIfAuthenticated } from "../../../../setup/utils/firebase/favorites.firebase";
+import { createFavoriteDocumentIfAuthenticated, deleteFavoriteDocumentIfAuthenticated } from "../../../../setup/utils/firebase/favorites.firebase";
 import { UserContext } from "../../../../setup/contexts/user.context";
 import { FavoritesContext } from "../../../../setup/contexts/favorites.context";
 
@@ -38,7 +38,8 @@ const HeroImageSlider = ({ topRated }) => {
     try {
       await createFavoriteDocumentIfAuthenticated(id, "movie", currentUser.uid);
       setStatus(true);
-      setShowSuccessAlert(true);
+      // setShowSuccessAlert(true);
+      setShowSuccessAlert("Added to favorites");
       setTimeout(() => {
         setShowSuccessAlert(false);
       }, 3000);
@@ -48,10 +49,16 @@ const HeroImageSlider = ({ topRated }) => {
   };
   const handleRemoveFromFavorites = async () => {
     try {
-      //  await removeFavoriteDocumentIfAuthenticated(id, mediaType, currentUser.uid);
-      //  setStatus(true);
+      await deleteFavoriteDocumentIfAuthenticated(id, currentUser.uid);
+      setStatus(true);
+      setShowSuccessAlert("Removed from favorites");
+      setTimeout(() => {
+        setStatus(false);
+        setShowSuccessAlert(null);
+      }, 2000);
+      fetchFavorites(); // currentFavorites state updates after being removed, rendering the correct button
     } catch (error) {
-      //  setStatus(false);
+      setStatus(false);
     }
   };
 
@@ -91,24 +98,22 @@ const HeroImageSlider = ({ topRated }) => {
             <div className="button-container">
               <>
                 {checkIfAddedToFavorites(id) ? (
-                  <>
-                    <CustomButton onClick={handleRemoveFromFavorites} buttonType={BUTTON_TYPES_CLASSES.removeFavorites}>
-                      <AiOutlineMinus />
-                    </CustomButton>
-                  </>
+                  <CustomButton onClick={handleRemoveFromFavorites} buttonType={BUTTON_TYPES_CLASSES.removeFavorites}>
+                    <AiOutlineMinus />
+                  </CustomButton>
                 ) : (
                   <>
                     {status === true ? (
-                      <div className="button-container">
+                      <>
                         <CustomButton onClick={handleRemoveFromFavorites} buttonType={BUTTON_TYPES_CLASSES.removeFavorites}>
                           <AiOutlineMinus />
                         </CustomButton>
                         {showSuccessAlert && (
-                          <p className="success-alert">
-                            <span>Added</span> <AiOutlineCheck />
+                          <p className={showSuccessAlert === "Removed from favorites" ? "success-alert-remove" : "success-alert-add"}>
+                            <span>{showSuccessAlert}</span> <AiOutlineCheck />
                           </p>
                         )}
-                      </div>
+                      </>
                     ) : (
                       <CustomButton onClick={handleAddToFavorites} buttonType={BUTTON_TYPES_CLASSES.favorites}>
                         <AiOutlinePlus />
@@ -117,7 +122,6 @@ const HeroImageSlider = ({ topRated }) => {
                   </>
                 )}
               </>
-
               <CustomButton buttonType={BUTTON_TYPES_CLASSES.favoritesSm}>
                 <Link to="/preview" state={{ movie: topRated[currentIndex] }}>
                   More info

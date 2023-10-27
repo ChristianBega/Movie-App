@@ -15,14 +15,6 @@ export const PreviewContent = ({ movie = {}, mediaType }) => {
   const [showSuccessAlert, setShowSuccessAlert] = useState(null);
   const [status, setStatus] = useState(null);
 
-  useEffect(() => {
-    fetchFavorites();
-  }, []);
-
-  useEffect(() => {
-    setStatus(null);
-  }, [movie]);
-
   const checkIfAddedToFavorites = (itemId) => {
     if (!itemId) return;
     if (!currentFavorites) return;
@@ -56,7 +48,13 @@ export const PreviewContent = ({ movie = {}, mediaType }) => {
       setStatus(false);
     }
   };
+  useEffect(() => {
+    fetchFavorites();
+  }, []);
 
+  useEffect(() => {
+    setStatus(null);
+  }, [movie]);
   return (
     <PreviewContentContainer>
       <h1>{status}</h1>
