@@ -42,10 +42,19 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
     if (!userSnapshot.exists()) {
       const { email } = userAuth;
       const createdAt = new Date();
+      const profileAccounts = [
+        {
+          profileImg: "",
+          profileName: "Create an account",
+          colorOne: "rgba(255, 255, 0, 0.3)", // Bright yellow (dimmed)
+          colorTwo: "rgba(255, 102, 0, 0.3)", // Orange (dimmed)
+        },
+      ];
 
       await setDoc(userDocRef, {
         email,
         createdAt,
+        profileAccounts,
         ...additionalInformation,
       });
     }
