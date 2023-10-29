@@ -32,5 +32,5 @@ export const ProfileBackgroundBlur = styled.span`
   inset: 0;
   backdrop-filter: blur(150px);
   -webkit-backdrop-filter: blur(150px); /* Add this line */
-  z-index: -1;
+  z-index: -1000;
 `;

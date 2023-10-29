@@ -3,7 +3,6 @@ import { device } from "../../../../device-breakpoints.styles";
 export const StyledProfileContainer = styled.div`
   width: 200px;
   position: relative;
-
   &:before {
     content: "";
     height: 50px;
@@ -17,7 +16,7 @@ export const StyledProfileContainer = styled.div`
     top: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    background-image: ${({ colorOne, colorTwo }) => `linear-gradient(160deg, ${colorOne} 50%, ${colorTwo} 90%)`};
+    /* background-image: ${({ colors }) => `linear-gradient(160deg, ${colors} 50%, ${colors} 90%)`}; */
     animation: rotate 20s infinite;
     @media ${device.laptop} {
       height: 400px;
@@ -34,6 +33,7 @@ export const StyledProfileContainer = styled.div`
     transition: transform 0.3s;
     &:hover {
       transform: ${({ isActive }) => `${isActive ? "scale(1.3)" : "scale(.8)"}`};
+      cursor: pointer;
     }
 
     img {

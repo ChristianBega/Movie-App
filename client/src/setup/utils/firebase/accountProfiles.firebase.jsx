@@ -2,27 +2,43 @@
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "./index.firebase";
 
-export const createProfileAccountDocumentIfAuthenticated = async (userUid) => {
+export const getProfileAccountDocument = async (userUid) => {
   if (!userUid) return;
   try {
     const profileAccounts = doc(db, "users", userUid);
     const profileAccountsSnapshot = await getDoc(profileAccounts);
-    console.log(profileAccountsSnapshot);
 
     if (profileAccountsSnapshot.exists()) {
       const data = profileAccountsSnapshot.data();
-      const currentProfileAccounts = data || [];
-      console.log(currentProfileAccounts);
+      console.log(data);
+      return data.profileAccounts;
+    } else {
+      console.log("User account documents do not exist.");
+      return null; // You can return null or an empty object as appropriate
+    }
+  } catch (error) {
+    console.error("Error deleting favorite movie:", error);
+  }
+};
 
-      
+export const createProfileAccountDocumentIfAuthenticated = async (userUid, profile, colors) => {
+  if (!userUid) return;
+  try {
+    const profileAccountsRef = doc(db, "users", userUid);
+    const profileAccountsSnapshot = await getDoc(profileAccountsRef);
 
-
-
-      // const updatedFavoritesArray = favoritesArray.filter((movie) => movie.id !== movieId);
-
-      // await updateDoc(favoritesRef, {
-      //   movies: updatedFavoritesArray,
-      // });
+    if (profileAccountsSnapshot.exists()) {
+      const data = profileAccountsSnapshot.data();
+      const currentProfileAccounts = data.profileAccounts || [];
+      const newProfile = {
+        profileName: profile,
+        colors: [colors],
+        profileImg: "",
+      };
+      currentProfileAccounts.push(newProfile);
+      await updateDoc(profileAccountsRef, {
+        profileAccounts: currentProfileAccounts,
+      });
     }
   } catch (error) {
     console.error("Error deleting favorite movie:", error);

@@ -46,8 +46,7 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
         {
           profileImg: "",
           profileName: "Create an account",
-          colorOne: "rgba(255, 255, 0, 0.3)", // Bright yellow (dimmed)
-          colorTwo: "rgba(255, 102, 0, 0.3)", // Orange (dimmed)
+          colors: ["rgba(255, 255, 0, 0.3)", "rgba(255, 102, 0, 0.3)"],
         },
       ];
 
