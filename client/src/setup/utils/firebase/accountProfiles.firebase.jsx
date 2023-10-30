@@ -1,6 +1,7 @@
 // Import firebase from index
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "./index.firebase";
+import profileImg2 from "../../../assets/profile-avatars/avatars_4.webp";
 
 export const getProfileAccountDocument = async (userUid) => {
   if (!userUid) return;
@@ -33,7 +34,7 @@ export const createProfileAccountDocumentIfAuthenticated = async (userUid, profi
       const newProfile = {
         profileName: profile,
         colors: [colors],
-        profileImg: "",
+        profileImg: profileImg2,
       };
       currentProfileAccounts.push(newProfile);
       await updateDoc(profileAccountsRef, {

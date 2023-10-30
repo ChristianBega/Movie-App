@@ -42,13 +42,25 @@ const ProfilePage = () => {
     navigate("/");
   };
 
+  const renderRightButton = () =>
+    currentProfileAccounts?.length > 3 ? (
+      <button style={{ marginLeft: "1rem" }} onClick={handleShuffleProfileAccounts}>
+        <BiChevronRight style={{ fontSize: "2rem" }} />
+      </button>
+    ) : null;
+
+  const renderLeftButton = () =>
+    currentProfileAccounts?.length > 3 ? (
+      <button style={{ marginRight: "1rem" }} onClick={handleShuffleProfileAccounts}>
+        <BiChevronLeft style={{ fontSize: "2rem" }} />
+      </button>
+    ) : null;
+
   return (
     <>
       <StyledProfilePageHeader>Who's Watching?</StyledProfilePageHeader>
       <StyledProfileSection>
-        <button style={{ marginRight: "1rem" }} onClick={handleShuffleProfileAccounts}>
-          <BiChevronLeft style={{ fontSize: "2rem" }} />
-        </button>
+        {renderLeftButton()}
         {currentVisibleProfileAccount?.map(({ profileImg, profileName, colors }, index) => {
           return (
             <ProfileAccountCard
@@ -62,9 +74,7 @@ const ProfilePage = () => {
           );
         })}
         <ProfileBackgroundBlur />
-        <button style={{ marginLeft: "1rem" }} onClick={handleShuffleProfileAccounts}>
-          <BiChevronRight style={{ fontSize: "2rem" }} />
-        </button>
+        {renderRightButton()}
       </StyledProfileSection>
       <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
         <CustomButton onClick={handleSignOut}>Sign Out</CustomButton>
