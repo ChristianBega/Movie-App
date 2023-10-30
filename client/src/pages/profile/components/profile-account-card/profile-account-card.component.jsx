@@ -38,7 +38,9 @@ const ProfileAccountCard = ({ index, colors, profileImg, profileName, hoveredInd
       className="profile-container"
     >
       <span className="profile-text-wrapper">
-        <img src={profileImg} alt="profile-img" />
+        <div className="profile-image-wrapper">
+          <img src={profileImg} alt="profile-img" />
+        </div>
         <p>{profileName}</p>
       </span>
     </StyledProfileContainer>

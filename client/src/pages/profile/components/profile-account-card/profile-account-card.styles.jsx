@@ -38,16 +38,26 @@ export const StyledProfileContainer = styled.div`
       cursor: pointer;
     }
 
-    img {
-      margin: auto;
+    & .profile-image-wrapper {
+      position: relative;
       margin-top: 5rem auto;
       min-height: 150px;
       min-width: 150px;
+      margin: auto;
       border-radius: 50%;
       display: flex;
       align-items: center;
       z-index: 200;
       box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+      img {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        height: 90px;
+        width: 90px;
+        border-radius: 50%;
+      }
     }
     p {
       margin-top: 2rem;
