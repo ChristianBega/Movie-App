@@ -1,6 +1,6 @@
 // Import firebase from index
-import { collection, doc, getDoc, getDocs, query, setDoc, updateDoc, where } from "firebase/firestore";
-import { auth, db } from "./index.firebase";
+import { doc, getDoc,  setDoc, updateDoc,  } from "firebase/firestore";
+import {  db } from "./index.firebase";
 
 export const createFavoriteDocumentIfAuthenticated = async (movieId, mediaType, userUid) => {
   console.log(movieId, mediaType, userUid);

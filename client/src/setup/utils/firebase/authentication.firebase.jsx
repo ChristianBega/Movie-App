@@ -1,3 +1,6 @@
+import CreateProfileImg from "../../../assets/plus-cross-svgrepo-com.svg";
+import ProfileImg1 from "../../../assets/profile-avatars/avatars_1.webp";
+
 // Import firebase firestore
 import { doc, getDoc, setDoc } from "firebase/firestore";
 // Import firebase from index
@@ -29,6 +32,9 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
 
 //* Creating async function to handle creating a user document for firebase
 export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
+  console.log("Firebase", userAuth);
+  console.log("Firebase", additionalInformation);
+
   // If no user then exit
   if (!userAuth) return;
 
@@ -41,11 +47,25 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
     // if a user doesn't exist then create it
     if (!userSnapshot.exists()) {
       const { email } = userAuth;
+
       const createdAt = new Date();
+      const profileAccounts = [
+        {
+          profileImg: CreateProfileImg,
+          profileName: "Create an account",
+          colors: ["rgba(255, 255, 0, 0.3)", "rgba(255, 102, 0, 0.3)"],
+        },
+        {
+          profileImg: ProfileImg1,
+          profileName: additionalInformation?.username,
+          colors: [" rgba(11, 86, 148, 1)", "rgba(36, 89, 127, 1)"],
+        },
+      ];
 
       await setDoc(userDocRef, {
         email,
         createdAt,
+        profileAccounts,
         ...additionalInformation,
       });
     }

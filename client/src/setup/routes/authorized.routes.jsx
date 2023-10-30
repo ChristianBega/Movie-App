@@ -11,6 +11,7 @@ const TvShowsPage = lazy(() => import("../../pages/tv-shows/tv-shows-page.compon
 const MyStuffPage = lazy(() => import("../../pages/my-stuff/my-stuff-page.component"));
 const ProfilePage = lazy(() => import("../../pages/profile/profile-page.component"));
 const PreviewPage = lazy(() => import("../../pages/preview/preview-page.component"));
+const CreateProfileAccount = lazy(() => import("../../pages/profile/components/create-profile-account/create-profile-account.component"));
 
 const AuthorizedRoutes = () => {
   return (
@@ -24,6 +25,7 @@ const AuthorizedRoutes = () => {
         <Route path="/my-stuff" element={<MyStuffPage />}></Route>
         <Route path="/profile" element={<ProfilePage />}></Route>
         <Route path="/preview" element={<PreviewPage />}></Route>
+        <Route path="/create-profile-account" element={<CreateProfileAccount />}></Route>
       </Routes>
     </Suspense>
   );

@@ -1,68 +1,79 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
-import { ProfileBackgroundBlur, StyledProfileContainer, StyledProfilePageHeader, StyledProfileSection } from "./profile-page.styles";
+import { ProfileBackgroundBlur, StyledProfilePageHeader, StyledProfileSection } from "./profile-page.styles";
 import CustomButton from "../../components/button/button.component";
 import { signOutUser } from "../../setup/utils/firebase/authentication.firebase";
 import { useNavigate } from "react-router-dom";
-const profileDATA = [
-  {
-    profileImg: "",
-    profileName: "John Doe",
-    colorOne: "rgba(37, 137, 87, 0.655)",
-    colorTwo: "rgba(2, 71, 61, 0.7)",
-  },
-  {
-    profileImg: "",
-    profileName: "Jane Doe",
-    colorOne: "rgba(43, 5, 90, 0.8)",
-    colorTwo: "rgba(38, 60, 187, 0.7)",
-  },
+import { UserContext } from "../../setup/contexts/user.context";
+import ProfileAccountCard from "./components/profile-account-card/profile-account-card.component";
+import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 
-  {
-    profileImg: "",
-    profileName: "Jill Doe",
-    colorOne: "rgba(137, 37, 37, 0.655)",
-    colorTwo: "rgba(71, 40, 2, 0.7)",
-  },
-];
 const ProfilePage = () => {
-  // const navigate = useNavigate();
-  const [hoveredIndex, setHoveredIndex] = useState(1);
-
+  const { currentProfileAccounts } = useContext(UserContext);
   const navigate = useNavigate();
+  const [shuffleAccounts, setShuffleAccounts] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState(1);
+  const [currentVisibleProfileAccount, setCurrentVisibleProfileAccount] = useState();
+
+  useEffect(() => {
+    if (currentProfileAccounts) {
+      const visibleProfileAccounts = !shuffleAccounts ? currentProfileAccounts.slice(0, 3) : currentProfileAccounts.slice(3, 6);
+      setCurrentVisibleProfileAccount(visibleProfileAccounts);
+      console.log(visibleProfileAccounts.length);
+      if (visibleProfileAccounts.length == 1) {
+        setHoveredIndex(0);
+      }
+    } else {
+      console.log("fetching profiles");
+    }
+  }, [currentProfileAccounts, shuffleAccounts]);
 
   const handleHoverEvent = (index) => {
     setHoveredIndex(index);
+  };
+
+  const handleShuffleProfileAccounts = () => {
+    setShuffleAccounts(!shuffleAccounts);
   };
 
   const handleSignOut = () => {
     signOutUser();
     navigate("/");
   };
+
+  const renderRightButton = () =>
+    currentProfileAccounts?.length > 3 ? (
+      <button style={{ marginLeft: "1rem" }} onClick={handleShuffleProfileAccounts}>
+        <BiChevronRight style={{ fontSize: "2rem" }} />
+      </button>
+    ) : null;
+
+  const renderLeftButton = () =>
+    currentProfileAccounts?.length > 3 ? (
+      <button style={{ marginRight: "1rem" }} onClick={handleShuffleProfileAccounts}>
+        <BiChevronLeft style={{ fontSize: "2rem" }} />
+      </button>
+    ) : null;
+
   return (
     <>
       <StyledProfilePageHeader>Who's Watching?</StyledProfilePageHeader>
       <StyledProfileSection>
-        {profileDATA.map(({ profileImg, profileName, colorOne, colorTwo }, index) => {
+        {renderLeftButton()}
+        {currentVisibleProfileAccount?.map(({ profileImg, profileName, colors }, index) => {
           return (
-            <StyledProfileContainer
-              onMouseEnter={() => handleHoverEvent(index)}
-              onMouseLeave={() => handleHoverEvent(1)}
-              isActive={hoveredIndex === index ? true : false}
-              colorOne={colorOne}
-              colorTwo={colorTwo}
-              key={index}
-              id={index}
-              className="profile-container"
-            >
-              <span className="profile-text-wrapper">
-                <img src={profileImg} alt="profile-img" />
-                <p>{profileName}</p>
-              </span>
-            </StyledProfileContainer>
+            <ProfileAccountCard
+              index={index}
+              profileImg={profileImg}
+              colors={colors}
+              profileName={profileName}
+              hoveredIndex={hoveredIndex}
+              handleHoverEvent={handleHoverEvent}
+            />
           );
         })}
         <ProfileBackgroundBlur />
+        {renderRightButton()}
       </StyledProfileSection>
       <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
         <CustomButton onClick={handleSignOut}>Sign Out</CustomButton>

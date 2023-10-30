@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FormInput } from "../form-input/form-input.component";
+import { FormInput } from "../../../../components/form-input/form-input.component";
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../../../setup/utils/firebase/authentication.firebase";
 import { useNavigate } from "react-router-dom";
 import CustomButton from "../../../../components/button/button.component";
