@@ -29,6 +29,7 @@ export const StyledProfileContainer = styled.div`
     }
   }
   .profile-text-wrapper {
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
     transition: transform 0.3s;

@@ -19,9 +19,19 @@ export const StyledProfileSection = styled.div`
     min-height: 50vh;
   }
   button {
-    border: 2px solid red;
-    margin-inline: 1rem;
+    /* inset: 50%; */
+    /* transform: translate(-50%, -50%); */
+    /* margin-inline: 1rem; */
     z-index: inherit;
+    height: 45px;
+    width: 35px;
+    z-index: 1000;
+    background-color: #00000075;
+    border: 2px solid #4b4b4b;
+    backdrop-filter: blur(5px);
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;
 

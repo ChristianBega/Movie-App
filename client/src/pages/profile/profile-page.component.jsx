@@ -6,6 +6,7 @@ import { signOutUser } from "../../setup/utils/firebase/authentication.firebase"
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../setup/contexts/user.context";
 import ProfileAccountCard from "./components/profile-account-card/profile-account-card.component";
+import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 
 const ProfilePage = () => {
   // const navigate = useNavigate();
@@ -13,10 +14,20 @@ const ProfilePage = () => {
   const navigate = useNavigate();
   const [shuffleAccounts, setShuffleAccounts] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(1);
+  const [currentVisibleProfileAccount, setCurrentVisibleProfileAccount] = useState();
 
-  // console.log(currentProfileAccounts);
-
-  // const visibleProfileAccounts = !shuffleAccounts ? currentProfileAccounts.slice(0, 3) : currentProfileAccounts.slice(3, 6);
+  useEffect(() => {
+    if (currentProfileAccounts) {
+      const visibleProfileAccounts = !shuffleAccounts ? currentProfileAccounts.slice(0, 3) : currentProfileAccounts.slice(3, 6);
+      setCurrentVisibleProfileAccount(visibleProfileAccounts);
+      console.log(visibleProfileAccounts.length);
+      if (visibleProfileAccounts.length == 1) {
+        setHoveredIndex(0);
+      }
+    } else {
+      console.log("fetching profiles");
+    }
+  }, [currentProfileAccounts, shuffleAccounts]);
 
   const handleHoverEvent = (index) => {
     setHoveredIndex(index);
@@ -35,8 +46,10 @@ const ProfilePage = () => {
     <>
       <StyledProfilePageHeader>Who's Watching?</StyledProfilePageHeader>
       <StyledProfileSection>
-        <button onClick={handleShuffleProfileAccounts}>Left</button>
-        {currentProfileAccounts?.map(({ profileImg, profileName, colors }, index) => {
+        <button style={{ marginRight: "1rem" }} onClick={handleShuffleProfileAccounts}>
+          <BiChevronLeft style={{ fontSize: "2rem" }} />
+        </button>
+        {currentVisibleProfileAccount?.map(({ profileImg, profileName, colors }, index) => {
           return (
             <ProfileAccountCard
               index={index}
@@ -49,7 +62,9 @@ const ProfilePage = () => {
           );
         })}
         <ProfileBackgroundBlur />
-        <button onClick={handleShuffleProfileAccounts}>Right</button>
+        <button style={{ marginLeft: "1rem" }} onClick={handleShuffleProfileAccounts}>
+          <BiChevronRight style={{ fontSize: "2rem" }} />
+        </button>
       </StyledProfileSection>
       <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
         <CustomButton onClick={handleSignOut}>Sign Out</CustomButton>
