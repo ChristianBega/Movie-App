@@ -14,6 +14,8 @@ const ProfilePage = () => {
   const [shuffleAccounts, setShuffleAccounts] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(1);
 
+  // console.log(currentProfileAccounts);
+
   // const visibleProfileAccounts = !shuffleAccounts ? currentProfileAccounts.slice(0, 3) : currentProfileAccounts.slice(3, 6);
 
   const handleHoverEvent = (index) => {

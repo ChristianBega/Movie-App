@@ -30,7 +30,7 @@ export const UserProvider = ({ children }) => {
       setCurrentProfileAccounts(userAccounts);
     };
     getAllProfileAccounts();
-  }, [currentUser]);
+  }, [currentUser?.uid]);
 
   // UseEffect is called on mount
   useEffect(() => {

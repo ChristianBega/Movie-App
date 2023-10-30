@@ -16,8 +16,9 @@ export const StyledProfileContainer = styled.div`
     top: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    /* background-image: ${({ colors }) => `linear-gradient(160deg, ${colors} 50%, ${colors} 90%)`}; */
+    background-image: ${({ colors }) => (colors && colors.length >= 2 ? `linear-gradient(160deg, ${colors[0]} 50%, ${colors[1]} 90%)` : "initial")};
     animation: rotate 20s infinite;
+    filter: blur(125px) opacity(0.8);
     @media ${device.laptop} {
       height: 400px;
       width: 400px;
@@ -42,10 +43,10 @@ export const StyledProfileContainer = styled.div`
       min-height: 150px;
       min-width: 150px;
       border-radius: 50%;
-      border: 1px solid red;
       display: flex;
       align-items: center;
       z-index: 200;
+      box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     }
     p {
       margin-top: 2rem;

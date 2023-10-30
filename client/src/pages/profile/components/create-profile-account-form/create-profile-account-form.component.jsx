@@ -15,6 +15,7 @@ const colorOptions = [
   ["rgba(71, 40, 2, 0.7)", "rgba(137, 37, 37, 0.655)"],
   ["rgba(255, 51, 153, 0.4)", "rgba(255, 136, 0, 0.4)"],
   ["rgba(255, 102, 204, 0.4)", "rgba(0, 230, 230, 0.4)"],
+  
 ];
 
 export const CreateProfileAccountForm = () => {

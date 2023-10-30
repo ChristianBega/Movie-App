@@ -5,14 +5,21 @@ import { useNavigate } from "react-router-dom";
 const ProfileAccountCard = ({ index, colors, profileImg, profileName, hoveredIndex, handleHoverEvent }) => {
   const [rgbaColors, setRgbaColors] = useState();
   useEffect(() => {
-    const splitString = () => {
+    const formatRgbaColors = () => {
+      // const cleanedString = colorsArrayToString.replace(/(rgba\([^)]+\))/g, '"$1"');
+      // const rgbaArray = cleanedString.split(",");
       const colorsArrayToString = colors.toString();
-      const cleanedString = colorsArrayToString.replace(/(rgba\([^)]+\))/g, '"$1"');
-      const rgbaArray = cleanedString.split(",");
-      setRgbaColors(rgbaArray);
+      console.log(colorsArrayToString);
+      const regex = /(rgba\([^)]+\))/g;
+      const matches = colorsArrayToString.match(regex);
+
+      if (matches) {
+        setRgbaColors(matches);
+      }
     };
-    splitString();
+    formatRgbaColors();
   }, [colors]);
+
   const navigate = useNavigate();
 
   const handleCreateProfileAccount = () => {
@@ -28,7 +35,7 @@ const ProfileAccountCard = ({ index, colors, profileImg, profileName, hoveredInd
       onMouseEnter={() => handleHoverEvent(index)}
       onMouseLeave={() => handleHoverEvent(1)}
       isActive={hoveredIndex === index ? true : false}
-      // colors={rgbaColors}
+      colors={rgbaColors && rgbaColors}
       key={index}
       id={index}
       className="profile-container"

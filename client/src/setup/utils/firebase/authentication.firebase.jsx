@@ -29,6 +29,9 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
 
 //* Creating async function to handle creating a user document for firebase
 export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
+  console.log("Firebase", userAuth);
+  console.log("Firebase", additionalInformation);
+
   // If no user then exit
   if (!userAuth) return;
 
@@ -41,12 +44,18 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
     // if a user doesn't exist then create it
     if (!userSnapshot.exists()) {
       const { email } = userAuth;
+
       const createdAt = new Date();
       const profileAccounts = [
         {
           profileImg: "",
           profileName: "Create an account",
           colors: ["rgba(255, 255, 0, 0.3)", "rgba(255, 102, 0, 0.3)"],
+        },
+        {
+          profileImg: "",
+          profileName: additionalInformation?.username,
+          colors: [" rgba(11, 86, 148, 1)", "rgba(36, 89, 127, 1)"],
         },
       ];
 

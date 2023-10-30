@@ -14,7 +14,7 @@ export const StyledProfileSection = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 60vh;
-  overflow: hidden;
+  overflow: visible;
   @media ${device.desktop} {
     min-height: 50vh;
   }
@@ -30,7 +30,7 @@ export const ProfileBackgroundBlur = styled.span`
   width: 100%;
   position: absolute;
   inset: 0;
-  backdrop-filter: blur(150px);
-  -webkit-backdrop-filter: blur(150px); /* Add this line */
+  backdrop-filter: blur(69px);
+  -webkit-backdrop-filter: blur(150px);
   z-index: -1000;
 `;
