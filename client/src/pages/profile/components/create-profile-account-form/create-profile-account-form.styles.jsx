@@ -23,12 +23,9 @@ export const StyledForm = styled.form`
     h1 {
       ${FORM_HEADER_1}
       margin-bottom: .5rem;
-
       span {
         ${LOGO}
       }
-    }
-    p {
     }
   }
 `;

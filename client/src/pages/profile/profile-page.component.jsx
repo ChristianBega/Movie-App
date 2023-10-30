@@ -9,7 +9,6 @@ import ProfileAccountCard from "./components/profile-account-card/profile-accoun
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 
 const ProfilePage = () => {
-  // const navigate = useNavigate();
   const { currentProfileAccounts } = useContext(UserContext);
   const navigate = useNavigate();
   const [shuffleAccounts, setShuffleAccounts] = useState(false);

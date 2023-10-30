@@ -11,7 +11,6 @@ export const getProfileAccountDocument = async (userUid) => {
 
     if (profileAccountsSnapshot.exists()) {
       const data = profileAccountsSnapshot.data();
-      console.log(data);
       return data.profileAccounts;
     } else {
       console.log("User account documents do not exist.");

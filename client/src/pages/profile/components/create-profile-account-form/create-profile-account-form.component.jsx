@@ -5,9 +5,18 @@ import CustomButton from "../../../../components/button/button.component";
 import { StyledForm, StyledOption } from "./create-profile-account-form.styles";
 import { createProfileAccountDocumentIfAuthenticated } from "../../../../setup/utils/firebase/accountProfiles.firebase";
 import { UserContext } from "../../../../setup/contexts/user.context";
+import avatarOne from "../../../../assets/profile-avatars/avatars_1.webp";
+import avatarTwo from "../../../../assets/profile-avatars/avatars_2.webp";
+import avatarThree from "../../../../assets/profile-avatars/avatars_3.webp";
+import avatarFour from "../../../../assets/profile-avatars/avatars_4.webp";
+import avatarFive from "../../../../assets/profile-avatars/avatars_5.webp";
+import avatarSix from "../../../../assets/profile-avatars/avatars_6.webp";
+import avatarSeven from "../../../../assets/profile-avatars/avatars_7.webp";
+
 const defaultFormFields = {
   profileName: "",
   colors: "",
+  avatars: "",
 };
 const colorOptions = [
   ["rgba(2, 71, 61, 0.7)", "rgba(37, 137, 87, 0.655)"],
@@ -15,12 +24,12 @@ const colorOptions = [
   ["rgba(71, 40, 2, 0.7)", "rgba(137, 37, 37, 0.655)"],
   ["rgba(255, 51, 153, 0.4)", "rgba(255, 136, 0, 0.4)"],
   ["rgba(255, 102, 204, 0.4)", "rgba(0, 230, 230, 0.4)"],
-  
 ];
+const avatarOptions = [avatarOne, avatarTwo, avatarThree, avatarFour, avatarFive, avatarSix, avatarSeven];
 
 export const CreateProfileAccountForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
-  const { profileName, colors } = formFields;
+  const { profileName, colors, avatars } = formFields;
   const { currentUser } = useContext(UserContext);
 
   const navigate = useNavigate();
@@ -39,7 +48,6 @@ export const CreateProfileAccountForm = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      console.log(profileName, colors);
       createProfileAccountDocumentIfAuthenticated(currentUser.uid, profileName, colors);
       resetFormFields();
       navigate("/profile");
@@ -59,6 +67,18 @@ export const CreateProfileAccountForm = () => {
             <StyledOption key={index} value={[color1, color2]}>
               {color1} - {color2}
             </StyledOption>
+          );
+        })}
+      </FormInput>
+
+      <FormInput label="Select your profile avatar" type="select" name="avatars" onChange={handleChange} value={avatars}>
+        {avatarOptions.map((options, index) => {
+          return (
+            <>
+              <StyledOption key={index} value={options}>
+                {options}
+              </StyledOption>
+            </>
           );
         })}
       </FormInput>
