@@ -30,6 +30,7 @@ export const InvertedButton = styled.button`
 `;
 
 export const FormButton = styled.button`
+  min-width: 95px;
   max-width: 103px;
   ${DEFAULT_BUTTON_STYLES}
 `;

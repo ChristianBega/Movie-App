@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { StyledProfileContainer } from "./profile-account-card.styles";
 import { useNavigate } from "react-router-dom";
 
-const ProfileAccountCard = ({ index, colors, profileImg, profileName, hoveredIndex, handleHoverEvent }) => {
+const ProfileAccountCard = ({ index, colors, profileImg, profileName, hoveredIndex, handleHoverEvent, arrayLength }) => {
   const [rgbaColors, setRgbaColors] = useState();
   useEffect(() => {
     const formatRgbaColors = () => {
@@ -21,7 +21,6 @@ const ProfileAccountCard = ({ index, colors, profileImg, profileName, hoveredInd
 
   const handleCreateProfileAccount = () => {
     navigate("/create-profile-account");
-    console.log("created");
   };
   const handleChangingProfileAccount = () => {
     console.log("self destruct");
@@ -30,7 +29,7 @@ const ProfileAccountCard = ({ index, colors, profileImg, profileName, hoveredInd
     <StyledProfileContainer
       onClick={profileName === "Create an account" ? handleCreateProfileAccount : handleChangingProfileAccount}
       onMouseEnter={() => handleHoverEvent(index)}
-      onMouseLeave={() => handleHoverEvent(1)}
+      onMouseLeave={() => handleHoverEvent(arrayLength === 1 ? 0 : 1)}
       isActive={hoveredIndex === index ? true : false}
       colors={rgbaColors && rgbaColors}
       key={index}

@@ -30,7 +30,8 @@ export const getProfileAccountDocument = async (userUid, onUpdate) => {
   }
 };
 
-export const createProfileAccountDocumentIfAuthenticated = async (userUid, profile, colors) => {
+export const createProfileAccountDocumentIfAuthenticated = async (userUid, profile, colors, avatars) => {
+  console.log(profile, colors, avatars);
   if (!userUid) return;
   try {
     const profileAccountsRef = doc(db, "users", userUid);
@@ -42,7 +43,7 @@ export const createProfileAccountDocumentIfAuthenticated = async (userUid, profi
       const newProfile = {
         profileName: profile,
         colors: [colors],
-        profileImg: profileImg2,
+        profileImg: avatars,
       };
       currentProfileAccounts.push(newProfile);
       await updateDoc(profileAccountsRef, {

@@ -68,6 +68,7 @@ const ProfilePage = () => {
               profileName={profileName}
               hoveredIndex={hoveredIndex}
               handleHoverEvent={handleHoverEvent}
+              arrayLength={currentVisibleProfileAccount.length}
             />
           );
         })}
