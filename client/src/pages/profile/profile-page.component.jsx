@@ -19,7 +19,6 @@ const ProfilePage = () => {
     if (currentProfileAccounts) {
       const visibleProfileAccounts = !shuffleAccounts ? currentProfileAccounts.slice(0, 3) : currentProfileAccounts.slice(3, 6);
       setCurrentVisibleProfileAccount(visibleProfileAccounts);
-      console.log(visibleProfileAccounts.length);
       if (visibleProfileAccounts.length == 1) {
         setHoveredIndex(0);
       }

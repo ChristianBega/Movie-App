@@ -26,11 +26,18 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     const getAllProfileAccounts = async () => {
-      const userAccounts = await getProfileAccountDocument(currentUser?.uid);
-      setCurrentProfileAccounts(userAccounts);
+      if (!currentUser?.uid) return;
+      const unsubscribe = await getProfileAccountDocument(currentUser?.uid, setCurrentProfileAccounts);
+      if (typeof unsubscribe === "function") {
+        return () => {
+          console.log("Unsubscribing...");
+          unsubscribe();
+        };
+      }
+      setCurrentProfileAccounts(unsubscribe);
     };
     getAllProfileAccounts();
-  }, [currentUser?.uid]);
+  }, [currentUser?.uid, setCurrentProfileAccounts]);
 
   // UseEffect is called on mount
   useEffect(() => {

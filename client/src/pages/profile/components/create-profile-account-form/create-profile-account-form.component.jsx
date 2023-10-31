@@ -15,12 +15,12 @@ import avatarSeven from "../../../../assets/profile-avatars/avatars_7.webp";
 
 const defaultFormFields = {
   profileName: "",
-  colors: "",
-  avatars: "",
+  colors: "rgba(38, 60, 187, 0.7), rgba(43, 5, 90, 0.8)",
+  avatars: avatarOne,
 };
 const colorOptions = [
-  ["rgba(2, 71, 61, 0.7)", "rgba(37, 137, 87, 0.655)"],
   ["rgba(38, 60, 187, 0.7)", "rgba(43, 5, 90, 0.8)"],
+  ["rgba(2, 71, 61, 0.7)", "rgba(37, 137, 87, 0.655)"],
   ["rgba(71, 40, 2, 0.7)", "rgba(137, 37, 37, 0.655)"],
   ["rgba(255, 51, 153, 0.4)", "rgba(255, 136, 0, 0.4)"],
   ["rgba(255, 102, 204, 0.4)", "rgba(0, 230, 230, 0.4)"],
@@ -39,8 +39,6 @@ export const CreateProfileAccountForm = () => {
   };
   const handleChange = (event) => {
     const { name, value } = event.target;
-    // console.log(name, value);
-
     setFormFields({ ...formFields, [name]: value });
   };
 
