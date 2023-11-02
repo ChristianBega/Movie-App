@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { StyledFormInputContainer, StyledSelectInput } from "./form-input.styles";
 const defaultColor = ["rgba(38, 60, 187, 0.7)", "rgba(43, 5, 90, 0.8)"];
 
-export const FormInput = ({ label, type, children, ...otherProps }) => {
+export const FormInput = ({ label, type, rgba, children, ...otherProps }) => {
   const [rgbaColors, setRgbaColors] = useState(defaultColor);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export const FormInput = ({ label, type, children, ...otherProps }) => {
       {label && <label>{label}</label>}
       {type === "select" ? (
         <>
-          <StyledSelectInput rgbaColors={rgbaColors} className="form-input" {...otherProps}>
+          <StyledSelectInput rgbaColors={rgba ? rgbaColors : []} className="form-input" {...otherProps}>
             {children}
           </StyledSelectInput>
         </>

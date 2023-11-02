@@ -8,6 +8,7 @@ import {
   FavoritesButtonSm,
   FormButton,
   InvertedButton,
+  PlayButton,
   RemoveFavoritesButton,
 } from "./button.styles";
 
@@ -21,6 +22,7 @@ export const BUTTON_TYPES_CLASSES = {
   favoritesSm: "favoritesSm",
   back: "back",
   removeFavorites: "removeFavorites",
+  play: "play",
 };
 
 const getButton = (buttonType = BUTTON_TYPES_CLASSES.base) =>
@@ -34,6 +36,7 @@ const getButton = (buttonType = BUTTON_TYPES_CLASSES.base) =>
     [BUTTON_TYPES_CLASSES.removeFavorites]: RemoveFavoritesButton,
     [BUTTON_TYPES_CLASSES.favoritesSm]: FavoritesButtonSm,
     [BUTTON_TYPES_CLASSES.back]: BackButton,
+    [BUTTON_TYPES_CLASSES.play]: PlayButton,
   }[buttonType]);
 
 const CustomButton = ({ children, buttonType, ...otherProps }) => {

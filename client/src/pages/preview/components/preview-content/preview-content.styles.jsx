@@ -4,15 +4,22 @@ import { device } from "../../../../device-breakpoints.styles";
 
 export const PreviewContentContainer = styled.div`
   ${PADDING_SM}
-  width: 90vw;
-  margin-top: 1rem;
-
+  width: 100vw;
+  /* margin-top: 1rem; */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   @media ${device.laptop} {
-    padding: 2rem;
+    flex-direction: row;
+    align-items: center;
   }
 
   @media ${device.desktop} {
     padding: 4rem;
+    flex-direction: row;
+  }
+  @media ${device.desktopLarge} {
+    flex-direction: row;
   }
   & .movie-title {
     ${PREVIEW_HEADER_2}
@@ -62,7 +69,12 @@ export const PreviewContentContainer = styled.div`
   }
   .button-container {
     display: flex;
-    gap: 0.5rem;
+    flex-direction: column;
+    gap: 1rem;
+    @media ${device.laptop} {
+      flex-direction: row;
+      gap: 0.5rem;
+    }
     & .success-alert-add {
       ${DEFAULT_ALERT}
       border: 2px solid #4caf4fbf;

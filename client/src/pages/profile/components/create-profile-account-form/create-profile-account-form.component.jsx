@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { FormInput } from "../../../../components/form-input/form-input.component";
 import { useNavigate } from "react-router-dom";
-import CustomButton from "../../../../components/button/button.component";
+import CustomButton, { BUTTON_TYPES_CLASSES } from "../../../../components/button/button.component";
 import { StyledForm, StyledOption } from "./create-profile-account-form.styles";
 import { createProfileAccountDocumentIfAuthenticated } from "../../../../setup/utils/firebase/accountProfiles.firebase";
 import { UserContext } from "../../../../setup/contexts/user.context";
@@ -15,12 +15,12 @@ import avatarSeven from "../../../../assets/profile-avatars/avatars_7.webp";
 
 const defaultFormFields = {
   profileName: "",
-  colors: "",
-  avatars: "",
+  colors: "rgba(38, 60, 187, 0.7), rgba(43, 5, 90, 0.8)",
+  avatars: avatarSeven,
 };
 const colorOptions = [
-  ["rgba(2, 71, 61, 0.7)", "rgba(37, 137, 87, 0.655)"],
   ["rgba(38, 60, 187, 0.7)", "rgba(43, 5, 90, 0.8)"],
+  ["rgba(2, 71, 61, 0.7)", "rgba(37, 137, 87, 0.655)"],
   ["rgba(71, 40, 2, 0.7)", "rgba(137, 37, 37, 0.655)"],
   ["rgba(255, 51, 153, 0.4)", "rgba(255, 136, 0, 0.4)"],
   ["rgba(255, 102, 204, 0.4)", "rgba(0, 230, 230, 0.4)"],
@@ -31,7 +31,7 @@ export const CreateProfileAccountForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { profileName, colors, avatars } = formFields;
   const { currentUser } = useContext(UserContext);
-
+  console.log(formFields);
   const navigate = useNavigate();
 
   const resetFormFields = () => {
@@ -39,8 +39,6 @@ export const CreateProfileAccountForm = () => {
   };
   const handleChange = (event) => {
     const { name, value } = event.target;
-    // console.log(name, value);
-
     setFormFields({ ...formFields, [name]: value });
   };
 
@@ -48,7 +46,7 @@ export const CreateProfileAccountForm = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      createProfileAccountDocumentIfAuthenticated(currentUser.uid, profileName, colors);
+      createProfileAccountDocumentIfAuthenticated(currentUser.uid, profileName, colors, avatars);
       resetFormFields();
       navigate("/profile");
     } catch (error) {
@@ -60,7 +58,7 @@ export const CreateProfileAccountForm = () => {
     <StyledForm onSubmit={handleFormSubmit}>
       <FormInput label="Profile Account Name" type="text" required onChange={handleChange} name="profileName" value={profileName} />
 
-      <FormInput label="Select your profile background colors" type="select" name="colors" onChange={handleChange} value={colors}>
+      <FormInput label="Select your profile background colors" type="select" rgba={"true"} name="colors" onChange={handleChange} value={colors}>
         {colorOptions.map((options, index) => {
           const [color1, color2] = options;
           return (
@@ -83,7 +81,7 @@ export const CreateProfileAccountForm = () => {
         })}
       </FormInput>
 
-      <CustomButton buttonType="form" type="submit">
+      <CustomButton type="submit" buttonType={BUTTON_TYPES_CLASSES.form}>
         Submit
       </CustomButton>
     </StyledForm>

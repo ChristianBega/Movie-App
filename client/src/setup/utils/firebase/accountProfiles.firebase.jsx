@@ -1,27 +1,37 @@
 // Import firebase from index
-import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "./index.firebase";
 import profileImg2 from "../../../assets/profile-avatars/avatars_4.webp";
 
-export const getProfileAccountDocument = async (userUid) => {
+export const getProfileAccountDocument = async (userUid, onUpdate) => {
   if (!userUid) return;
   try {
-    const profileAccounts = doc(db, "users", userUid);
-    const profileAccountsSnapshot = await getDoc(profileAccounts);
+    const profileAccountsRef = doc(db, "users", userUid);
 
-    if (profileAccountsSnapshot.exists()) {
-      const data = profileAccountsSnapshot.data();
-      return data.profileAccounts;
-    } else {
-      console.log("User account documents do not exist.");
-      return null; // You can return null or an empty object as appropriate
-    }
+    const unsubscribe = onSnapshot(profileAccountsRef, (profileAccountsSnapshots) => {
+      if (profileAccountsSnapshots.exists()) {
+        const data = profileAccountsSnapshots.data();
+        if (data.profileAccounts) {
+          onUpdate(data.profileAccounts);
+        } else {
+          console.log("No profileAccounts found in the document.");
+          onUpdate([]);
+        }
+      } else {
+        console.log("User profile account documents do not exist.");
+        onUpdate([]);
+      }
+    });
+    return unsubscribe;
   } catch (error) {
-    console.error("Error deleting favorite movie:", error);
+    console.error("Error Adding Profile Account:", error);
+    onUpdate([]);
+    return () => {};
   }
 };
 
-export const createProfileAccountDocumentIfAuthenticated = async (userUid, profile, colors) => {
+export const createProfileAccountDocumentIfAuthenticated = async (userUid, profile, colors, avatars) => {
+  console.log(profile, colors, avatars);
   if (!userUid) return;
   try {
     const profileAccountsRef = doc(db, "users", userUid);
@@ -33,7 +43,7 @@ export const createProfileAccountDocumentIfAuthenticated = async (userUid, profi
       const newProfile = {
         profileName: profile,
         colors: [colors],
-        profileImg: profileImg2,
+        profileImg: avatars,
       };
       currentProfileAccounts.push(newProfile);
       await updateDoc(profileAccountsRef, {

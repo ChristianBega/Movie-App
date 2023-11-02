@@ -1,5 +1,5 @@
 import { css, styled } from "styled-components";
-import { DEFAULT_HOVER, FLEX_CENTERED, REMOVE_DEFAULT_HOVER } from "../../index.styles";
+import { BUTTON_TEXT, DEFAULT_HOVER, FLEX_CENTERED, REMOVE_DEFAULT_HOVER } from "../../index.styles";
 import { device } from "../../device-breakpoints.styles";
 const DEFAULT_BUTTON_COLORS = css`
   background-color: #141414;
@@ -16,6 +16,7 @@ const DEFAULT_BUTTON_STYLES = css`
   font-size: 16px;
   ${DEFAULT_HOVER}
   ${DEFAULT_BUTTON_COLORS}
+  ${BUTTON_TEXT}
 `;
 
 export const BaseButton = styled.button`
@@ -30,6 +31,7 @@ export const InvertedButton = styled.button`
 `;
 
 export const FormButton = styled.button`
+  min-width: 95px;
   max-width: 103px;
   ${DEFAULT_BUTTON_STYLES}
 `;
@@ -92,5 +94,22 @@ export const BackButton = styled.button`
   }
   @media ${device.desktop} {
     left: 4rem;
+  }
+`;
+
+export const PlayButton = styled.button`
+  ${DEFAULT_BUTTON_STYLES}
+  border-color: #a46609 !important;
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 12px 4px #a4660992;
+    transform: scale(1.01);
+  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  & .play-icon {
+    color: #fff !important;
+    margin-right: 0.5rem;
   }
 `;
