@@ -125,3 +125,15 @@ export const DEFAULT_ALERT = css`
   align-items: center;
   gap: 0.25rem;
 `;
+
+// Font sizes
+
+export const BUTTON_TEXT = css`
+  font-size: 16px;
+  @media ${device.laptop} {
+    font-size: 18px !important;
+  }
+  /* @media ${device.desktop} {
+    font-size: 20px !important;
+  } */
+`;
