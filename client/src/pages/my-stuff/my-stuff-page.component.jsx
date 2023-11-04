@@ -46,7 +46,6 @@ const MyStuffPage = () => {
         : [],
   });
 
-  console.log(currentFavorites);
   return (
     <>
       <section
@@ -72,7 +71,7 @@ const MyStuffPage = () => {
             } else if (query.isError) {
               return <p key={index}>Error: {query.error.message}</p>;
             } else {
-              return <FavoritesCard key={index} movie={query.data} error={query.isError} />;
+              return <FavoritesCard key={index} movie={query.data} error={query.isError} mediaType={currentFavorites[index].mediaType} />;
             }
           })
         )}

@@ -123,7 +123,7 @@ const HomePage = () => {
     <>
       <section id="hero-image-slider-section">
         <Suspense fallback={<LoadingScreen />}>
-          <HeroImageSlider topRated={data.data.results.slice(0, 6)} />
+          <HeroImageSlider topRated={data.data.results.slice(0, 6)} mediaType={"movie"} />
         </Suspense>
       </section>
       <SliderRailsSection id="slider-rails-section">

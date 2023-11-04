@@ -78,7 +78,7 @@ export const PreviewContent = ({ movie = {}, mediaType }) => {
       setTrailer(trailer);
     };
     fetchTrailer();
-  }, [movie, mediaType, id]);
+  }, [mediaType, id, movie]);
 
   return (
     <PreviewContentContainer>

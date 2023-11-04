@@ -11,7 +11,7 @@ import { createFavoriteDocumentIfAuthenticated, deleteFavoriteDocumentIfAuthenti
 import { UserContext } from "../../../../setup/contexts/user.context";
 import { FavoritesContext } from "../../../../setup/contexts/favorites.context";
 
-const HeroImageSlider = ({ topRated }) => {
+const HeroImageSlider = ({ topRated, mediaType }) => {
   // Tracking current index, starts at 0, used to determine which slide we are on.
   const [currentIndex, setCurrentIndex] = useState(0);
   const [status, setStatus] = useState(null);
@@ -123,7 +123,7 @@ const HeroImageSlider = ({ topRated }) => {
                 )}
               </>
               <CustomButton buttonType={BUTTON_TYPES_CLASSES.favoritesSm}>
-                <Link to="/preview" state={{ movie: topRated[currentIndex] }}>
+                <Link to="/preview" state={{ movie: topRated[currentIndex], mediaType: mediaType }}>
                   More info
                 </Link>
               </CustomButton>
