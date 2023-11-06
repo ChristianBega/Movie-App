@@ -20,6 +20,7 @@ import { RecommendationContext } from "../../setup/contexts/recommendations.cont
 import LoadingScreen from "../../pages/loading/loading-page.component";
 
 const SectionSliderRail = ({ sectionData, urlPath, mediaType }) => {
+  // console.log(mediaType);
   const { count } = useContext(RecommendationContext);
   const sliderRef = useHorizontalScroll();
 
@@ -78,7 +79,7 @@ const SectionSliderRail = ({ sectionData, urlPath, mediaType }) => {
             {data.data.results.map((movie, index) => {
               return (
                 <Suspense key={index} fallback={<LoadingCard />}>
-                  <SectionSliderRailCard movie={movie} key={index + count} mediaType={sectionData.mediaType || mediaType} />
+                  <SectionSliderRailCard movie={movie} key={index + count} mediaType={mediaType || sectionData.mediaType} />
                 </Suspense>
               );
             })}

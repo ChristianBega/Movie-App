@@ -4,6 +4,7 @@ import { useMediaQuery } from "react-responsive";
 import { device } from "../../../../device-breakpoints.styles";
 
 const PreviewVideoPlayer = ({ trailer, viewTrailer }) => {
+  console.log(trailer);
   const [officialTrailer, setOfficialTrailer] = useState();
   const isLaptopOrLarger = useMediaQuery({
     query: device.desktop,
@@ -11,16 +12,20 @@ const PreviewVideoPlayer = ({ trailer, viewTrailer }) => {
 
   const findOfficialTrailer = (arr) => {
     for (const video of arr) {
-      if (video.name.includes("Official Trailer" || "official trailer")) {
+      if (/\bOfficial Trailer\b/i.test(video.name)) {
+        return video;
+      } else if (/(official trailer|Trailer|trailer)/i.test(video.name)) {
         return video;
       }
     }
-    return null;
+    return arr[0];
   };
 
   useEffect(() => {
-    const test = findOfficialTrailer(trailer || []);
-    setOfficialTrailer(test);
+    if (trailer) {
+      const test = findOfficialTrailer(trailer);
+      setOfficialTrailer(test);
+    }
   }, [trailer]);
 
   if (viewTrailer) {
