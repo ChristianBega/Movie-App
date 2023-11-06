@@ -4,6 +4,7 @@ import { useMediaQuery } from "react-responsive";
 import { device } from "../../../../device-breakpoints.styles";
 
 const PreviewVideoPlayer = ({ trailer, viewTrailer }) => {
+  console.log(trailer);
   const [officialTrailer, setOfficialTrailer] = useState();
   const isLaptopOrLarger = useMediaQuery({
     query: device.desktop,

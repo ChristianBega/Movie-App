@@ -6,9 +6,9 @@ const ProfileAccountCard = ({ index, colors, profileImg, profileName, hoveredInd
   const [rgbaColors, setRgbaColors] = useState();
   useEffect(() => {
     const formatRgbaColors = () => {
-      const colorsArrayToString = colors.toString();
+      const colorsArrayToString = colors && colors.toString();
       const regex = /(rgba\([^)]+\))/g;
-      const matches = colorsArrayToString.match(regex);
+      const matches = colorsArrayToString && colorsArrayToString.match(regex);
 
       if (matches) {
         setRgbaColors(matches);

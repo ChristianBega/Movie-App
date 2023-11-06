@@ -19,9 +19,6 @@ export const StyledProfileSection = styled.div`
     min-height: 50vh;
   }
   button {
-    /* inset: 50%; */
-    /* transform: translate(-50%, -50%); */
-    /* margin-inline: 1rem; */
     z-index: inherit;
     height: 45px;
     width: 35px;
