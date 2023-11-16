@@ -10,6 +10,8 @@ import { Link } from "react-router-dom";
 import { createFavoriteDocumentIfAuthenticated, deleteFavoriteDocumentIfAuthenticated } from "../../../../setup/utils/firebase/favorites.firebase";
 import { UserContext } from "../../../../setup/contexts/user.context";
 import { FavoritesContext } from "../../../../setup/contexts/favorites.context";
+import { useMediaQuery } from "react-responsive";
+import { device } from "../../../../device-breakpoints.styles";
 
 const HeroImageSlider = ({ topRated, mediaType }) => {
   // Tracking current index, starts at 0, used to determine which slide we are on.
@@ -20,6 +22,9 @@ const HeroImageSlider = ({ topRated, mediaType }) => {
   const { currentUser } = useContext(UserContext);
   const { fetchFavorites, currentFavorites } = useContext(FavoritesContext);
 
+  const isLaptopOrLarger = useMediaQuery({
+    query: device.laptop,
+  });
   // Destructuring each topRated object at the current index.
   const { backdrop_path, title, genre_ids, vote_average, id } = topRated[currentIndex];
   // goToSlide - takes currentIndex and goes to that slide
@@ -90,7 +95,7 @@ const HeroImageSlider = ({ topRated, mediaType }) => {
               <div>
                 <img src={TomatoImage} />
               </div>
-              <small>{vote_average * 10}%</small>
+              <small>{vote_average.toFixed(1) * 10}%</small>
               {genre_ids?.slice(0, 3).map((id) => {
                 return <p key={id}>&nbsp; &#183; &nbsp;{generateGenre(id)}&nbsp;</p>;
               })}
@@ -110,7 +115,7 @@ const HeroImageSlider = ({ topRated, mediaType }) => {
                         </CustomButton>
                         {showSuccessAlert && (
                           <p className={showSuccessAlert === "Removed from favorites" ? "success-alert-remove" : "success-alert-add"}>
-                            <span>{showSuccessAlert}</span> <AiOutlineCheck />
+                            {isLaptopOrLarger && <span>{showSuccessAlert}</span>} <AiOutlineCheck />
                           </p>
                         )}
                       </>

@@ -51,22 +51,37 @@ export const StyledCardOverLay = styled(motion.div)`
     justify-content: flex-end;
     height: 100%;
     width: 100%;
-    padding: 1rem;
+    padding: 0.5rem;
     opacity: 0;
     transition: all 0.2s ease-in-out;
     transition-duration: 0.3s;
     h3 {
-      font-size: 18px;
+      font-size: 14px;
       font-weight: bold;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       max-width: 100%;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+
+      @media ${device.laptop} {
+        white-space: nowrap;
+        font-size: 18px;
+      }
     }
+
     span {
       display: flex;
       align-items: center;
       gap: 0.2;
+      font-size: 14px;
+
+      @media ${device.laptop} {
+        white-space: nowrap;
+
+        font-size: 18px;
+      }
     }
     ul {
       margin-top: 0.5rem;

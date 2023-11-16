@@ -72,9 +72,10 @@ export const RemoveFavoritesButton = styled.button`
   padding: 10px 20px;
   border-radius: 50px;
   font-size: 16px;
+  ${FLEX_CENTERED}
   ${REMOVE_BUTTON_COLORS}
   ${REMOVE_DEFAULT_HOVER}
-  ${FLEX_CENTERED}
+  ${BUTTON_TEXT}
 `;
 export const BackButton = styled.button`
   position: absolute;

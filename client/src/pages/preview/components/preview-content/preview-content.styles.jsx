@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { PADDING_SM, PREVIEW_HEADER_2, DEFAULT_ALERT } from "../../../../index.styles";
+import { PADDING_SM, PREVIEW_HEADER_2, DEFAULT_ALERT, BUTTON_TEXT } from "../../../../index.styles";
 import { device } from "../../../../device-breakpoints.styles";
 
 export const PreviewContentContainer = styled.div`
@@ -70,18 +70,23 @@ export const PreviewContentContainer = styled.div`
   .button-container {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.5rem;
     @media ${device.laptop} {
       flex-direction: row;
       gap: 0.5rem;
     }
     & .success-alert-add {
       ${DEFAULT_ALERT}
+      ${BUTTON_TEXT}
       border: 2px solid #4caf4fbf;
     }
     & .success-alert-remove {
       ${DEFAULT_ALERT}
+      ${BUTTON_TEXT}
       border: 2px solid #afad4cbe;
+    }
+    & .play-icon {
+      margin-right: 0.5rem;
     }
   }
 `;
