@@ -64,13 +64,14 @@ const ProfilePage = () => {
           <StyledProfilePageHeader>Who's Watching?</StyledProfilePageHeader>
           <StyledProfileSection>
             {renderLeftButton()}
-            {currentVisibleProfileAccount?.map(({ profileImg, profileName, colors }, index) => {
+            {currentVisibleProfileAccount?.map(({ profileImg, profileName, colors, profileId }, index) => {
               return (
                 <ProfileAccountCard
                   key={index}
                   index={index}
                   profileImg={profileImg}
                   colors={colors}
+                  profileId={profileId}
                   profileName={profileName}
                   hoveredIndex={hoveredIndex}
                   handleHoverEvent={handleHoverEvent}

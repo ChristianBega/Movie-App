@@ -8,9 +8,12 @@ import { useMediaQuery } from "react-responsive";
 import { device } from "../../device-breakpoints.styles";
 import { NavigationDropDownMenu } from "./navigation-drop-down-menu/navigation-drop-down-menu.component";
 import { VscAccount } from "react-icons/vsc";
+import { UserContext } from "../../setup/contexts/user.context";
 import "../../app.scss";
 export const Navigation = () => {
   const { isAuthorized } = useContext(AuthContext);
+  const { currentProfileAccount } = useContext(UserContext);
+
   const location = useLocation();
 
   const isLaptopOrLarger = useMediaQuery({
@@ -27,9 +30,16 @@ export const Navigation = () => {
       {isAuthorized ? (
         <NavigationItemContainer>
           {isLaptopOrLarger ? <NavigationList /> : <NavigationDropDownMenu />}
-          {/* <div className="navigation-menu-item">Search bar</div> */}
           <Link to="/profile" className="navigation-menu-item">
-            {isAuthorized && location.pathname !== "/profile" && <VscAccount style={{ fontSize: "2.2rem" }} />}
+            {isAuthorized && location.pathname !== "/profile" && (
+              <>
+                {currentProfileAccount.profileImg ? (
+                  <img src={currentProfileAccount.profileImg} alt="User profile image" />
+                ) : (
+                  <VscAccount style={{ fontSize: "2.8rem" }} />
+                )}
+              </>
+            )}
           </Link>
         </NavigationItemContainer>
       ) : (

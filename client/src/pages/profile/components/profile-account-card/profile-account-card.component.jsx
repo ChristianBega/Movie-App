@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { StyledProfileContainer } from "./profile-account-card.styles";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../../../setup/contexts/user.context";
 
-const ProfileAccountCard = ({ index, colors, profileImg, profileName, hoveredIndex, handleHoverEvent, arrayLength }) => {
+const ProfileAccountCard = ({ index, colors, profileImg, profileName, hoveredIndex, handleHoverEvent, arrayLength, profileId }) => {
   const [rgbaColors, setRgbaColors] = useState();
+  const { setCurrentProfileId } = useContext(UserContext);
   useEffect(() => {
     const formatRgbaColors = () => {
       const colorsArrayToString = colors && colors.toString();
@@ -23,7 +25,8 @@ const ProfileAccountCard = ({ index, colors, profileImg, profileName, hoveredInd
     navigate("/create-profile-account");
   };
   const handleChangingProfileAccount = () => {
-    console.log("self destruct");
+    setCurrentProfileId(profileId);
+    navigate("/");
   };
   return (
     <StyledProfileContainer
@@ -41,6 +44,7 @@ const ProfileAccountCard = ({ index, colors, profileImg, profileName, hoveredInd
           <img src={profileImg} alt="profile-img" />
         </div>
         <p>{profileName}</p>
+        {/* <p>{profileId}</p> */}
       </span>
     </StyledProfileContainer>
   );

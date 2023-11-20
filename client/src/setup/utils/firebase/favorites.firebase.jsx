@@ -1,9 +1,8 @@
 // Import firebase from index
-import { doc, getDoc,  setDoc, updateDoc,  } from "firebase/firestore";
-import {  db } from "./index.firebase";
+import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { db } from "./index.firebase";
 
 export const createFavoriteDocumentIfAuthenticated = async (movieId, mediaType, userUid) => {
-  console.log(movieId, mediaType, userUid);
   try {
     const favoritesRef = doc(db, "favorites", userUid);
     const docSnapshot = await getDoc(favoritesRef);
@@ -35,6 +34,7 @@ export const createFavoriteDocumentIfAuthenticated = async (movieId, mediaType, 
     } else {
       // If the document does not exist, create a new one with the movie object
       await setDoc(favoritesRef, {
+        // userProfiles
         movies: [newMovie],
       });
       console.log("New document created with the movie.");
@@ -45,7 +45,6 @@ export const createFavoriteDocumentIfAuthenticated = async (movieId, mediaType, 
 };
 
 export const deleteFavoriteDocumentIfAuthenticated = async (movieId, userUid) => {
-  console.log(movieId, userUid);
   try {
     const favoritesRef = doc(db, "favorites", userUid);
     const favoritesSnapshot = await getDoc(favoritesRef);
