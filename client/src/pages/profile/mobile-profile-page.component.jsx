@@ -37,6 +37,7 @@ const MobileProfilePage = () => {
           profileImg={currentProfileAccounts[currentIndex]?.profileImg}
           colors={currentProfileAccounts[currentIndex]?.colors}
           profileName={currentProfileAccounts[currentIndex]?.profileName}
+          profileId={currentProfileAccounts[currentIndex]?.profileId}
           hoveredIndex={currentIndex}
           arrayLength={currentProfileAccounts.length}
           handleHoverEvent={() => null}

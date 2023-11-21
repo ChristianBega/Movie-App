@@ -10,7 +10,6 @@ export const FavoritesContext = createContext({
 export const FavoritesProvider = ({ children }) => {
   const [currentFavorites, setCurrentFavorites] = useState([]);
   const { currentUser, activeUser } = useContext(UserContext);
-  console.log(activeUser);
 
   const fetchFavorites = async () => {
     const favorites = await getFavoriteDocument(activeUser);
