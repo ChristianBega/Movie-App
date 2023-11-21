@@ -89,7 +89,7 @@ export const PreviewContent = ({ movie = {}, mediaType }) => {
           <div>
             <img src={TomatoImage} alt="Tomato" />
           </div>
-          <small>{vote_average.toFixed(1) * 10}%</small>
+          <small>{vote_average?.toFixed(1) * 10}%</small>
           <div className="genres-container">
             {(genre_ids || genres)?.slice(0, 4).map((item) => {
               const id = typeof item === "object" ? item.id : item;
