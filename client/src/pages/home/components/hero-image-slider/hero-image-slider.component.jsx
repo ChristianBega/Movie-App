@@ -19,7 +19,7 @@ const HeroImageSlider = ({ topRated, mediaType }) => {
   const [status, setStatus] = useState(null);
   const [showSuccessAlert, setShowSuccessAlert] = useState(null);
 
-  const { currentUser } = useContext(UserContext);
+  const { activeUser } = useContext(UserContext);
   const { fetchFavorites, currentFavorites } = useContext(FavoritesContext);
 
   const isLaptopOrLarger = useMediaQuery({
@@ -41,7 +41,7 @@ const HeroImageSlider = ({ topRated, mediaType }) => {
   const handleAddToFavorites = async () => {
     console.log("test");
     try {
-      await createFavoriteDocumentIfAuthenticated(id, "movie", currentUser.uid);
+      await createFavoriteDocumentIfAuthenticated(id, "movie", activeUser);
       setStatus(true);
       // setShowSuccessAlert(true);
       setShowSuccessAlert("Added to favorites");
@@ -54,7 +54,7 @@ const HeroImageSlider = ({ topRated, mediaType }) => {
   };
   const handleRemoveFromFavorites = async () => {
     try {
-      await deleteFavoriteDocumentIfAuthenticated(id, currentUser.uid);
+      await deleteFavoriteDocumentIfAuthenticated(id, activeUser);
       setStatus(true);
       setShowSuccessAlert("Removed from favorites");
       setTimeout(() => {

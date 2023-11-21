@@ -9,6 +9,7 @@ export const UserContext = createContext({
   currentUser: null,
   currentProfileId: "",
   currentProfileAccount: [],
+  activeUser: "",
   setCurrentUser: () => null,
   setCurrentProfileId: () => null,
   setCurrentProfileAccount: () => null,
@@ -91,6 +92,7 @@ export const UserProvider = ({ children }) => {
     setCurrentProfileId,
     currentProfileAccount,
     setCurrentProfileAccount,
+    activeUser,
   };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };

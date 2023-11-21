@@ -13,7 +13,7 @@ import { CiPlay1 } from "react-icons/ci";
 import axios from "axios";
 export const PreviewContent = ({ movie = {}, mediaType }) => {
   const { overview, vote_average, title, release_date, genre_ids, genres, name, first_air_date, id } = movie;
-  const { currentUser } = useContext(UserContext);
+  const { activeUser } = useContext(UserContext);
   const { fetchFavorites, currentFavorites } = useContext(FavoritesContext);
   const [showSuccessAlert, setShowSuccessAlert] = useState(null);
   const [status, setStatus] = useState(null);
@@ -28,7 +28,7 @@ export const PreviewContent = ({ movie = {}, mediaType }) => {
 
   const handleAddToFavorites = async () => {
     try {
-      await createFavoriteDocumentIfAuthenticated(id, mediaType, currentUser.uid);
+      await createFavoriteDocumentIfAuthenticated(id, mediaType, activeUser);
       setStatus(true);
       setShowSuccessAlert("Added to favorites");
       setTimeout(() => {
@@ -41,7 +41,7 @@ export const PreviewContent = ({ movie = {}, mediaType }) => {
 
   const handleRemoveFromFavorites = async () => {
     try {
-      await deleteFavoriteDocumentIfAuthenticated(id, currentUser.uid);
+      await deleteFavoriteDocumentIfAuthenticated(id, activeUser);
       setStatus(true);
       setShowSuccessAlert("Removed from favorites");
       setTimeout(() => {
