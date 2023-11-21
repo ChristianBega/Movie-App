@@ -27,16 +27,17 @@ const MobileProfilePage = () => {
 
   return (
     <>
-      <StyledProfilePageHeader>Who's Watching?</StyledProfilePageHeader>
       <StyledProfileSection>
         <button style={{ marginRight: "1rem" }} onClick={handlePrev}>
           <BiChevronLeft style={{ fontSize: "2rem" }} />
         </button>
         <ProfileAccountCard
+          key={currentIndex}
           index={currentIndex}
           profileImg={currentProfileAccounts[currentIndex]?.profileImg}
           colors={currentProfileAccounts[currentIndex]?.colors}
           profileName={currentProfileAccounts[currentIndex]?.profileName}
+          profileId={currentProfileAccounts[currentIndex]?.profileId}
           hoveredIndex={currentIndex}
           arrayLength={currentProfileAccounts.length}
           handleHoverEvent={() => null}
@@ -47,9 +48,6 @@ const MobileProfilePage = () => {
           <BiChevronRight style={{ fontSize: "2rem" }} />
         </button>
       </StyledProfileSection>
-      <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-        <CustomButton onClick={handleSignOut}>Sign Out</CustomButton>
-      </div>
     </>
   );
 };
