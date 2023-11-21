@@ -6,6 +6,8 @@ import { BiChevronLeft } from "react-icons/bi";
 
 export const PreviewHero = ({ movieBackDrop, previousPath }) => {
   const [originalPath, setOriginalPath] = useState(previousPath);
+  console.log("Line 9", previousPath);
+  console.log("Line 9", originalPath);
 
   useEffect(() => {
     if (previousPath === "/" || previousPath === "/movies" || previousPath === "/tv-shows" || previousPath === "/my-stuff") {

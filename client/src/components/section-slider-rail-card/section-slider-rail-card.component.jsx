@@ -46,7 +46,7 @@ const SectionSliderRailCard = ({ movie, mediaType }) => {
               </ul>
               <span>
                 <img src={TomatoImage} width="25px" height="25px"></img>
-                <small>{vote_average * 10}%</small>
+                <small>{vote_average.toFixed(1) * 10}%</small>
               </span>
             </div>
           </Link>

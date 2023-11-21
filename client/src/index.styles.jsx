@@ -122,14 +122,15 @@ export const DEFAULT_ALERT = css`
   text-align: center;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  gap: 0.25rem;
+  /* align-items: center; */
+  justify-content: center;
+  gap: 0.5rem;
 `;
 
 // Font sizes
 
 export const BUTTON_TEXT = css`
-  font-size: 16px;
+  font-size: 14px;
   @media ${device.laptop} {
     font-size: 18px !important;
   }

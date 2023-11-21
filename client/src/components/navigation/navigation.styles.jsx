@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
 import { DEFAULT_HOVER, FLEX_CENTERED_BETWEEN, LOGO, PADDING_SM } from "../../index.styles";
-/* Import the custom font, or provide a suitable Netflix-like font */
-// @import url("https://fonts.googleapis.com/css?family=Netflix Sans&display=swap");
+
 const MenuItemStyling = css`
   height: 48px;
   width: 48px;
@@ -35,5 +34,9 @@ export const NavigationItemContainer = styled.div`
   width: 100%;
   & .navigation-drop-down-button {
     margin-right: auto;
+  }
+  img {
+    width: 50px;
+    border-radius: 50%;
   }
 `;

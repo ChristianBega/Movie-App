@@ -6,23 +6,22 @@ import { getProfileAccountDocument } from "../utils/firebase/accountProfiles.fir
 
 // Creating UserContext which represents the actual value you want to access === CONTEXT
 export const UserContext = createContext({
-  // UserContext initial value will be null which shows there is no current user
   currentUser: null,
+  currentProfileId: "",
+  currentProfileAccount: [],
+  activeUser: "",
   setCurrentUser: () => null,
-  currentProfileAccounts: [],
+  setCurrentProfileId: () => null,
+  setCurrentProfileAccount: () => null,
 });
 
-// User provider acts as the context component that wraps all children (components) that need to use context
 export const UserProvider = ({ children }) => {
-  // Current user state set to null
+  const [activeUser, setActiveUser] = useState(); // local storage value if any
   const [currentUser, setCurrentUser] = useState(null);
+
+  const [currentProfileId, setCurrentProfileId] = useState(null);
   const [currentProfileAccounts, setCurrentProfileAccounts] = useState([]);
-  // Value is passed to the context component which allows children to access it.
-  const value = {
-    currentUser,
-    setCurrentUser,
-    currentProfileAccounts,
-  };
+  const [currentProfileAccount, setCurrentProfileAccount] = useState([]);
 
   useEffect(() => {
     const getAllProfileAccounts = async () => {
@@ -39,9 +38,43 @@ export const UserProvider = ({ children }) => {
     getAllProfileAccounts();
   }, [currentUser?.uid, setCurrentProfileAccounts]);
 
+  // Local storage to set profile ids when profile card is clicked
+  useEffect(() => {
+    if (currentProfileId) {
+      localStorage.setItem("activeUser", currentProfileId);
+    }
+  }, [currentProfileId]);
+
+  // local storage to get the profile id and set it to the active user
+  useEffect(() => {
+    const activeUserAccount = localStorage.getItem("activeUser");
+    if (!activeUserAccount) {
+      setActiveUser(null);
+    } else {
+      setActiveUser(activeUserAccount);
+    }
+  }, [currentProfileId]);
+
+  useEffect(() => {
+    if (!activeUser) {
+      setCurrentProfileId(currentUser?.uid);
+    }
+  }, [currentUser?.uid, activeUser]);
+
+  useEffect(() => {
+    setCurrentProfileId(activeUser);
+  }, [activeUser]);
+
+  useEffect(() => {
+    currentProfileAccounts.filter((profileAccount) => {
+      if (profileAccount.profileId === currentProfileId) {
+        setCurrentProfileAccount(profileAccount);
+      }
+    });
+  }, [currentProfileId, currentProfileAccounts]);
+
   // UseEffect is called on mount
   useEffect(() => {
-    // Creating variable to store the return object from the unsubscribe method
     const unsubscribe = onAuthStateChangedListener((user) => {
       if (user) {
         createUserDocumentFromAuth(user);
@@ -50,5 +83,16 @@ export const UserProvider = ({ children }) => {
     });
     return unsubscribe;
   }, []);
+
+  const value = {
+    currentUser,
+    setCurrentUser,
+    currentProfileAccounts,
+    currentProfileId,
+    setCurrentProfileId,
+    currentProfileAccount,
+    setCurrentProfileAccount,
+    activeUser,
+  };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };

@@ -16,7 +16,7 @@ export const FavoritesCard = ({ movie, error, mediaType }) => {
               <h3>{title || name}</h3>
               <span>
                 <img src={TomatoImage} width="24px" height="24px"></img>
-                <p>{vote_average * 10}%</p>
+                <p>{vote_average.toFixed(1) * 10}%</p>
               </span>
             </StyledTextContainer>
           </StyledFavoritesCard>
