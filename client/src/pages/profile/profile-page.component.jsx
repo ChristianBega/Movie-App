@@ -59,9 +59,9 @@ const ProfilePage = () => {
 
   return (
     <>
+      <StyledProfilePageHeader>Who's Watching?</StyledProfilePageHeader>
       {isLaptop ? (
         <>
-          <StyledProfilePageHeader>Who's Watching?</StyledProfilePageHeader>
           <StyledProfileSection>
             {renderLeftButton()}
             {currentVisibleProfileAccount?.map(({ profileImg, profileName, colors, profileId }, index) => {
@@ -82,15 +82,15 @@ const ProfilePage = () => {
             <ProfileBackgroundBlur />
             {renderRightButton()}
           </StyledProfileSection>
-          <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-            <CustomButton onClick={handleSignOut}>Sign Out</CustomButton>
-          </div>
         </>
       ) : (
         <>
           <MobileProfilePage />
         </>
       )}
+      <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+        <CustomButton onClick={handleSignOut}>Sign Out</CustomButton>
+      </div>
     </>
   );
 };
