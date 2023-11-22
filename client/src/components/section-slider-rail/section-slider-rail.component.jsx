@@ -11,7 +11,7 @@ import {
   StyledSliderRailHeader,
   StyledSliderWrapper,
 } from "./section-slider-rail.styles";
-import { useHorizontalScroll } from "./utils/useSideScroll";
+import { useHorizontalScroll } from "./hooks/useSideScroll";
 import { sliderVariants } from "../../setup/animations/framer-motion-variants";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { LoadingCard } from "../loading/loading-card/loading-card.component";
@@ -20,11 +20,11 @@ import LoadingScreen from "../../pages/loading/loading-page.component";
 import CustomButton, { BUTTON_TYPES_CLASSES } from "../button/button.component";
 import { device } from "../../device-breakpoints.styles";
 import { generateUrl } from "./utils/generateUrl";
+import useSideScrollAfterRefetchAndRemount from "./hooks/useSideScrollAfterRefetchAndRemount";
 const SectionSliderRail = ({ sectionData, urlPath, mediaType }) => {
   const { count } = useContext(RecommendationContext);
   const sliderRef = useHorizontalScroll();
 
-  //! Media queries for secondary handleScroll
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
   const isDesktop = useMediaQuery({ minWidth: 1024 });
@@ -50,41 +50,18 @@ const SectionSliderRail = ({ sectionData, urlPath, mediaType }) => {
     fetchNextPage();
   };
 
-  const { isLoading, isError, error, isFetched, refetch } = useQuery(["sectionData", sectionData, page], () => generateUrl({ sectionData, page }), {
-    enabled: !!sectionData,
-    onSuccess: (newData) => {
-      setAllData((prevData) => [...new Set([...prevData, newData.data])]);
-    },
-  });
+  const { isLoading, isError, error, isFetched, refetch } = useQuery(
+    ["sectionData", sectionData, page],
+    () => generateUrl({ sectionData, page, urlPath }),
+    {
+      enabled: !!sectionData,
+      onSuccess: (newData) => {
+        setAllData((prevData) => [...new Set([...prevData, newData.data])]);
+      },
+    }
+  );
 
-  useEffect(() => {
-    const handleScrollAfterRefetchAndRemount = () => {
-      const container = sliderRef.current;
-      if (container) {
-        const childElements = container.children;
-        const distanceFromLast = isMobile ? 21 : isTablet ? 17 : device.laptop ? 17 : isDesktop ? 21 : 14;
-        const targetIndex = childElements?.length > distanceFromLast ? childElements?.length - 1 - distanceFromLast : null;
-        const targetElement = targetIndex !== null ? childElements[targetIndex] : null;
-        if (targetElement) {
-          const containerRect = container.getBoundingClientRect();
-          const targetRect = targetElement.getBoundingClientRect();
-
-          const targetPosition = {
-            top: targetRect.top - containerRect.top - 64,
-            left: targetRect.left - containerRect.left,
-          };
-
-          container.scrollTo({
-            ...targetPosition,
-            behavior: "smooth",
-          });
-        } else {
-        }
-      }
-    };
-
-    handleScrollAfterRefetchAndRemount();
-  }, [allData]);
+  useSideScrollAfterRefetchAndRemount(sliderRef, isMobile, isTablet, device, isDesktop, allData);
 
   //! Secondary handleScroll for buttons
   const handleScroll = (direction) => {

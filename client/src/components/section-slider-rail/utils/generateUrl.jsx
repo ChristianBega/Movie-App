@@ -1,11 +1,11 @@
 import axios from "axios";
 
-export const generateUrl = ({ sectionData, page }) => {
+export const generateUrl = ({ sectionData, page, urlPath }) => {
   let updatedUrl;
   let baseUrl;
 
   if (!sectionData.fetchUrl) {
-    baseUrl = urlPath + sectionData.id;
+    baseUrl =urlPath  + sectionData.id;
     const searchParams = new URLSearchParams(baseUrl);
     searchParams.set("page", page.toString());
     updatedUrl = `${baseUrl.split("?")[0]}?${searchParams.toString()}`;
