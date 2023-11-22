@@ -1,5 +1,4 @@
 import React, { lazy, Suspense, useContext, useEffect, useState } from "react";
-import axios, { all } from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { useMediaQuery } from "react-responsive";
 
@@ -12,7 +11,7 @@ import {
   StyledSliderRailHeader,
   StyledSliderWrapper,
 } from "./section-slider-rail.styles";
-import { useHorizontalScroll } from "./useSideScroll";
+import { useHorizontalScroll } from "./utils/useSideScroll";
 import { sliderVariants } from "../../setup/animations/framer-motion-variants";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { LoadingCard } from "../loading/loading-card/loading-card.component";
@@ -20,7 +19,7 @@ import { RecommendationContext } from "../../setup/contexts/recommendations.cont
 import LoadingScreen from "../../pages/loading/loading-page.component";
 import CustomButton, { BUTTON_TYPES_CLASSES } from "../button/button.component";
 import { device } from "../../device-breakpoints.styles";
-
+import { generateUrl } from "./utils/generateUrl";
 const SectionSliderRail = ({ sectionData, urlPath, mediaType }) => {
   const { count } = useContext(RecommendationContext);
   const sliderRef = useHorizontalScroll();
@@ -33,29 +32,6 @@ const SectionSliderRail = ({ sectionData, urlPath, mediaType }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [page, setPage] = useState(1);
   const [allData, setAllData] = useState([]);
-
-  const generateUrl = ({ sectionData, page }) => {
-    let updatedUrl;
-    if (!sectionData.fetchUrl) {
-      const baseUrl = urlPath + sectionData.id;
-      const searchParams = new URLSearchParams(baseUrl);
-      searchParams.set("page", page.toString());
-      updatedUrl = `${baseUrl.split("?")[0]}?${searchParams.toString()}`;
-    } else {
-      const baseUrl = sectionData.fetchUrl;
-      const searchParams = new URLSearchParams(baseUrl);
-      searchParams.set("page", page.toString());
-      updatedUrl = `${baseUrl.split("?")[0]}?${searchParams.toString()}`;
-    }
-    const options = {
-      headers: {
-        accept: "application/json",
-        Authorization: import.meta.env.VITE_AUTHORIZATION,
-      },
-    };
-
-    return axios.get(updatedUrl, options);
-  };
 
   const allResults = allData.map((item) => {
     return item.results.map((result) => {
