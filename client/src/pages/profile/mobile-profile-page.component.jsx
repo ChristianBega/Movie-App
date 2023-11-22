@@ -1,15 +1,11 @@
 import React, { useContext, useState } from "react";
-import { ProfileBackgroundBlur, StyledProfilePageHeader, StyledProfileSection } from "./profile-page.styles";
-import CustomButton from "../../components/button/button.component";
-import { signOutUser } from "../../setup/utils/firebase/authentication.firebase";
-import { useNavigate } from "react-router-dom";
+import { ProfileBackgroundBlur, StyledProfileSection } from "./profile-page.styles";
 import { UserContext } from "../../setup/contexts/user.context";
 import ProfileAccountCard from "./components/profile-account-card/profile-account-card.component";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 
 const MobileProfilePage = () => {
   const { currentProfileAccounts } = useContext(UserContext);
-  const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
@@ -18,11 +14,6 @@ const MobileProfilePage = () => {
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + currentProfileAccounts.length) % currentProfileAccounts.length);
-  };
-
-  const handleSignOut = () => {
-    signOutUser();
-    navigate("/");
   };
 
   return (

@@ -36,7 +36,7 @@ const SectionSliderRailCard = ({ movie, mediaType }) => {
             <div className="text-container">
               <h3>{title || name}</h3>
               <ul>
-                {genre_ids.slice(0, 4).map((genreId, index) => {
+                {genre_ids?.slice(0, 4).map((genreId, index) => {
                   return (
                     <li key={index} className="genre">
                       {generateGenre(genreId)}
@@ -46,7 +46,7 @@ const SectionSliderRailCard = ({ movie, mediaType }) => {
               </ul>
               <span>
                 <img src={TomatoImage} width="25px" height="25px"></img>
-                <small>{vote_average.toFixed(1) * 10}%</small>
+                <small>{vote_average?.toFixed(1) * 10}%</small>
               </span>
             </div>
           </Link>

@@ -29,11 +29,12 @@ const MoviesPage = () => {
     };
     fetchAllMovieGenresData();
   }, []);
+
   return (
     <SliderRailsSection>
       {fetchedData && (
         <>
-          {fetchedData.map((item, index) => {
+          {fetchedData.slice(0, 1).map((item, index) => {
             return <SectionSliderRail key={index} urlPath={queryForMovieWithGenresURL} sectionData={item} mediaType={"movie"} />;
           })}
         </>

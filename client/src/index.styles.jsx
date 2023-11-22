@@ -110,6 +110,12 @@ export const SLIDER_SECTION = css`
   margin: auto;
   max-width: 1600px;
   margin-top: 1rem;
+  @media ${device.tablet} {
+    padding: 1rem;
+  }
+  @media ${device.laptop} {
+    padding: 2rem;
+  }
   @media ${device.desktop} {
     padding: 3rem;
   }

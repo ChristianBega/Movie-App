@@ -110,7 +110,6 @@ const HomePage = () => {
   };
 
   const { isLoading, data, isError, error } = useQuery(["top-rated"], generateUrl);
-
   if (isLoading) {
     return <LoadingScreen />;
   }
