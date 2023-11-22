@@ -114,3 +114,21 @@ export const PlayButton = styled.button`
     margin-right: 0.5rem;
   }
 `;
+
+export const ViewMoreButton = styled.button`
+  ${FLEX_CENTERED}
+  border: 2px solid #92a409;
+  color: #92a409;
+  border-radius: 18px;
+  background-color: #9c9c9c1e;
+  min-width: 110px;
+  min-height: 154px;
+  @media ${device.laptop} {
+    min-width: 174px;
+    min-height: 264px;
+  }
+  &:hover {
+    transform: scale(1.1) !important;
+    cursor: pointer;
+  }
+`;

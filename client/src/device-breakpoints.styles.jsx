@@ -13,3 +13,4 @@ export const device = {
   desktop: `(min-width: ${size.desktop})`,
   desktopLarge: `(min-width: ${size.desktopLarge})`,
 };
+
