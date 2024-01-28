@@ -4,6 +4,7 @@ import { MdOutlineMovieFilter } from "react-icons/md";
 import { LiaHomeSolid } from "react-icons/lia";
 import { Link } from "react-router-dom";
 import { NavigationListContainer } from "./navigation-list.styles";
+import SearchBar from "../../searchBar";
 
 const navigationListItems = [
   { icon: <LiaHomeSolid />, name: "home", urlPath: "/" },
