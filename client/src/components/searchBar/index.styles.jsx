@@ -12,11 +12,13 @@ export const StyledSearchBarInput = styled.input`
   border: 2px solid #625e5e;
   color: #ffffff;
   background-color: #524e4ecc;
-
-  padding: 0.8rem;
+  padding: 0.6rem;
   border-radius: 50px;
   width: 100%;
-  &:focus {
-    /* background-color: #dad9d9c4; */
+  margin-right: 1rem;
+  text-indent: 0.5rem;
+  &::placeholder {
+    font-size: 14px;
+    padding-left: 0.5rem;
   }
 `;
