@@ -1,14 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
-const useSearch = (userInput) => {
+const useSearch = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [status, setStatus] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
   const [response, setResponse] = useState([]);
 
   const sendRequestToTMDBApi = async (userInput) => {
-    if (!userInput) alert("Please enter a movie or tv show!");
+    if (userInput === "" || userInput.length <= 0) {
+      alert("Please enter a movie or tv show!");
+      return "No Results";
+    }
     const options = {
       headers: {
         accept: "application/json",
@@ -35,12 +39,11 @@ const useSearch = (userInput) => {
       setLoading(false);
     } catch (error) {
       console.error("Error sending data to webhook:", error);
-
       setError(error);
       setStatus("failed");
       setLoading(false);
     }
   };
-  return { loading, error, status, response, sendRequestToTMDBApi };
+  return { loading, error, status, response, searchTerm, sendRequestToTMDBApi, setSearchTerm };
 };
 export default useSearch;
