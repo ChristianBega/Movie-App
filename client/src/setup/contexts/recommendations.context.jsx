@@ -28,6 +28,7 @@ const staticMovieAndShowsSectionData = [
 
 export const RecommendationProvider = ({ children }) => {
   const location = useLocation();
+
   const [previousPath, setPreviousPath] = useState();
   const [count, setCount] = useState(0);
 

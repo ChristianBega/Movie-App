@@ -7,11 +7,12 @@ export const NavigationListContainer = styled.ul`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 500px;
+  min-height: 400px;
   gap: 1rem;
   margin-top: 2rem;
 
   & .link-list-item {
+    min-width: 110px;
     &:hover {
       transform: scale(1.1);
       transition: 0.2s ease-in-out;

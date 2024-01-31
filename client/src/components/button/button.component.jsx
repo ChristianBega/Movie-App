@@ -10,6 +10,7 @@ import {
   InvertedButton,
   PlayButton,
   RemoveFavoritesButton,
+  StyledSearchBarButton,
   ViewMoreButton,
 } from "./button.styles";
 
@@ -25,6 +26,7 @@ export const BUTTON_TYPES_CLASSES = {
   removeFavorites: "removeFavorites",
   play: "play",
   viewMore: "viewMore",
+  search: "search",
 };
 
 const getButton = (buttonType = BUTTON_TYPES_CLASSES.base) =>
@@ -40,6 +42,7 @@ const getButton = (buttonType = BUTTON_TYPES_CLASSES.base) =>
     [BUTTON_TYPES_CLASSES.back]: BackButton,
     [BUTTON_TYPES_CLASSES.play]: PlayButton,
     [BUTTON_TYPES_CLASSES.viewMore]: ViewMoreButton,
+    [BUTTON_TYPES_CLASSES.search]: StyledSearchBarButton,
   }[buttonType]);
 
 const CustomButton = ({ children, buttonType, ...otherProps }) => {

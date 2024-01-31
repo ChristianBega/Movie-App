@@ -16,9 +16,8 @@ export const DropDownMenu = styled.div`
   padding: 2rem;
   &:before {
     content: "";
-    backdrop-filter: blur(5px);
-    background-color: #302d2d69;
-
+    backdrop-filter: blur(15px);
+    background-color: #1d1c1c69;
     position: fixed;
     overflow: hidden;
     inset: 0;

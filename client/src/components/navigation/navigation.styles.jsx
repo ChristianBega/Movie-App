@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { DEFAULT_HOVER, FLEX_CENTERED_BETWEEN, LOGO, PADDING_SM } from "../../index.styles";
+import { device } from "../../device-breakpoints.styles";
 
 const MenuItemStyling = css`
   height: 48px;
@@ -38,5 +39,14 @@ export const NavigationItemContainer = styled.div`
   img {
     width: 50px;
     border-radius: 50%;
+  }
+`;
+
+export const StyledProfileImage = styled.img`
+  width: 100%;
+  height: 100%;
+  @media ${device.desktop} {
+    min-width: 50px;
+    min-height: 50px;
   }
 `;

@@ -13,7 +13,7 @@ const PreviewPage = () => {
         <PreviewHero previousPath={previousPath} movieBackDrop={location?.state?.movie?.backdrop_path} />
       </section>
       <PreviewContentSection id="preview-content-section">
-        <PreviewContent movie={location?.state?.movie} mediaType={location?.state?.mediaType} />
+        <PreviewContent movie={location?.state?.movie} mediaType={location?.state?.mediaType || location?.state?.movie?.media_type} />
       </PreviewContentSection>
       <section id="related-suggestions" style={{ marginTop: "2rem", padding: ".2rem" }}>
         {currentSectionData.map((section) => {

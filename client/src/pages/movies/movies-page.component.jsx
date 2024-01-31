@@ -34,7 +34,7 @@ const MoviesPage = () => {
     <SliderRailsSection>
       {fetchedData && (
         <>
-          {fetchedData.slice(0, 1).map((item, index) => {
+          {fetchedData.map((item, index) => {
             return <SectionSliderRail key={index} urlPath={queryForMovieWithGenresURL} sectionData={item} mediaType={"movie"} />;
           })}
         </>

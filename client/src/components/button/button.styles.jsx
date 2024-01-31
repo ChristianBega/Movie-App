@@ -132,3 +132,25 @@ export const ViewMoreButton = styled.button`
     cursor: pointer;
   }
 `;
+export const StyledSearchBarButton = styled.button`
+  ${BUTTON_TEXT}
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 16px;
+  background-color: #e50914;
+  border: none !important;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  border: 1px solid blue;
+  gap: 0.25rem;
+  z-index: 5;
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 12px 4px #e509149c;
+    transform: scale(1.01);
+  }
+`;
