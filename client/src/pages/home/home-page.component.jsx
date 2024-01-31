@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 
 import { SliderRailsSection } from "./home-page.styles";
 import { useQuery } from "@tanstack/react-query";

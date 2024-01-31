@@ -8,18 +8,23 @@ const CardPositionStyles = css`
   border-radius: 18px;
   overflow: hidden;
 `;
-export const StyledSliderRailCard = styled(motion.div)`
-  background-image: ${({ image }) => `url(${image})`};
+export const StyledSliderRailCard = styled(motion.div).attrs((props) => ({
+  style: {
+    backgroundImage: `url(${props.image})`,
+  },
+}))`
   background-position: center;
   background-size: cover;
   border-radius: 18px;
   position: relative;
   min-width: 110px;
   min-height: 154px;
+
   @media ${device.laptop} {
     min-width: 174px;
     min-height: 264px;
   }
+
   &:hover {
     transform: scale(1.1) !important;
     cursor: pointer;
